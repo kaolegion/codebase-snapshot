@@ -2,42 +2,37 @@
 
 ## Next Milestones
 
-### Snapshot Engine Improvements
+### Snapshot Intelligence
 
-- architecture auto-generation
-- documentation extraction
-- dependency detection
-- project language detection
+- improve architecture generator
+- enrich documentation extraction
+- detect project entrypoints
+- detect major modules automatically
+- identify runtime/config files separately
 
-### CLI Improvements
+### CLI Evolution
 
 - snapshot list
 - snapshot inspect
 - snapshot diff
-
-### Snapshot Content
-
-Add generated files:
-
-ARCHITECTURE.md
-DOCUMENTATION.md
+- snapshot doctor
 
 ### Configuration
 
-Support configuration file:
+- support project-local config file
+- support custom exclusion rules
+- support custom output root
 
-.codebase-snapshot.env
+### Snapshot Content
 
-### Exclusion Engine
+- richer MANIFEST.md
+- generated DOCUMENTATION synthesis
+- dependency summary
+- repository metadata summary
 
-Allow custom exclusion rules.
+### Hardening
 
-### Performance
-
-Optimize scanning for large repositories.
-
-### Open Source Release
-
-- contribution guide
-- issue templates
-- release tagging
+- edge-case tests
+- portability checks
+- large repo behavior
+- release checklist

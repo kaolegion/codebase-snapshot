@@ -2,6 +2,43 @@
 
 Version: v0.1.0
 
+The snapshot engine is now operational.
+
+Implemented capabilities:
+
+- deterministic repository scan
+- exclusion engine
+- project tree export
+- deterministic index generation
+- architecture summary generation
+- documentation index generation
+- language summary generation
+- AI ingestion guide
+- structured CODEBASE export
+- automated tests
+
+Current snapshot artifacts:
+
+- PROJECT_TREE.txt
+- INDEX.tsv
+- MANIFEST.md
+- AI_INGESTION_GUIDE.md
+- ARCHITECTURE.md
+- DOCUMENTATION.md
+- LANGUAGES.md
+- LOG.txt
+- SNAPSHOT_META.json
+- CODEBASE/
+
+Current status:
+all tests pass
+
+---
+
+## Close Status
+
+Version: v0.1.0
+
 The first working snapshot engine has been implemented.
 
 Capabilities:
