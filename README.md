@@ -1,88 +1,204 @@
-# Codebase Snapshot
+# codebase-snapshot
 
-Export any project into an AI-ready structured snapshot.
-
-Codebase Snapshot is a deterministic, shell-first CLI tool that transforms
-any software project into a structured bundle optimized for AI analysis.
-
-Instead of forcing AI systems to explore repositories blindly,
-Codebase Snapshot generates a clear, versioned and structured representation
-of the entire project.
-
-The resulting snapshot can be shared with any AI system to dramatically
-accelerate project understanding.
+A shell-first, deterministic, and portable utility that transforms any software project into a structured snapshot, versioned and immediately understandable by both humans and AI systems.
 
 ---
 
-## Why
+## Vision
 
-Modern AI assistants analyze repositories by scanning files randomly.
-This approach is slow, token-expensive and often misses architectural intent.
+`codebase-snapshot` is designed to accelerate project understanding.
 
-Codebase Snapshot solves this by generating a structured export containing:
+It produces a structured bundle that helps both a human reader and an AI system answer essential questions:
 
-- project architecture
-- documentation
-- codebase sections
-- machine-readable index
-- project tree
-- AI ingestion guide
+- what is this project
+- how is it organized
+- what are the important files
+- what should be ignored
+- where to start reading
+- how to transfer project context cleanly
 
-This enables faster and more accurate analysis by any AI.
+The project is intentionally:
+
+- shell-first
+- deterministic
+- portable
+- modular
+- lightweight
+- reusable across repositories
+- open-source friendly
 
 ---
 
-## Features
+## Product Goals
 
-- deterministic project scanning
-- structured markdown exports
-- machine-readable index (TSV)
-- versioned snapshots
-- portable shell-first CLI
+The tool should allow a user to:
+
+1. install `codebase-snapshot`
+2. configure a target project
+3. run the snapshot command
+4. generate a structured snapshot directory
+5. obtain a readable and shareable bundle
+
+Target snapshot outputs include:
+
+- `AI_INGESTION_GUIDE.md`
+- `MANIFEST.md`
+- `ARCHITECTURE.md`
+- `INDEX.tsv`
+- `DOCUMENTATION.md`
+- `CODEBASE/`
+- `PROJECT_TREE.txt`
+- `LOG.txt`
+- `SNAPSHOT_META.json`
+
+---
+
+## Core Principles
+
+### 1. Determinism first
+
+The same input state should produce the same snapshot structure.
+
+This requires:
+
+- deterministic file traversal
+- stable sorting
+- explicit exclusions
+- normalized naming
+- predictable output layout
+
+### 2. Shell-first architecture
+
+The project should remain easy to run in standard Unix-like environments.
+
+This implies:
+
 - no heavy dependencies
-- optimized for AI ingestion
+- transparent execution
+- portable shell scripts
+- simple install and reuse model
+
+### 3. CLI orchestration-only
+
+The CLI must stay thin.
+
+Its role is to:
+
+- parse arguments
+- validate inputs
+- load configuration
+- dispatch to core modules
+- report explicit status
+
+Business logic belongs in `core/`.
+
+### 4. Modular core
+
+Core functions should remain:
+
+- reusable
+- testable
+- replaceable
+- isolated by responsibility
+
+### 5. Tests as contract
+
+Stable behavior must be protected by tests.
+
+This includes:
+
+- naming rules
+- file ordering
+- snapshot structure
+- exclusion behavior
+- CLI exit behavior
+- metadata integrity
 
 ---
 
-## Example
+## Repository Structure
 
-snapshot .
-
-Output:
-
+README.md
+LICENSE
+VERSION
+.gitignore
+CODEBASE_ROOT.md
+bin/
+core/
+doc/
+examples/
+tests/
+logs/
 snapshots/
-└── 2026-03-08/
-    └── v0.1.0/
-        └── 01_initial-scan/
-            ├── 00_AI_INGESTION_GUIDE.md
-            ├── 01_MANIFEST.md
-            ├── 02_ARCHITECTURE.md
-            ├── 03_INDEX.tsv
-            ├── 04_DOCUMENTATION.md
-            ├── 05_CODEBASE_ROOT.md
-            ├── 06_CODEBASE_BIN.md
-            ├── 07_CODEBASE_CORE.md
-            ├── 08_CODEBASE_LIB.md
-            ├── 09_CODEBASE_MODULES.md
-            ├── 10_CODEBASE_TESTS.md
-            ├── 11_PROJECT_TREE.txt
-            └── SNAPSHOT_META.json
+Current Core Layout
+bin/snapshot
+
+core/
+  classifier.sh
+  config.sh
+  indexer.sh
+  logger.sh
+  naming.sh
+  renderer.sh
+  scanner.sh
+  utils.sh
+
+This confirms the current implementation direction:
+
+- CLI entrypoint in bin/
+- functional modules in core/
+- tests isolated under tests/
+- generated runtime outputs separated in logs/ and snapshots/
 
 ---
 
-## Philosophy
+## Documentation
 
-Codebase Snapshot follows a few simple principles:
+- doc/GET_STARTED.md
+- doc/ARCHITECTURE.md
+- doc/SNAPSHOT_FORMAT.md
+- doc/CLI.md
+- doc/ROADMAP.md
 
-- deterministic outputs
-- human + machine readable
-- portable and lightweight
-- shell-first architecture
-- AI-friendly structure
-- open and extensible format
+---
+
+## Development Method
+
+This project is developed:
+
+- step by step
+- with complete code
+- with explicit paths
+- with precise commands
+- with documentation updated continuously
+- with tests added at each meaningful stage
 
 ---
 
 ## Status
 
-Early development — v0.1.0
+Current version:
+0.1.0
+
+Current objective:
+
+- finalize foundation
+- stabilize the first CLI contract
+- produce the first reliable snapshot flow
+- harden deterministic behavior
+
+---
+
+##Long-Term Direction
+
+codebase-snapshot is not tied to KaoBox or any single repository.
+
+It is intended to become a reusable open-source utility for:
+
+- project onboarding
+- AI-assisted development
+- architecture audits
+- repository transfer
+- machine-ingestible project packaging
+- documentation support
+- clean snapshot versioning
