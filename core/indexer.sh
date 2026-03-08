@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+source "$ROOT_DIR/core/scanner.sh"
+
 generate_index() {
     local target_dir="$1"
 
@@ -9,7 +12,7 @@ generate_index() {
         return 1
     }
 
-    find "$target_dir" -type f | sort | while read -r file; do
+    scan_files "$target_dir" | while read -r file; do
         size="$(wc -c < "$file" | tr -d ' ')"
         lines="$(wc -l < "$file" | tr -d ' ')"
 
