@@ -3,6 +3,7 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 CLI="$ROOT_DIR/bin/snapshot"
+VERSION="$(cat "$ROOT_DIR/VERSION")"
 
 echo "[TEST] CLI availability"
 
@@ -19,7 +20,7 @@ fi
 echo "[PASS] CLI exists and is executable"
 
 SNAPSHOT_DATE="$(date +%Y-%m-%d)"
-SNAPSHOT_DIR="$ROOT_DIR/snapshots/$SNAPSHOT_DATE/v0.1.0/01_test_cli"
+SNAPSHOT_DIR="$ROOT_DIR/snapshots/$SNAPSHOT_DATE/v$VERSION/01_test_cli"
 
 rm -rf "$SNAPSHOT_DIR"
 
@@ -35,6 +36,7 @@ echo "[PASS] snapshot directory created"
 for file in \
 PROJECT_TREE.txt \
 INDEX.tsv \
+DEPENDENCIES.tsv \
 LOG.txt \
 SNAPSHOT_META.json \
 MANIFEST.md \
@@ -78,6 +80,13 @@ if grep -q "snapshots/" "$SNAPSHOT_DIR/INDEX.tsv"; then
 fi
 
 echo "[PASS] exclusion rules applied"
+
+if ! grep -Fq $'DEPENDENCY\t'"$ROOT_DIR"$'/bin/snapshot' "$SNAPSHOT_DIR/DEPENDENCIES.tsv"; then
+    echo "[FAIL] dependencies snapshot content invalid"
+    exit 1
+fi
+
+echo "[PASS] dependencies snapshot generated"
 
 rm -rf "$SNAPSHOT_DIR"
 

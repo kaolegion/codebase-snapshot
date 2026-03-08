@@ -9,6 +9,7 @@
 - detect project entrypoints
 - detect major modules automatically
 - identify runtime/config files separately
+- dependency summary (build higher-level dependency graph)
 
 ### CLI Evolution
 
@@ -27,7 +28,6 @@
 
 - richer MANIFEST.md
 - generated DOCUMENTATION synthesis
-- dependency summary
 - repository metadata summary
 
 ### Hardening

@@ -18,6 +18,7 @@ Implemented capabilities:
 - exclusion engine
 - project tree generation
 - deterministic index generation
+- dependency discovery
 - architecture summary generation
 - documentation index generation
 - language summary generation
@@ -27,15 +28,16 @@ Implemented capabilities:
 
 Snapshot artifacts currently produced:
 
-PROJECT_TREE.txt
-INDEX.tsv
-MANIFEST.md
-AI_INGESTION_GUIDE.md
-ARCHITECTURE.md
-DOCUMENTATION.md
-LANGUAGES.md
-LOG.txt
-SNAPSHOT_META.json
+PROJECT_TREE.txt  
+INDEX.tsv  
+DEPENDENCIES.tsv  
+MANIFEST.md  
+AI_INGESTION_GUIDE.md  
+ARCHITECTURE.md  
+DOCUMENTATION.md  
+LANGUAGES.md  
+LOG.txt  
+SNAPSHOT_META.json  
 CODEBASE/
 
 All current tests pass.
@@ -44,16 +46,24 @@ All current tests pass.
 
 # Phase 3 — Snapshot Intelligence
 
-Next milestone.
+Goal: improve repository understanding.
 
-The goal is to improve repository understanding.
+## Phase 3.1 — Dependency Mapping (DONE)
+
+Implemented:
+
+- dependency extraction engine
+- generation of DEPENDENCIES.tsv
+- detection of source / import / require / include signals
+- test coverage for dependency extraction
+
+## Next Steps (Phase 3.x)
 
 Planned improvements:
 
 - richer architecture analysis
 - entrypoint detection
 - important module detection
-- dependency discovery
 - repository metadata summary
 
 ---

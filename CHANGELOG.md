@@ -19,6 +19,7 @@ Major milestone: snapshot engine operational.
 - architecture summary generation
 - documentation index generation
 - language summary generation
+- dependency extraction engine
 - AI ingestion guide
 - structured CODEBASE export
 
@@ -28,6 +29,7 @@ Snapshots now include:
 
 PROJECT_TREE.txt  
 INDEX.tsv  
+DEPENDENCIES.tsv  
 MANIFEST.md  
 AI_INGESTION_GUIDE.md  
 ARCHITECTURE.md  
@@ -61,6 +63,7 @@ config.sh
 architecture.sh  
 documentation.sh  
 languages.sh  
+dependencies.sh  
 
 ### Testing
 
@@ -69,6 +72,7 @@ Automated tests implemented:
 tests/run_all.sh  
 tests/test_naming.sh  
 tests/test_indexer.sh  
+tests/test_dependencies.sh  
 tests/test_cli.sh  
 
 All tests passing.

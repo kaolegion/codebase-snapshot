@@ -40,6 +40,7 @@ The CLI is responsible for:
 - loading configuration
 - dispatching execution to core modules
 - producing logs
+- assembling snapshot artifacts
 
 The CLI must remain **thin**.
 
@@ -55,16 +56,20 @@ core/
 
 The core layer contains reusable modules implementing the snapshot logic.
 
-Typical modules include:
+Current modules include:
 
-logger.sh  
-config.sh  
-scanner.sh  
-classifier.sh  
-indexer.sh  
-renderer.sh  
 naming.sh  
 utils.sh  
+scanner.sh  
+indexer.sh  
+architecture.sh  
+documentation.sh  
+languages.sh  
+dependencies.sh  
+logger.sh  
+config.sh  
+classifier.sh  
+renderer.sh  
 
 Each module must remain:
 
@@ -72,6 +77,32 @@ Each module must remain:
 - reusable
 - testable
 - isolated in responsibility
+
+Example responsibilities:
+
+scanner.sh  
+→ deterministic file discovery
+
+indexer.sh  
+→ generation of INDEX.tsv
+
+architecture.sh  
+→ repository architecture summary
+
+documentation.sh  
+→ extraction of documentation metadata
+
+languages.sh  
+→ language and file type detection
+
+dependencies.sh  
+→ dependency signal extraction
+
+naming.sh  
+→ snapshot naming normalization
+
+utils.sh  
+→ shared helpers
 
 ---
 
@@ -107,6 +138,7 @@ They validate:
 
 - naming rules
 - indexing behavior
+- dependency extraction
 - CLI behavior
 - deterministic ordering
 
@@ -129,19 +161,22 @@ They must remain separate from implementation code.
 
 # Execution Flow
 
-A typical snapshot execution should follow these steps:
+A typical snapshot execution follows these steps:
 
 1. read tool version
-2. load configuration
-3. validate target repository
-4. normalize snapshot label
-5. compute output path
-6. scan repository deterministically
-7. classify files
-8. generate index
-9. render documentation artifacts
-10. generate metadata
-11. write logs
+2. validate target repository
+3. normalize snapshot label
+4. compute snapshot output path
+5. scan repository deterministically
+6. generate PROJECT_TREE.txt
+7. generate INDEX.tsv
+8. extract dependency signals
+9. render architecture summary
+10. generate documentation index
+11. detect language summary
+12. assemble CODEBASE export
+13. generate metadata
+14. write logs
 
 ---
 
@@ -150,10 +185,12 @@ A typical snapshot execution should follow these steps:
 To ensure reproducibility, the following rules must be respected:
 
 - file discovery must use stable ordering
-- scanning should rely on `find` + `sort`
+- scanning must rely on `find` + `sort`
 - naming must be normalized
 - exclusions must be explicit
 - output structure must remain predictable
+
+Running the snapshot twice on the same repository state must produce identical structural outputs.
 
 ---
 

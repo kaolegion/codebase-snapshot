@@ -27,11 +27,13 @@ label       → human readable label
 
 # Snapshot Files
 
-Each snapshot directory should contain the following artifacts.
+Each snapshot directory contains the following artifacts.
+
+---
 
 AI_INGESTION_GUIDE.md
 
-Guide explaining how an AI system should read the snapshot.
+Guide explaining how an AI system should read the snapshot and in which order.
 
 ---
 
@@ -49,29 +51,7 @@ Includes:
 
 ARCHITECTURE.md
 
-Overview of the project architecture.
-
----
-
-INDEX.tsv
-
-Deterministic file index.
-
-Example columns:
-
-TYPE	PATH	SIZE	LINES
-
----
-
-DOCUMENTATION.md
-
-Summary or extraction of documentation files found in the repository.
-
----
-
-CODEBASE/
-
-Directory containing grouped source code extracts.
+Overview of the repository architecture and directory organization.
 
 ---
 
@@ -79,11 +59,91 @@ PROJECT_TREE.txt
 
 Deterministic representation of the repository structure.
 
+Generated using a sorted file scan.
+
+---
+
+INDEX.tsv
+
+Deterministic file index of the repository.
+
+Example columns:
+
+TYPE    PATH    SIZE    LINES
+
+Used for fast inspection and tooling.
+
+---
+
+DEPENDENCIES.tsv
+
+Dependency signals extracted from source files.
+
+Each line describes a detected dependency relationship.
+
+Example format:
+
+DEPENDENCY    FILE    LINE    TYPE    TARGET
+
+Examples of detected dependency types:
+
+- source
+- import
+- from_import
+- require
+- include
+
+This file helps reconstruct **module relationships and architecture graphs**.
+
+---
+
+DOCUMENTATION.md
+
+Summary or extraction of documentation files found in the repository.
+
+Typically includes:
+
+- Markdown documentation files
+- titles extracted from documentation
+
+---
+
+LANGUAGES.md
+
+Summary of detected programming languages and file types.
+
+Example:
+
+Shell: 12 files  
+Markdown: 8 files  
+JSON: 2 files
+
+This helps AI systems understand the technological composition of the repository.
+
+---
+
+CODEBASE/
+
+Directory containing grouped source code extracts organized for AI ingestion.
+
+Typical structure:
+
+CODEBASE/
+
+01_cli.md  
+02_core.md  
+03_tests.md  
+04_docs.md  
+
+Each file contains raw source grouped by repository area.
+
 ---
 
 LOG.txt
 
 Snapshot generation log.
+
+Used for debugging and traceability.
 
 ---
 
@@ -98,6 +158,8 @@ tool_version
 generated_at  
 target_root  
 label  
+normalized_label  
+sequence  
 file_count  
 
 ---
@@ -109,7 +171,7 @@ Snapshot generation must guarantee reproducibility.
 Rules:
 
 - file discovery must be deterministic
-- scanning must use find + sort
+- scanning must use `find` + `sort`
 - exclusions must be explicit
 - output naming must be normalized
 
@@ -128,7 +190,7 @@ node_modules
 build  
 dist  
 __pycache__  
-.snapshots  
+snapshots  
 logs  
 
 These rules may evolve but must remain explicit and documented.
