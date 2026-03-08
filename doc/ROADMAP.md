@@ -1,3 +1,32 @@
+## Current Status
+
+Version: v0.1.0
+
+The first working snapshot engine has been implemented.
+
+Capabilities:
+
+- deterministic repository scanning
+- exclusion engine
+- project tree generation
+- deterministic index generation
+- structured CODEBASE export
+- snapshot metadata
+- AI ingestion guide
+- automated tests
+
+Snapshot structure:
+
+PROJECT_TREE.txt  
+INDEX.tsv  
+MANIFEST.md  
+AI_INGESTION_GUIDE.md  
+LOG.txt  
+SNAPSHOT_META.json  
+CODEBASE/
+
+The tool is now capable of producing AI-ready repository snapshots.
+
 # ROADMAP
 
 This document describes the development roadmap of **codebase-snapshot**.

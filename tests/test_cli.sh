@@ -32,14 +32,16 @@ fi
 
 echo "[PASS] snapshot directory created"
 
-# Core snapshot files
 for file in \
 PROJECT_TREE.txt \
 INDEX.tsv \
 LOG.txt \
 SNAPSHOT_META.json \
 MANIFEST.md \
-AI_INGESTION_GUIDE.md
+AI_INGESTION_GUIDE.md \
+ARCHITECTURE.md \
+DOCUMENTATION.md \
+LANGUAGES.md
 do
     if [[ ! -f "$SNAPSHOT_DIR/$file" ]]; then
         echo "[FAIL] missing snapshot file: $file"
@@ -49,7 +51,6 @@ done
 
 echo "[PASS] core snapshot files present"
 
-# CODEBASE export
 CODEBASE_DIR="$SNAPSHOT_DIR/CODEBASE"
 
 if [[ ! -d "$CODEBASE_DIR" ]]; then
@@ -71,7 +72,6 @@ done
 
 echo "[PASS] CODEBASE export present"
 
-# Exclusion rule test
 if grep -q "snapshots/" "$SNAPSHOT_DIR/INDEX.tsv"; then
     echo "[FAIL] exclusion rules not applied (snapshots found in index)"
     exit 1
