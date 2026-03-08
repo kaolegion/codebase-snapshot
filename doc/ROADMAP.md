@@ -1,14 +1,22 @@
-## Current Status
+# Roadmap
 
-Version: v0.1.0
+This document describes the development roadmap of the **codebase-snapshot** project.
 
-The snapshot engine is now operational.
+The goal of the project is to transform software repositories into deterministic, AI-ready snapshots.
+
+---
+
+# Current Status
+
+Version: 0.2.0
+
+The snapshot engine is operational and capable of producing structured repository snapshots.
 
 Implemented capabilities:
 
-- deterministic repository scan
+- deterministic repository scanning
 - exclusion engine
-- project tree export
+- project tree generation
 - deterministic index generation
 - architecture summary generation
 - documentation index generation
@@ -17,195 +25,78 @@ Implemented capabilities:
 - structured CODEBASE export
 - automated tests
 
-Current snapshot artifacts:
+Snapshot artifacts currently produced:
 
-- PROJECT_TREE.txt
-- INDEX.tsv
-- MANIFEST.md
-- AI_INGESTION_GUIDE.md
-- ARCHITECTURE.md
-- DOCUMENTATION.md
-- LANGUAGES.md
-- LOG.txt
-- SNAPSHOT_META.json
-- CODEBASE/
-
-Current status:
-all tests pass
-
----
-
-## Close Status
-
-Version: v0.1.0
-
-The first working snapshot engine has been implemented.
-
-Capabilities:
-
-- deterministic repository scanning
-- exclusion engine
-- project tree generation
-- deterministic index generation
-- structured CODEBASE export
-- snapshot metadata
-- AI ingestion guide
-- automated tests
-
-Snapshot structure:
-
-PROJECT_TREE.txt  
-INDEX.tsv  
-MANIFEST.md  
-AI_INGESTION_GUIDE.md  
-LOG.txt  
-SNAPSHOT_META.json  
+PROJECT_TREE.txt
+INDEX.tsv
+MANIFEST.md
+AI_INGESTION_GUIDE.md
+ARCHITECTURE.md
+DOCUMENTATION.md
+LANGUAGES.md
+LOG.txt
+SNAPSHOT_META.json
 CODEBASE/
 
-The tool is now capable of producing AI-ready repository snapshots.
-
-# ROADMAP
-
-This document describes the development roadmap of **codebase-snapshot**.
-
-The project evolves in phases to progressively deliver a reliable and deterministic snapshot generator.
+All current tests pass.
 
 ---
 
-# Phase 0 — Foundation
+# Phase 3 — Snapshot Intelligence
 
-Goal:
+Next milestone.
 
-Establish the identity and structure of the project.
+The goal is to improve repository understanding.
 
-Deliverables:
+Planned improvements:
 
-- repository structure
-- README
-- architecture documentation
-- snapshot format specification
-- CLI contract
-- roadmap definition
-
-Status:
-
-in progress
+- richer architecture analysis
+- entrypoint detection
+- important module detection
+- dependency discovery
+- repository metadata summary
 
 ---
 
-# Phase 1 — First Snapshot CLI
+# Phase 4 — Snapshot Tooling
 
-Goal:
+Improve the CLI capabilities.
 
-Implement the first functional version of the snapshot command.
+Planned features:
 
-Expected features:
+- snapshot list
+- snapshot inspect
+- snapshot diff
+- snapshot doctor
 
-- bin/snapshot CLI
-- argument parsing
-- version detection
-- target validation
-- deterministic snapshot path generation
-- basic logging
+These commands will allow users to navigate and compare snapshots.
 
 ---
 
-# Phase 2 — Deterministic Repository Scan
+# Phase 5 — Configuration System
 
-Goal:
+Allow repository-specific configuration.
 
-Produce a stable file inventory.
+Planned features:
 
-Features:
-
-- deterministic scanning using find + sort
-- exclusion rules
-- file classification
-- index generation (INDEX.tsv)
+- project configuration file (.codebase-snapshot.env)
+- customizable exclusion rules
+- configurable output directory
 
 ---
 
-# Phase 3 — Snapshot Rendering
+# Long-Term Vision
 
-Goal:
+The long-term objective is to build a deterministic repository understanding layer usable by:
 
-Generate a structured snapshot bundle.
+- AI assistants
+- automated documentation tools
+- code analysis systems
+- development workflows
 
-Artifacts to produce:
+The tool must remain:
 
-AI_INGESTION_GUIDE.md  
-MANIFEST.md  
-ARCHITECTURE.md  
-DOCUMENTATION.md  
-PROJECT_TREE.txt  
-LOG.txt  
-SNAPSHOT_META.json  
-
----
-
-# Phase 4 — Codebase Packaging
-
-Goal:
-
-Provide structured source code exports.
-
-Features:
-
-CODEBASE/ directory  
-grouped source sections  
-stable naming policy  
-
----
-
-# Phase 5 — Configuration Support
-
-Goal:
-
-Improve reusability across repositories.
-
-Features:
-
-configuration files  
-custom exclusion rules  
-example configurations  
-
----
-
-# Phase 6 — Snapshot Inspection
-
-Goal:
-
-Allow inspection and comparison of snapshots.
-
-Possible commands:
-
-snapshot list  
-snapshot inspect  
-snapshot diff  
-
----
-
-# Phase 7 — Open Source Hardening
-
-Goal:
-
-Prepare the project for wider adoption.
-
-Tasks:
-
-- expanded tests
-- improved documentation
-- portability checks
-- release preparation
-
----
-
-# Long-Term Direction
-
-The long-term goal of **codebase-snapshot** is to become a standard open-source tool for:
-
-- AI-assisted development
-- project onboarding
-- repository documentation
-- architecture exploration
-- deterministic codebase snapshots
+- deterministic
+- portable
+- shell-first
+- dependency-light

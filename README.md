@@ -1,204 +1,220 @@
 # codebase-snapshot
 
-A shell-first, deterministic, and portable utility that transforms any software project into a structured snapshot, versioned and immediately understandable by both humans and AI systems.
+Deterministic shell-first tool that converts any software repository into an **AI-ready structured snapshot**.
+
+The goal is to allow humans and AI systems to **quickly understand a codebase** without navigating the entire repository.
 
 ---
 
-## Vision
+# Project Status
 
-`codebase-snapshot` is designed to accelerate project understanding.
+Version: **0.2.0**
 
-It produces a structured bundle that helps both a human reader and an AI system answer essential questions:
+Current state:
 
-- what is this project
-- how is it organized
-- what are the important files
-- what should be ignored
-- where to start reading
-- how to transfer project context cleanly
+- snapshot engine operational
+- deterministic repository scanning
+- AI-oriented snapshot artifacts
+- modular shell architecture
+- automated tests passing
 
-The project is intentionally:
+---
+
+# Vision
+
+Modern development increasingly involves AI agents.
+
+However, most repositories are **not structured for AI ingestion**.
+
+`codebase-snapshot` solves this by generating a **clean, deterministic bundle** describing a repository.
+
+The snapshot is:
+
+- deterministic
+- structured
+- AI-readable
+- portable
+- versioned
+
+---
+
+# Snapshot Output
+
+Each snapshot produces:
+
+PROJECT_TREE.txt  
+INDEX.tsv  
+MANIFEST.md  
+AI_INGESTION_GUIDE.md  
+ARCHITECTURE.md  
+DOCUMENTATION.md  
+LANGUAGES.md  
+LOG.txt  
+SNAPSHOT_META.json  
+
+CODEBASE/
+
+cat > /opt/kaobox/codebase-snapshot/README.md <<'EOF'
+# codebase-snapshot
+
+Deterministic shell-first tool that converts any software repository into an AI-ready structured snapshot.
+
+The goal is to allow humans and AI systems to quickly understand a codebase without navigating the entire repository.
+
+---
+
+# Project Status
+
+Version: 0.2.0
+
+Current state:
+
+- snapshot engine operational
+- deterministic repository scanning
+- AI-oriented snapshot artifacts
+- modular shell architecture
+- automated tests passing
+
+---
+
+# Vision
+
+Modern development increasingly involves AI agents.
+
+However, most repositories are not structured for AI ingestion.
+
+codebase-snapshot solves this by generating a clean, deterministic bundle describing a repository.
+
+The snapshot is:
+
+- deterministic
+- structured
+- AI-readable
+- portable
+- versioned
+
+---
+
+# Snapshot Output
+
+Each snapshot produces:
+
+PROJECT_TREE.txt
+INDEX.tsv
+MANIFEST.md
+AI_INGESTION_GUIDE.md
+ARCHITECTURE.md
+DOCUMENTATION.md
+LANGUAGES.md
+LOG.txt
+SNAPSHOT_META.json
+
+CODEBASE/
+
+Structure:
+
+CODEBASE/
+  01_cli.md
+  02_core.md
+  03_tests.md
+  04_docs.md
+
+---
+
+# Architecture
+
+The project follows strict principles:
 
 - shell-first
-- deterministic
-- portable
-- modular
-- lightweight
-- reusable across repositories
-- open-source friendly
+- deterministic processing
+- CLI orchestration-only
+- modular core modules
+- explicit snapshot artifacts
+- tests as contract
 
----
-
-## Product Goals
-
-The tool should allow a user to:
-
-1. install `codebase-snapshot`
-2. configure a target project
-3. run the snapshot command
-4. generate a structured snapshot directory
-5. obtain a readable and shareable bundle
-
-Target snapshot outputs include:
-
-- `AI_INGESTION_GUIDE.md`
-- `MANIFEST.md`
-- `ARCHITECTURE.md`
-- `INDEX.tsv`
-- `DOCUMENTATION.md`
-- `CODEBASE/`
-- `PROJECT_TREE.txt`
-- `LOG.txt`
-- `SNAPSHOT_META.json`
-
----
-
-## Core Principles
-
-### 1. Determinism first
-
-The same input state should produce the same snapshot structure.
-
-This requires:
-
-- deterministic file traversal
-- stable sorting
-- explicit exclusions
-- normalized naming
-- predictable output layout
-
-### 2. Shell-first architecture
-
-The project should remain easy to run in standard Unix-like environments.
-
-This implies:
-
-- no heavy dependencies
-- transparent execution
-- portable shell scripts
-- simple install and reuse model
-
-### 3. CLI orchestration-only
-
-The CLI must stay thin.
-
-Its role is to:
-
-- parse arguments
-- validate inputs
-- load configuration
-- dispatch to core modules
-- report explicit status
-
-Business logic belongs in `core/`.
-
-### 4. Modular core
-
-Core functions should remain:
-
-- reusable
-- testable
-- replaceable
-- isolated by responsibility
-
-### 5. Tests as contract
-
-Stable behavior must be protected by tests.
-
-This includes:
-
-- naming rules
-- file ordering
-- snapshot structure
-- exclusion behavior
-- CLI exit behavior
-- metadata integrity
-
----
-
-## Repository Structure
-
-README.md
-LICENSE
-VERSION
-.gitignore
-CODEBASE_ROOT.md
-bin/
-core/
-doc/
-examples/
-tests/
-logs/
-snapshots/
-Current Core Layout
-bin/snapshot
+Core modules:
 
 core/
-  classifier.sh
-  config.sh
-  indexer.sh
-  logger.sh
   naming.sh
-  renderer.sh
   scanner.sh
+  indexer.sh
+  classifier.sh
+  renderer.sh
+  logger.sh
   utils.sh
-
-This confirms the current implementation direction:
-
-- CLI entrypoint in bin/
-- functional modules in core/
-- tests isolated under tests/
-- generated runtime outputs separated in logs/ and snapshots/
+  config.sh
+  architecture.sh
+  documentation.sh
+  languages.sh
 
 ---
 
-## Documentation
+# Usage
 
-- doc/GET_STARTED.md
-- doc/ARCHITECTURE.md
-- doc/SNAPSHOT_FORMAT.md
-- doc/CLI.md
-- doc/ROADMAP.md
+Basic usage:
 
----
+bin/snapshot --target <repository> --label <snapshot_label>
 
-## Development Method
+Example:
 
-This project is developed:
+bin/snapshot --target /opt/project --label initial_analysis
 
-- step by step
-- with complete code
-- with explicit paths
-- with precise commands
-- with documentation updated continuously
-- with tests added at each meaningful stage
+Snapshots are written to:
+
+snapshots/YYYY-MM-DD/vX.Y.Z/<sequence>_<label>/
 
 ---
 
-## Status
+# Exclusion Engine
 
-Current version:
-0.1.0
+Ignored paths:
 
-Current objective:
-
-- finalize foundation
-- stabilize the first CLI contract
-- produce the first reliable snapshot flow
-- harden deterministic behavior
+.git
+node_modules
+dist
+build
+__pycache__
+logs
+snapshots
 
 ---
 
-##Long-Term Direction
+# Testing
 
-codebase-snapshot is not tied to KaoBox or any single repository.
+Test suite:
 
-It is intended to become a reusable open-source utility for:
+tests/
+  run_all.sh
+  test_naming.sh
+  test_indexer.sh
+  test_cli.sh
 
-- project onboarding
-- AI-assisted development
-- architecture audits
-- repository transfer
-- machine-ingestible project packaging
-- documentation support
-- clean snapshot versioning
+Run tests:
+
+tests/run_all.sh
+
+---
+
+# Roadmap
+
+Next milestone:
+
+Phase 3 — richer snapshot intelligence
+
+Planned features:
+
+- improved architecture analysis
+- entrypoint detection
+- module detection
+- dependency summarization
+- snapshot inspection commands
+
+See:
+
+doc/ROADMAP.md
+
+---
+
+# License
+
+MIT
