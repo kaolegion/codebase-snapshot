@@ -58,23 +58,23 @@ The core layer contains reusable modules implementing the snapshot logic.
 
 Current modules include:
 
-architecture.sh  
-classifier.sh  
-config.sh  
-dependencies.sh  
-documentation.sh  
-entrypoints.sh  
-graph.sh  
-indexer.sh  
-languages.sh  
-logger.sh  
-naming.sh  
-purpose.sh  
-renderer.sh  
-scanner.sh  
-semantics.sh  
-structure.sh  
-utils.sh  
+architecture.sh
+classifier.sh
+config.sh
+dependencies.sh
+documentation.sh
+entrypoints.sh
+graph.sh
+indexer.sh
+languages.sh
+logger.sh
+naming.sh
+purpose.sh
+renderer.sh
+scanner.sh
+semantics.sh
+structure.sh
+utils.sh
 
 Each module must remain:
 
@@ -85,55 +85,55 @@ Each module must remain:
 
 Example responsibilities:
 
-scanner.sh  
+scanner.sh
 → deterministic file discovery with exclusions
 
-indexer.sh  
+indexer.sh
 → generation of INDEX.tsv
 
-classifier.sh  
+classifier.sh
 → file categorization
 
-architecture.sh  
-→ repository architecture summary
+architecture.sh
+→ topology-driven architecture rendering
 
-documentation.sh  
+documentation.sh
 → extraction of documentation metadata
 
-languages.sh  
+languages.sh
 → language and file type detection
 
-dependencies.sh  
+dependencies.sh
 → dependency signal extraction
 
-graph.sh  
+graph.sh
 → structural relationship mapping
 
-semantics.sh  
+semantics.sh
 → repository component detection and semantic grouping
 
-entrypoints.sh  
+entrypoints.sh
 → deterministic repository entrypoint detection
 
-purpose.sh  
+purpose.sh
 → deterministic repository purpose inference
 
-structure.sh  
+structure.sh
 → repository structural modeling (modules and subsystems)
 
-renderer.sh  
+renderer.sh
 → snapshot artifact generation
 
-naming.sh  
+naming.sh
 → snapshot naming normalization
 
-config.sh  
+config.sh
 → environment and configuration handling
 
-utils.sh  
+utils.sh
 → shared helpers
 
-logger.sh  
+logger.sh
 → structured logging
 
 ---
@@ -167,10 +167,10 @@ Detected component families currently include:
 
 Semantic outputs:
 
-SEMANTICS.tsv  
+SEMANTICS.tsv
 → file-to-component mapping with explicit detection rules
 
-COMPONENTS.md  
+COMPONENTS.md
 → human-readable component summary
 
 This layer is deterministic and rule-based.
@@ -187,10 +187,10 @@ This layer describes the architectural organization of the repository itself.
 
 Artifacts:
 
-MODULES.tsv  
+MODULES.tsv
 → maps the repository to its main architectural modules
 
-SUBSYSTEMS.tsv  
+SUBSYSTEMS.tsv
 → maps stable functional subsystems inside those modules
 
 Purpose:
@@ -199,9 +199,9 @@ Allow AI systems to understand the repository architecture without reading the e
 
 Example topology:
 
-repository  
-→ modules  
-→ subsystems  
+repository
+→ modules
+→ subsystems
 → files
 
 This structural modeling layer builds on top of the semantic layer and provides a higher-level architectural interpretation of the repository.
@@ -209,6 +209,43 @@ This structural modeling layer builds on top of the semantic layer and provides 
 The modeling logic is implemented in:
 
 core/structure.sh
+
+---
+
+## Structural Rendering Layer
+
+Phase 4.5 introduces deterministic **topology-driven architecture rendering**.
+
+This layer transforms repository topology into a human-readable architecture report.
+
+Input artifacts:
+
+MODULES.tsv
+SUBSYSTEMS.tsv
+
+Output artifact:
+
+ARCHITECTURE.md
+
+Rendering behavior:
+
+- module sections are rendered deterministically
+- subsystems are grouped under their parent module
+- architecture text is derived from structural records
+- manual repository-specific architecture prose is avoided
+
+Purpose:
+
+Allow both humans and AI systems to read a stable architectural view
+without manually reconstructing topology from raw TSV files.
+
+The rendering logic is implemented in:
+
+core/architecture.sh
+
+This layer is deterministic and rule-based.
+
+No manual interpretation is injected into generated repository architecture summaries.
 
 ---
 
@@ -259,40 +296,60 @@ No probabilistic inference is used.
 
 ## Documentation Layer
 
-Location:
+This layer produces human-readable support artifacts for repository exploration.
 
-doc/
+Artifacts include:
 
-The documentation defines the **behavioral contract** of the system.
+DOCUMENTATION.md
+LANGUAGES.md
+COMPONENTS.md
+ARCHITECTURE.md
+MANIFEST.md
+AI_INGESTION_GUIDE.md
 
-Important documents include:
-
-GET_STARTED.md  
-ARCHITECTURE.md  
-SNAPSHOT_FORMAT.md  
-CLI.md  
-ROADMAP.md  
-TODO.md  
-
-Implementation should converge toward these specifications.
+These outputs are designed to help humans and AI systems
+consume repository knowledge in a stable reading order.
 
 ---
 
-## Test Layer
+# Snapshot Interpretation Flow
 
-Location:
+The repository interpretation flow now follows these layers:
 
-tests/
+1. file discovery
+2. structural relationships
+3. semantic mapping
+4. topology modeling
+5. topology-driven rendering
+6. purpose-oriented interpretation
 
-Tests ensure that the system remains deterministic and stable.
+This progression moves **codebase-snapshot** toward a full repository intelligence engine.
 
-They validate:
+---
 
-- naming rules
-- indexing behavior
-- dependency extraction
-- graph generation
-- semantic component detection
-- entrypoint detection
+# Design Constraint
+
+Generated architecture summaries must remain:
+
+- deterministic
+- topology-derived
+- reproducible
+- repository-agnostic in rendering style
+
+`ARCHITECTURE.md` must be generated from stable structural artifacts rather than handwritten repository descriptions.
+
+---
+
+# Summary
+
+**codebase-snapshot** now combines:
+
+- deterministic file discovery
+- dependency and graph extraction
+- semantic repository interpretation
+- topology modeling
+- topology-driven architecture rendering
 - purpose inference
-- structural modeling
+
+This architecture allows the tool to explain software repositories
+as structured systems rather than only listing files.

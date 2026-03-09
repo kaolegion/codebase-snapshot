@@ -41,6 +41,7 @@ GRAPH.tsv \
 SEMANTICS.tsv \
 ENTRYPOINTS.tsv \
 MODULES.tsv \
+SUBSYSTEMS.tsv \
 LOG.txt \
 SNAPSHOT_META.json \
 MANIFEST.md \
@@ -142,6 +143,83 @@ if grep -q "snapshots/" "$SNAPSHOT_DIR/ENTRYPOINTS.tsv"; then
 fi
 
 echo "[PASS] entrypoints respect exclusion rules"
+
+if ! grep -Fq '# Architecture Overview' "$SNAPSHOT_DIR/ARCHITECTURE.md"; then
+    echo "[FAIL] architecture overview header missing"
+    exit 1
+fi
+
+echo "[PASS] architecture overview header present"
+
+if ! grep -Fq 'The architecture view is derived deterministically from `MODULES.tsv`' "$SNAPSHOT_DIR/ARCHITECTURE.md"; then
+    echo "[FAIL] architecture derivation note missing"
+    exit 1
+fi
+
+echo "[PASS] architecture derivation note present"
+
+if ! grep -Fq 'and `SUBSYSTEMS.tsv`.' "$SNAPSHOT_DIR/ARCHITECTURE.md"; then
+    echo "[FAIL] architecture subsystem derivation note missing"
+    exit 1
+fi
+
+echo "[PASS] architecture subsystem derivation note present"
+
+if ! grep -Fq '## CLI' "$SNAPSHOT_DIR/ARCHITECTURE.md"; then
+    echo "[FAIL] architecture missing CLI section"
+    exit 1
+fi
+
+echo "[PASS] architecture contains CLI section"
+
+if ! grep -Fq '## Modeling' "$SNAPSHOT_DIR/ARCHITECTURE.md"; then
+    echo "[FAIL] architecture missing Modeling section"
+    exit 1
+fi
+
+echo "[PASS] architecture contains Modeling section"
+
+if ! grep -Fq '## Rendering' "$SNAPSHOT_DIR/ARCHITECTURE.md"; then
+    echo "[FAIL] architecture missing Rendering section"
+    exit 1
+fi
+
+echo "[PASS] architecture contains Rendering section"
+
+if ! grep -Fq '## Infrastructure' "$SNAPSHOT_DIR/ARCHITECTURE.md"; then
+    echo "[FAIL] architecture missing Infrastructure section"
+    exit 1
+fi
+
+echo "[PASS] architecture contains Infrastructure section"
+
+if ! grep -Fq -- '- `snapshot-command`' "$SNAPSHOT_DIR/ARCHITECTURE.md"; then
+    echo "[FAIL] architecture missing snapshot-command subsystem"
+    exit 1
+fi
+
+echo "[PASS] architecture contains snapshot-command subsystem"
+
+if ! grep -Fq -- '- `module-modeling`' "$SNAPSHOT_DIR/ARCHITECTURE.md"; then
+    echo "[FAIL] architecture missing module-modeling subsystem"
+    exit 1
+fi
+
+echo "[PASS] architecture contains module-modeling subsystem"
+
+if ! grep -Fq -- '- `architecture-reporting`' "$SNAPSHOT_DIR/ARCHITECTURE.md"; then
+    echo "[FAIL] architecture missing architecture-reporting subsystem"
+    exit 1
+fi
+
+echo "[PASS] architecture contains architecture-reporting subsystem"
+
+if ! grep -Fq -- '- `file-classification`' "$SNAPSHOT_DIR/ARCHITECTURE.md"; then
+    echo "[FAIL] architecture missing file-classification subsystem"
+    exit 1
+fi
+
+echo "[PASS] architecture contains file-classification subsystem"
 
 if ! grep -Fq '# Components Summary' "$SNAPSHOT_DIR/COMPONENTS.md"; then
     echo "[FAIL] components summary header missing"

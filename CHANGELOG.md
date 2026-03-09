@@ -4,6 +4,40 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## v0.5.0
+
+### Phase 4.5 — Structural Rendering Convergence
+
+Enhancements:
+
+- ARCHITECTURE.md is now generated deterministically from repository topology
+- architecture rendering now converges MODULES.tsv and SUBSYSTEMS.tsv into a human-readable structural view
+- static directory-count architecture summaries have been removed
+- repository architecture is now expressed as module sections with subsystem listings
+
+Core engine:
+
+- replaced the legacy architecture summary renderer in core/architecture.sh
+- added deterministic module title normalization for architecture reporting
+- integrated topology-driven architecture rendering into the snapshot output pipeline
+
+Tests:
+
+- extended tests/test_cli.sh to validate SUBSYSTEMS.tsv presence in snapshots
+- added architecture rendering assertions for module sections and subsystem entries
+- validated deterministic architecture rendering through the CLI snapshot contract
+
+Documentation:
+
+- updated architecture documentation for topology-driven rendering
+- updated snapshot format documentation for generated architecture behavior
+- updated roadmap to mark structural rendering convergence as complete
+
+This release moves codebase-snapshot from repository topology modeling
+to deterministic topology rendering for human and AI repository interpretation.
+
+---
+
 ## v0.4.0
 
 ### Phase 4.4 — Repository Structural Modeling
@@ -97,5 +131,3 @@ Documentation:
 
 This release strengthens repository modeling and prepares the system
 for deeper structural analysis of repositories.
-
----

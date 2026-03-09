@@ -37,10 +37,10 @@ Delivered:
 
 Artifacts added:
 
-ARCHITECTURE.md  
-DOCUMENTATION.md  
-LANGUAGES.md  
-AI_INGESTION_GUIDE.md  
+ARCHITECTURE.md
+DOCUMENTATION.md
+LANGUAGES.md
+AI_INGESTION_GUIDE.md
 
 Status: COMPLETE
 
@@ -108,20 +108,8 @@ Delivered:
 
 Artifacts added:
 
-SEMANTICS.tsv  
-COMPONENTS.md  
-
-Detected components:
-
-cli  
-core  
-tests  
-docs  
-examples  
-tools  
-config  
-root  
-unknown  
+SEMANTICS.tsv
+COMPONENTS.md
 
 Status: COMPLETE
 
@@ -181,8 +169,8 @@ Delivered:
 
 Artifacts:
 
-SEMANTICS.tsv  
-COMPONENTS.md  
+SEMANTICS.tsv
+COMPONENTS.md
 
 Status: COMPLETE
 
@@ -192,34 +180,39 @@ Status: COMPLETE
 
 Goal: model the architectural topology of the repository.
 
----
-
-### Increment 1 — MODULES Layer
-
 Capabilities:
 
 - deterministic repository module modeling
 - stable architectural zones detection
 - repository-level architecture interpretation
 
-Artifact:
+Artifacts:
 
 MODULES.tsv
+SUBSYSTEMS.tsv
 
 Status: COMPLETE
 
 ---
 
-### Increment 2 — SUBSYSTEMS Layer
+## Phase 4.5 — Structural Rendering Convergence
+
+Goal: render repository topology into a human-readable architecture view.
 
 Capabilities:
 
-- deterministic subsystem modeling inside modules
-- stable functional subsystem mapping
-- deeper architectural interpretation for AI systems
+- deterministic architecture rendering
+- module → subsystem architecture layout
+- topology-driven architecture summaries
+- architecture generation from structural artifacts
 
-Artifact:
+Artifacts:
 
+ARCHITECTURE.md
+
+Input artifacts:
+
+MODULES.tsv
 SUBSYSTEMS.tsv
 
 Status: COMPLETE
@@ -258,6 +251,10 @@ codebase-snapshot aims to become a **repository intelligence engine**
 that explains:
 
 - what is in a codebase
-- what it is for
-- how its components are organized
-- how AI systems should ingest it
+- how the repository is structured
+- how components interact
+- where execution begins
+- what the repository is designed to do
+
+The goal is to allow both humans and AI systems
+to understand software systems quickly and deterministically.

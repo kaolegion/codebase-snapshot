@@ -77,12 +77,6 @@ Format:
 
 SEMANTIC <file> <component> <group> <role> <rule>
 
-Examples:
-
-SEMANTIC bin/snapshot cli snapshot_pipeline entrypoint path:bin
-SEMANTIC core/indexer.sh core repository_structure engine path:core
-SEMANTIC doc/CLI.md docs snapshot_pipeline guide path:doc
-
 Purpose:
 
 Maps repository files to:
@@ -92,7 +86,7 @@ Maps repository files to:
 - a file role
 - an explicit detection rule
 
-This artifact is designed to support stronger repository modeling and component-aware AI ingestion.
+This artifact supports component-aware repository interpretation.
 
 ---
 
@@ -103,11 +97,6 @@ Detected execution entrypoints.
 Format:
 
 ENTRYPOINT <file> <type>
-
-Examples:
-
-ENTRYPOINT bin/snapshot cli
-ENTRYPOINT main.py application
 
 Purpose:
 
@@ -123,17 +112,11 @@ Format:
 
 MODULE <module> <path> <scope> <role> <description> <rule>
 
-Examples:
-
-MODULE cli bin/ directory command entrypoint command-line snapshot orchestration path:bin
-MODULE modeling core/ directory structured repository modeling produces machine-readable repository modeling artifacts structural-core:modeling
-MODULE docs doc/ directory project documentation provides human-readable project documentation path:doc-and-root-docs
-
 Purpose:
 
-Maps the repository to stable architectural modules using deterministic rules.
+Defines the primary architectural zones of the repository.
 
-This artifact is the first structural topology layer above file semantics and helps AI systems understand the main architectural zones of the repository without reading the full codebase.
+This artifact is the **first topology layer** above file semantics.
 
 ---
 
@@ -145,17 +128,11 @@ Format:
 
 SUBSYSTEM <module> <subsystem> <path> <scope> <role> <description> <rule>
 
-Examples:
-
-SUBSYSTEM cli snapshot-command bin/snapshot file command orchestration orchestrates snapshot generation path:bin/snapshot
-SUBSYSTEM modeling dependency-analysis core/dependencies.sh file dependency extraction extracts deterministic dependency signals path:core/dependencies.sh
-SUBSYSTEM rendering artifact-rendering core/renderer.sh file snapshot artifact rendering produces human-readable and export artifacts path:core/renderer.sh
-
 Purpose:
 
-Maps stable functional subsystems inside repository modules using deterministic rules.
+Defines stable functional subsystems inside repository modules.
 
-This artifact is the second structural topology layer above file semantics and helps AI systems understand the internal functional organization of the repository engine.
+This artifact is the **second topology layer** above file semantics.
 
 ---
 
@@ -167,24 +144,30 @@ Purpose:
 
 Explains what the repository is for using deterministic structural signals.
 
-Typical contents include:
-
-- repository classification
-- operational role
-- execution profile
-- structural signals supporting the interpretation
-
-This artifact is human-readable and AI-ingestible.
-
-No probabilistic inference is used.
-
 ---
 
 # Human-Readable Artifacts
 
 ## ARCHITECTURE.md
 
-Human-readable architectural overview of the repository.
+Human-readable architectural view of the repository.
+
+This artifact is **deterministically generated** from:
+
+MODULES.tsv  
+SUBSYSTEMS.tsv
+
+Rendering rules:
+
+- modules become architecture sections
+- subsystems are grouped under their parent module
+- descriptions and roles are derived from topology records
+- rendering style remains repository-agnostic
+
+Purpose:
+
+Allow humans and AI systems to read repository architecture
+without reconstructing topology from TSV artifacts.
 
 ---
 
@@ -206,19 +189,7 @@ Human-readable summary of semantic repository components.
 
 Structure:
 
-- component sections
-- deterministic group subsections inside each component
-- file listings under each group
-
-Typical shape:
-
-- `### <component>`
-- `#### group: <group>`
-- `- <file>`
-
-Purpose:
-
-Provides a readable component-oriented view of repository organization.
+component → group → files
 
 ---
 
@@ -244,14 +215,14 @@ CODEBASE/
 
 Files:
 
-01_cli.md
-02_core.md
-03_tests.md
+01_cli.md  
+02_core.md  
+03_tests.md  
 04_docs.md
 
 Purpose:
 
-Allows AI systems to ingest the source code grouped by repository function.
+Allow AI systems to ingest source code grouped by repository role.
 
 ---
 
@@ -259,12 +230,11 @@ Allows AI systems to ingest the source code grouped by repository function.
 
 ## LOG.txt
 
-Execution log generated during snapshot creation.
-
-Contains operational messages and diagnostic information.
+Execution log describing snapshot generation.
 
 ---
 
 ## SNAPSHOT_META.json
 
-Structured metadata describing the snapshot.
+Structured metadata describing snapshot context and generation parameters.
+
