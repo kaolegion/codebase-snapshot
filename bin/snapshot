@@ -16,6 +16,7 @@ source "$ROOT_DIR/core/graph.sh"
 source "$ROOT_DIR/core/semantics.sh"
 source "$ROOT_DIR/core/entrypoints.sh"
 source "$ROOT_DIR/core/purpose.sh"
+source "$ROOT_DIR/core/structure.sh"
 
 usage() {
     cat <<'USAGE'
@@ -79,7 +80,7 @@ DATE="$(current_date)"
 NORMALIZED_LABEL="$(normalize_label "$LABEL")"
 SEQ="01"
 
-SNAPSHOT_DIR="$ROOT_DIR/snapshots/$DATE/v$VERSION/${SEQ}_${NORMALIZED_LABEL}"
+SNAPSHOT_DIR="$ROOT_DIR/snapshots/$DATE/$VERSION/${SEQ}_${NORMALIZED_LABEL}"
 CODEBASE_DIR="$SNAPSHOT_DIR/CODEBASE"
 
 mkdir -p "$SNAPSHOT_DIR"
@@ -91,6 +92,7 @@ generate_dependencies "$TARGET" > "$SNAPSHOT_DIR/DEPENDENCIES.tsv"
 generate_graph "$TARGET" > "$SNAPSHOT_DIR/GRAPH.tsv"
 generate_semantics "$TARGET" > "$SNAPSHOT_DIR/SEMANTICS.tsv"
 generate_entrypoints "$TARGET" > "$SNAPSHOT_DIR/ENTRYPOINTS.tsv"
+generate_modules "$TARGET" > "$SNAPSHOT_DIR/MODULES.tsv"
 
 render_architecture "$TARGET" > "$SNAPSHOT_DIR/ARCHITECTURE.md"
 render_documentation_index "$TARGET" > "$SNAPSHOT_DIR/DOCUMENTATION.md"

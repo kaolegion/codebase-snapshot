@@ -20,7 +20,7 @@ fi
 echo "[PASS] CLI exists and is executable"
 
 SNAPSHOT_DATE="$(date +%Y-%m-%d)"
-SNAPSHOT_DIR="$ROOT_DIR/snapshots/$SNAPSHOT_DATE/v$VERSION/01_test_cli"
+SNAPSHOT_DIR="$ROOT_DIR/snapshots/$SNAPSHOT_DATE/$VERSION/01_test_cli"
 
 rm -rf "$SNAPSHOT_DIR"
 
@@ -40,6 +40,7 @@ DEPENDENCIES.tsv \
 GRAPH.tsv \
 SEMANTICS.tsv \
 ENTRYPOINTS.tsv \
+MODULES.tsv \
 LOG.txt \
 SNAPSHOT_META.json \
 MANIFEST.md \

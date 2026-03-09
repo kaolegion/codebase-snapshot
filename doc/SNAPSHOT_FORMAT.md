@@ -115,6 +115,28 @@ Identifies where execution begins within the repository.
 
 ---
 
+## MODULES.tsv
+
+Deterministic repository module mapping.
+
+Format:
+
+MODULE <module> <path> <scope> <role> <description> <rule>
+
+Examples:
+
+MODULE cli bin/ directory command entrypoint command-line snapshot orchestration path:bin
+MODULE modeling core/ directory structured repository modeling produces machine-readable repository modeling artifacts structural-core:modeling
+MODULE docs doc/ directory project documentation provides human-readable project documentation path:doc-and-root-docs
+
+Purpose:
+
+Maps the repository to stable architectural modules using deterministic rules.
+
+This artifact is the first structural topology layer above file semantics and helps AI systems understand the main architectural zones of the repository without reading the full codebase.
+
+---
+
 ## PURPOSE.md
 
 Deterministic repository purpose summary.

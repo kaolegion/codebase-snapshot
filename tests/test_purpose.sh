@@ -8,7 +8,7 @@ VERSION="$(cat "$ROOT_DIR/VERSION")"
 echo "[TEST] Purpose detection"
 
 SNAPSHOT_DATE="$(date +%Y-%m-%d)"
-SNAPSHOT_DIR="$ROOT_DIR/snapshots/$SNAPSHOT_DATE/v$VERSION/01_test_purpose"
+SNAPSHOT_DIR="$ROOT_DIR/snapshots/$SNAPSHOT_DATE/$VERSION/01_test_purpose"
 
 rm -rf "$SNAPSHOT_DIR"
 
