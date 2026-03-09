@@ -39,6 +39,7 @@ INDEX.tsv \
 DEPENDENCIES.tsv \
 GRAPH.tsv \
 SEMANTICS.tsv \
+ENTRYPOINTS.tsv \
 LOG.txt \
 SNAPSHOT_META.json \
 MANIFEST.md \
@@ -119,6 +120,27 @@ fi
 
 echo "[PASS] semantics respects exclusion rules"
 
+if ! grep -Fq $'ENTRYPOINT\t'"$ROOT_DIR"$'/bin/snapshot\tcli\tpath:bin' "$SNAPSHOT_DIR/ENTRYPOINTS.tsv"; then
+    echo "[FAIL] entrypoints snapshot content invalid for CLI"
+    exit 1
+fi
+
+echo "[PASS] entrypoints snapshot contains CLI entry"
+
+if grep -Fq $'ENTRYPOINT\t'"$ROOT_DIR"$'/tests/test_entrypoints.sh' "$SNAPSHOT_DIR/ENTRYPOINTS.tsv"; then
+    echo "[FAIL] non-root script incorrectly detected as root entrypoint"
+    exit 1
+fi
+
+echo "[PASS] non-root scripts are not misdetected as root entrypoints"
+
+if grep -q "snapshots/" "$SNAPSHOT_DIR/ENTRYPOINTS.tsv"; then
+    echo "[FAIL] exclusion rules not applied (snapshots found in entrypoints)"
+    exit 1
+fi
+
+echo "[PASS] entrypoints respect exclusion rules"
+
 if ! grep -Fq '# Components Summary' "$SNAPSHOT_DIR/COMPONENTS.md"; then
     echo "[FAIL] components summary header missing"
     exit 1
@@ -139,6 +161,20 @@ if ! grep -Fq -- "- $ROOT_DIR/bin/snapshot" "$SNAPSHOT_DIR/COMPONENTS.md"; then
 fi
 
 echo "[PASS] components summary contains CLI file reference"
+
+if ! grep -Fq '6. ENTRYPOINTS.tsv' "$SNAPSHOT_DIR/AI_INGESTION_GUIDE.md"; then
+    echo "[FAIL] AI ingestion guide missing entrypoints reading order"
+    exit 1
+fi
+
+echo "[PASS] AI ingestion guide references entrypoints"
+
+if ! grep -Fq 'Entrypoint mapping generated' "$SNAPSHOT_DIR/LOG.txt"; then
+    echo "[FAIL] log missing entrypoint generation marker"
+    exit 1
+fi
+
+echo "[PASS] log contains entrypoint generation marker"
 
 rm -rf "$SNAPSHOT_DIR"
 

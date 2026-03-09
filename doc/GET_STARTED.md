@@ -25,25 +25,25 @@ git init
 
 The project uses the following structure:
 
-bin/
-core/
-doc/
-examples/
-tests/
-tools/
-logs/
-snapshots/
+bin/  
+core/  
+doc/  
+examples/  
+tests/  
+tools/  
+logs/  
+snapshots/  
 
 Directory roles:
 
-bin/        CLI entrypoints
-core/       internal modules
-doc/        documentation
-examples/   configuration examples
-tests/      automated tests
-tools/      development utilities
-logs/       runtime logs
-snapshots/  generated snapshot outputs
+bin/        CLI entrypoints  
+core/       internal modules  
+doc/        documentation  
+examples/   configuration examples  
+tests/      automated tests  
+tools/      development utilities  
+logs/       runtime logs  
+snapshots/  generated snapshot outputs  
 
 ---
 
@@ -77,29 +77,46 @@ Example command:
 
 bin/snapshot --target /path/to/project --label initial
 
-Expected output:
+Expected output directory:
 
 snapshots/YYYY-MM-DD/vX.Y.Z/01_initial/
 
----
+Example snapshot contents:
 
-# 6. Snapshot contents
+PROJECT_TREE.txt  
+INDEX.tsv  
+DEPENDENCIES.tsv  
+GRAPH.tsv  
+SEMANTICS.tsv  
+ENTRYPOINTS.tsv  
 
-A snapshot should contain files such as:
+ARCHITECTURE.md  
+DOCUMENTATION.md  
+LANGUAGES.md  
+COMPONENTS.md  
 
-AI_INGESTION_GUIDE.md
-MANIFEST.md
-ARCHITECTURE.md
-PROJECT_TREE.txt
-INDEX.tsv
-DEPENDENCIES.tsv
-DOCUMENTATION.md
-LANGUAGES.md
-LOG.txt
-SNAPSHOT_META.json
+MANIFEST.md  
+AI_INGESTION_GUIDE.md  
+
+LOG.txt  
+SNAPSHOT_META.json  
+
 CODEBASE/
 
-These files provide a structured description of the project.
+---
+
+# 6. Snapshot purpose
+
+Snapshots provide a **portable structured representation of a repository**.
+
+They allow:
+
+- fast repository exploration
+- AI-assisted repository understanding
+- architecture discovery
+- dependency signal extraction
+- semantic component mapping
+- entrypoint identification
 
 ---
 
@@ -115,6 +132,9 @@ Tests ensure:
 - stable naming rules
 - correct indexing
 - dependency extraction
+- graph generation
+- semantic component detection
+- entrypoint detection
 - proper CLI behavior
 
 ---
@@ -123,9 +143,11 @@ Tests ensure:
 
 Recommended development workflow:
 
-1. update documentation when behavior changes
-2. implement logic in core modules
-3. keep CLI minimal
-4. add tests for stable features
-5. preserve deterministic outputs
-6. ensure executable scripts keep the correct permissions
+1. update documentation when behavior changes  
+2. implement logic in core modules  
+3. keep CLI minimal  
+4. add tests for stable features  
+5. preserve deterministic outputs  
+6. ensure executable scripts keep the correct permissions  
+
+Following these practices helps maintain a deterministic and predictable system.

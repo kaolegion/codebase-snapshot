@@ -14,6 +14,7 @@ source "$ROOT_DIR/core/languages.sh"
 source "$ROOT_DIR/core/dependencies.sh"
 source "$ROOT_DIR/core/graph.sh"
 source "$ROOT_DIR/core/semantics.sh"
+source "$ROOT_DIR/core/entrypoints.sh"
 
 usage() {
     cat <<'USAGE'
@@ -88,6 +89,7 @@ generate_index "$TARGET" > "$SNAPSHOT_DIR/INDEX.tsv"
 generate_dependencies "$TARGET" > "$SNAPSHOT_DIR/DEPENDENCIES.tsv"
 generate_graph "$TARGET" > "$SNAPSHOT_DIR/GRAPH.tsv"
 generate_semantics "$TARGET" > "$SNAPSHOT_DIR/SEMANTICS.tsv"
+generate_entrypoints "$TARGET" > "$SNAPSHOT_DIR/ENTRYPOINTS.tsv"
 
 render_architecture "$TARGET" > "$SNAPSHOT_DIR/ARCHITECTURE.md"
 render_documentation_index "$TARGET" > "$SNAPSHOT_DIR/DOCUMENTATION.md"
@@ -127,21 +129,23 @@ Recommended reading order:
 3. ARCHITECTURE.md
 4. LANGUAGES.md
 5. DOCUMENTATION.md
-6. SEMANTICS.tsv
-7. GRAPH.tsv
-8. DEPENDENCIES.tsv
-9. PROJECT_TREE.txt
-10. INDEX.tsv
-11. CODEBASE/01_cli.md
-12. CODEBASE/02_core.md
-13. CODEBASE/03_tests.md
-14. CODEBASE/04_docs.md
+6. ENTRYPOINTS.tsv
+7. SEMANTICS.tsv
+8. GRAPH.tsv
+9. DEPENDENCIES.tsv
+10. PROJECT_TREE.txt
+11. INDEX.tsv
+12. CODEBASE/01_cli.md
+13. CODEBASE/02_core.md
+14. CODEBASE/03_tests.md
+15. CODEBASE/04_docs.md
 
 Important notes:
 
 - The snapshot is deterministic.
 - Exclusion rules are applied during scanning.
 - COMPONENTS.md summarizes repository-level semantic components.
+- ENTRYPOINTS.tsv detects deterministic repository execution entrypoints.
 - SEMANTICS.tsv maps files to repository components and detection rules.
 - LANGUAGES.md summarizes detected file types.
 - DOCUMENTATION.md lists project markdown documentation.
@@ -191,6 +195,7 @@ cat > "$SNAPSHOT_DIR/LOG.txt" <<LOG
 [INFO] Dependency mapping generated
 [INFO] Graph mapping generated
 [INFO] Semantic mapping generated
+[INFO] Entrypoint mapping generated
 [INFO] Components summary generated
 LOG
 

@@ -8,6 +8,8 @@ It helps explain:
 
 - what is in the repository
 - what it is for
+- how it is structured
+- where execution begins
 
 ---
 
@@ -23,6 +25,7 @@ Current state:
 - modular shell architecture
 - repository graph generation
 - repository semantic component detection
+- deterministic repository entrypoint detection
 - automated tests passing
 
 ---
@@ -45,34 +48,37 @@ The snapshot is:
 
 Benefits:
 
-- time savings
-- better AI understanding
-- higher production
-- reduced context cost
+- faster repository comprehension
+- better AI context quality
+- reduced context token cost
+- improved developer onboarding
 
 ---
 
 # Snapshot Output
 
-Each snapshot produces:
+Each snapshot produces a structured bundle describing the repository.
 
-PROJECT_TREE.txt
-INDEX.tsv
-DEPENDENCIES.tsv
-GRAPH.tsv
-SEMANTICS.tsv
-MANIFEST.md
-AI_INGESTION_GUIDE.md
-ARCHITECTURE.md
-DOCUMENTATION.md
-LANGUAGES.md
-COMPONENTS.md
-LOG.txt
-SNAPSHOT_META.json
+Artifacts generated:
+
+PROJECT_TREE.txt  
+INDEX.tsv  
+DEPENDENCIES.tsv  
+GRAPH.tsv  
+SEMANTICS.tsv  
+ENTRYPOINTS.tsv  
+MANIFEST.md  
+AI_INGESTION_GUIDE.md  
+ARCHITECTURE.md  
+DOCUMENTATION.md  
+LANGUAGES.md  
+COMPONENTS.md  
+LOG.txt  
+SNAPSHOT_META.json  
 
 CODEBASE/
 
-Structure:
+CODEBASE structure:
 
 CODEBASE/
   01_cli.md
@@ -86,7 +92,7 @@ CODEBASE/
 
 Phase 4 introduces a repository semantics layer.
 
-The tool now detects repository-level components such as:
+The tool detects repository-level components such as:
 
 - CLI
 - core modules
@@ -97,15 +103,35 @@ The tool now detects repository-level components such as:
 - config
 - root files
 
-New semantic artifacts:
+Semantic artifacts:
 
-- `SEMANTICS.tsv`  
-  file-to-component mapping with detection rules
+SEMANTICS.tsv  
+File-to-component mapping with deterministic detection rules.
 
-- `COMPONENTS.md`  
-  readable summary of detected repository components
+COMPONENTS.md  
+Human-readable overview of detected repository components.
 
-This moves the project from a pure **file graph** approach toward a **component graph** approach.
+This moves the system from a **file graph** toward a **component graph** representation.
+
+---
+
+# Entrypoint Detection
+
+Phase 4.1 introduces deterministic repository entrypoint detection.
+
+The tool now generates:
+
+ENTRYPOINTS.tsv
+
+Entrypoints are detected using deterministic rules:
+
+- `bin/*` and `cmd/*` directories
+- common application files (`main.*`, `app.*`)
+- service entrypoints (`server.*`)
+- root shell scripts with shebang
+- runtime or orchestration files (`docker-compose.yml`, `Makefile`)
+
+This allows the snapshot to identify **where execution begins inside a repository**.
 
 ---
 
@@ -123,24 +149,26 @@ The project follows strict principles:
 Core modules:
 
 core/
-  naming.sh
-  scanner.sh
-  indexer.sh
-  classifier.sh
-  architecture.sh
-  documentation.sh
-  languages.sh
-  dependencies.sh
-  graph.sh
-  semantics.sh
-  renderer.sh
-  logger.sh
-  utils.sh
-  config.sh
+
+architecture.sh  
+classifier.sh  
+config.sh  
+dependencies.sh  
+documentation.sh  
+entrypoints.sh  
+graph.sh  
+indexer.sh  
+languages.sh  
+logger.sh  
+naming.sh  
+renderer.sh  
+scanner.sh  
+semantics.sh  
+utils.sh  
 
 ---
 
-# Usage
+# CLI Usage
 
 Basic usage:
 
@@ -158,15 +186,15 @@ snapshots/YYYY-MM-DD/vX.Y.Z/<sequence>_<label>/
 
 # Exclusion Engine
 
-Ignored paths:
+Ignored paths during repository scanning:
 
-.git
-node_modules
-dist
-build
-__pycache__
-logs
-snapshots
+.git  
+node_modules  
+dist  
+build  
+__pycache__  
+logs  
+snapshots  
 
 ---
 
@@ -175,13 +203,15 @@ snapshots
 Test suite:
 
 tests/
-  run_all.sh
-  test_naming.sh
-  test_indexer.sh
-  test_dependencies.sh
-  test_graph.sh
-  test_semantics.sh
-  test_cli.sh
+
+run_all.sh  
+test_naming.sh  
+test_indexer.sh  
+test_dependencies.sh  
+test_graph.sh  
+test_semantics.sh  
+test_entrypoints.sh  
+test_cli.sh  
 
 Run tests:
 
@@ -193,14 +223,14 @@ tests/run_all.sh
 
 Current milestone:
 
-Phase 4 — Repository Semantics
+Phase 4.1 — Entrypoint Detection
 
 Current focus:
 
-- component grouping
-- module boundaries
-- repository semantics
-- AI-oriented repository understanding
+- repository component boundaries
+- semantic repository understanding
+- deterministic entrypoint detection
+- AI-oriented repository explainability
 
 See:
 

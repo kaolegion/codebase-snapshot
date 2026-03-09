@@ -37,10 +37,10 @@ Delivered:
 
 Artifacts added:
 
-- ARCHITECTURE.md
-- DOCUMENTATION.md
-- LANGUAGES.md
-- AI_INGESTION_GUIDE.md
+ARCHITECTURE.md  
+DOCUMENTATION.md  
+LANGUAGES.md  
+AI_INGESTION_GUIDE.md  
 
 Status: COMPLETE
 
@@ -105,35 +105,50 @@ Delivered:
 - repository boundary grouping
 - explicit file-to-component mapping
 - readable component summary
-- CLI integration of semantic artifacts
-
-Detected components:
-
-- cli
-- core
-- tests
-- docs
-- examples
-- tools
-- config
-- root
-- unknown
 
 Artifacts added:
 
-- SEMANTICS.tsv
-- COMPONENTS.md
+SEMANTICS.tsv  
+COMPONENTS.md  
 
-Purpose:
+Detected components:
 
-Help AI systems understand not only repository files,
-but also the major semantic building blocks of the repository.
+cli  
+core  
+tests  
+docs  
+examples  
+tools  
+config  
+root  
+unknown  
 
 Status: COMPLETE
 
 ---
 
-## Phase 4.1 — Component Grouping Refinement
+## Phase 4.1 — Entrypoint Detection
+
+Delivered:
+
+- deterministic repository entrypoint detection
+- CLI and application entrypoint identification
+- runtime script discovery
+- orchestration file detection
+
+Artifact:
+
+ENTRYPOINTS.tsv
+
+Purpose:
+
+Identify where execution begins inside a repository.
+
+Status: COMPLETE
+
+---
+
+## Phase 4.2 — Component Grouping Refinement
 
 Potential capabilities:
 
@@ -146,7 +161,7 @@ Status: PLANNED
 
 ---
 
-## Phase 4.2 — Repository Purpose Inference
+## Phase 4.3 — Repository Purpose Inference
 
 Potential capabilities:
 

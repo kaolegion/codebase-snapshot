@@ -58,20 +58,21 @@ The core layer contains reusable modules implementing the snapshot logic.
 
 Current modules include:
 
-naming.sh
-utils.sh
-scanner.sh
-indexer.sh
-architecture.sh
-documentation.sh
-languages.sh
-dependencies.sh
-graph.sh
-semantics.sh
-logger.sh
-config.sh
-classifier.sh
-renderer.sh
+architecture.sh  
+classifier.sh  
+config.sh  
+dependencies.sh  
+documentation.sh  
+entrypoints.sh  
+graph.sh  
+indexer.sh  
+languages.sh  
+logger.sh  
+naming.sh  
+renderer.sh  
+scanner.sh  
+semantics.sh  
+utils.sh  
 
 Each module must remain:
 
@@ -82,41 +83,56 @@ Each module must remain:
 
 Example responsibilities:
 
-scanner.sh
+scanner.sh  
 → deterministic file discovery with exclusions
 
-indexer.sh
+indexer.sh  
 → generation of INDEX.tsv
 
-architecture.sh
+classifier.sh  
+→ file categorization
+
+architecture.sh  
 → repository architecture summary
 
-documentation.sh
+documentation.sh  
 → extraction of documentation metadata
 
-languages.sh
+languages.sh  
 → language and file type detection
 
-dependencies.sh
+dependencies.sh  
 → dependency signal extraction
 
-graph.sh
+graph.sh  
 → structural relationship mapping
 
-semantics.sh
+semantics.sh  
 → repository component detection and semantic grouping
 
-naming.sh
+entrypoints.sh  
+→ deterministic repository entrypoint detection
+
+renderer.sh  
+→ snapshot artifact generation
+
+naming.sh  
 → snapshot naming normalization
 
-utils.sh
+config.sh  
+→ environment and configuration handling
+
+utils.sh  
 → shared helpers
+
+logger.sh  
+→ structured logging
 
 ---
 
 ## Semantic Layer
 
-Phase 4 adds a semantic interpretation layer on top of file discovery.
+Phase 4 introduces a semantic interpretation layer on top of file discovery.
 
 This layer moves the system from:
 
@@ -143,15 +159,35 @@ Detected component families currently include:
 
 Semantic outputs:
 
-SEMANTICS.tsv
-→ file-to-component mapping with explicit detection rule
+SEMANTICS.tsv  
+→ file-to-component mapping with explicit detection rules
 
-COMPONENTS.md
+COMPONENTS.md  
 → human-readable component summary
 
 This layer is deterministic and rule-based.
 
 No probabilistic inference is used.
+
+---
+
+## Entrypoint Detection Layer
+
+Phase 4.1 introduces deterministic repository entrypoint detection.
+
+This layer identifies **where execution begins in a repository**.
+
+Entrypoints are detected using deterministic rules such as:
+
+- `bin/*` and `cmd/*`
+- common application files (`main.*`, `app.*`)
+- service entry files (`server.*`)
+- root shell scripts with shebang
+- orchestration files (`docker-compose.yml`, `Makefile`)
+
+Output artifact:
+
+ENTRYPOINTS.tsv
 
 ---
 
@@ -165,12 +201,12 @@ The documentation defines the **behavioral contract** of the system.
 
 Important documents include:
 
-GET_STARTED.md
-ARCHITECTURE.md
-SNAPSHOT_FORMAT.md
-CLI.md
-ROADMAP.md
-TODO.md
+GET_STARTED.md  
+ARCHITECTURE.md  
+SNAPSHOT_FORMAT.md  
+CLI.md  
+ROADMAP.md  
+TODO.md  
 
 Implementation should converge toward these specifications.
 
@@ -191,6 +227,7 @@ They validate:
 - dependency extraction
 - graph generation
 - semantic component detection
+- entrypoint detection
 - CLI behavior
 - deterministic ordering
 
@@ -202,7 +239,7 @@ Tests act as a **contract protecting expected behavior**.
 
 Location:
 
-logs/
+logs/  
 snapshots/
 
 These directories contain generated runtime artifacts.
@@ -225,13 +262,14 @@ A typical snapshot execution follows these steps:
 8. extract dependency signals
 9. generate structural graph
 10. generate semantic mapping
-11. render architecture summary
-12. generate documentation index
-13. detect language summary
-14. render components summary
-15. assemble CODEBASE export
-16. generate metadata
-17. write logs
+11. detect repository entrypoints
+12. render architecture summary
+13. generate documentation index
+14. detect language summary
+15. render component summary
+16. assemble CODEBASE export
+17. generate metadata
+18. write logs
 
 ---
 
@@ -245,6 +283,7 @@ To ensure reproducibility, the following rules must be respected:
 - exclusions must be explicit
 - output structure must remain predictable
 - semantic classification must use explicit deterministic rules
+- entrypoint detection must use explicit deterministic rules
 
 Running the snapshot twice on the same repository state must produce identical structural outputs.
 

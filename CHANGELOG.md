@@ -6,7 +6,7 @@ The format loosely follows Keep a Changelog principles.
 
 ---
 
-# v0.2.1 (unreleased)
+# v0.2.1
 
 ## Added
 
@@ -16,8 +16,8 @@ A new semantic component detection layer has been introduced.
 
 New artifacts:
 
-SEMANTICS.tsv
-COMPONENTS.md
+SEMANTICS.tsv  
+COMPONENTS.md  
 
 These artifacts move the project from a file graph model toward a component graph model.
 
@@ -44,11 +44,33 @@ component boundaries, and repository-level structure.
 
 ---
 
+### Entrypoint Detection (Phase 4.1)
+
+Deterministic repository entrypoint detection has been introduced.
+
+New artifact:
+
+ENTRYPOINTS.tsv
+
+Entrypoints are detected using explicit deterministic rules such as:
+
+- `bin/*` and `cmd/*` directories
+- common application entry files (`main.*`, `app.*`)
+- service entry files (`server.*`)
+- root-level shell scripts with shebang
+- orchestration files (`docker-compose.yml`, `Makefile`)
+
+This allows snapshots to identify where execution begins inside a repository.
+
+---
+
 ## Internal
 
 - Added `core/semantics.sh`
+- Added `core/entrypoints.sh`
 - Integrated semantic mapping into snapshot pipeline
 - Added `tests/test_semantics.sh`
+- Added `tests/test_entrypoints.sh`
 - Extended `tests/test_cli.sh`
 - Extended `tests/run_all.sh`
 - Updated AI ingestion guide generation
@@ -69,10 +91,10 @@ Features introduced:
 
 Artifacts added:
 
-ARCHITECTURE.md
-DOCUMENTATION.md
-LANGUAGES.md
-DEPENDENCIES.tsv
+ARCHITECTURE.md  
+DOCUMENTATION.md  
+LANGUAGES.md  
+DEPENDENCIES.tsv  
 
 ---
 
