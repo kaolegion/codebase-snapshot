@@ -24,13 +24,13 @@ Deterministic repository file index.
 
 Format:
 
-INDEX <file> <type>
+FILE <file> <size> <lines>
 
 Purpose:
 
 - normalized file inventory
-- stable file listing for automation
-- base input for higher-level analysis layers
+- deterministic size and line metadata per file
+- base input for higher-level analysis layers including snapshot diffing
 
 ---
 
@@ -214,6 +214,45 @@ The artifact explains:
 - what snapshot artifacts are generated
 
 This layer acts as the final repository explanation artifact.
+
+---
+
+## DIFF.tsv
+
+Deterministic machine-readable snapshot diff.
+
+Format:
+
+DIFF <type> <path>
+
+Types:
+
+- ADDED
+- REMOVED
+- MODIFIED
+
+Purpose:
+
+- deterministic comparison between two snapshots
+- machine-readable repository evolution summary
+- base input for human-readable diff rendering
+
+---
+
+## SNAPSHOT_DIFF.md
+
+Deterministic human-readable snapshot evolution summary.
+
+Purpose:
+
+Explains repository evolution between two snapshots using deterministic diff signals.
+
+The artifact summarizes:
+
+- files added
+- files removed
+- files modified
+- high-level interpretation of repository evolution
 
 ---
 

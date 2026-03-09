@@ -4,6 +4,48 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## v0.9.0
+
+### Phase 4.9 — Repository Diff Intelligence
+
+Enhancements:
+
+- introduced deterministic snapshot comparison artifacts `DIFF.tsv` and `SNAPSHOT_DIFF.md`
+- added a machine-readable repository evolution layer for added, removed, and modified files
+- added a human-readable repository evolution summary derived only from snapshot artifacts
+- preserved deterministic comparison behavior without relying on git
+
+Core engine:
+
+- added `core/diff.sh`
+- implemented deterministic `generate_snapshot_diff`
+- implemented deterministic `render_snapshot_diff`
+
+Tests:
+
+- added `tests/test_diff.sh`
+- validated deterministic diff output
+- validated ADDED, REMOVED, and MODIFIED detection
+- validated snapshot diff markdown generation
+- validated CLI diff output generation
+
+CLI integration:
+
+- added `bin/snapshot diff <snapshotA> <snapshotB>`
+- added deterministic diff output directory generation
+- integrated `DIFF.tsv` and `SNAPSHOT_DIFF.md` generation into the CLI surface
+
+Documentation:
+
+- updated README to expose repository diff intelligence
+- updated roadmap to mark repository diff intelligence as complete
+- updated snapshot format documentation for `DIFF.tsv` and `SNAPSHOT_DIFF.md`
+
+This release introduces a **deterministic repository evolution layer** that allows
+humans and AI systems to understand what changed between two repository snapshots.
+
+---
+
 ## v0.8.0
 
 ### Phase 4.8 — Repository DNA

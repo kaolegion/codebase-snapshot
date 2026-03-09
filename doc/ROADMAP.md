@@ -308,18 +308,22 @@ Status: COMPLETE
 
 ## Phase 4.9 — Repository Diff Intelligence
 
-Goal: compare repository states across snapshots.
+Goal: compare deterministic snapshots to explain repository evolution over time.
 
-Planned capabilities:
+Capabilities:
 
-- deterministic snapshot-to-snapshot diffing
-- added/removed/changed file summaries
-- structural interpretation of repository evolution
-- high-level change synthesis for humans and AI systems
+- deterministic snapshot-to-snapshot comparison
+- machine-readable diff generation
+- human-readable repository evolution summary
+- snapshot-artifact-only diff logic without git
 
-Planned artifacts:
+Artifacts:
 
-SNAPSHOT_DIFF.md
 DIFF.tsv
+SNAPSHOT_DIFF.md
 
-Status: NEXT
+Input artifact:
+
+INDEX.tsv
+
+Status: COMPLETE

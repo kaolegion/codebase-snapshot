@@ -16,6 +16,7 @@ bash "$ROOT_DIR/tests/test_structure.sh"
 bash "$ROOT_DIR/tests/test_system_flow.sh"
 bash "$ROOT_DIR/tests/test_repository_explain.sh"
 bash "$ROOT_DIR/tests/test_dna.sh"
+bash "$ROOT_DIR/tests/test_diff.sh"
 bash "$ROOT_DIR/tests/test_cli.sh"
 
 echo "[SUCCESS] Full test suite passed"

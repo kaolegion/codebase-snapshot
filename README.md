@@ -13,13 +13,14 @@ The snapshot explains:
 - where execution begins
 - how its main modules and subsystems are organized
 - how the repository can be summarized as a compact deterministic DNA profile
+- how a repository evolves between snapshots
 - how the full repository can be synthesized into one final explanation layer
 
 ---
 
 # Project Status
 
-Version: **v0.8.0**
+Version: **v0.9.0**
 
 Current capabilities:
 
@@ -34,6 +35,7 @@ Current capabilities:
 - deterministic repository architecture rendering
 - deterministic repository system flow explanation
 - deterministic repository DNA synthesis
+- deterministic repository diff intelligence
 - deterministic repository explain synthesis
 - AI-ready snapshot export
 - deterministic test suite
@@ -54,6 +56,11 @@ SEMANTICS.tsv
 ENTRYPOINTS.tsv
 MODULES.tsv
 SUBSYSTEMS.tsv
+
+Comparison artifacts:
+
+DIFF.tsv
+SNAPSHOT_DIFF.md
 
 Interpretation artifacts:
 
@@ -228,6 +235,26 @@ This layer acts as a compact identity card for both humans and AI systems.
 
 ---
 
+# Repository Diff Intelligence
+
+The diff layer explains **how a repository evolves between two snapshots**.
+
+Artifacts:
+
+DIFF.tsv
+SNAPSHOT_DIFF.md
+
+This layer summarizes:
+
+- files added
+- files removed
+- files modified
+- high-level repository evolution signals
+
+The comparison is deterministic and based on snapshot artifacts only.
+
+---
+
 # Repository Explain Synthesis
 
 The final explanation layer synthesizes the repository into one high-level document.
@@ -254,49 +281,9 @@ This artifact acts as the final repository explanation layer for both humans and
 Basic usage:
 
 bin/snapshot --target <repository> --label <label>
+bin/snapshot diff <snapshotA> <snapshotB>
 
 Example:
 
 bin/snapshot --target /opt/project --label initial_analysis
-
-Snapshots are generated under:
-
-snapshots/YYYY-MM-DD/vX.Y.Z/<sequence>_<label>/
-
----
-
-# Testing
-
-Run the full deterministic test suite:
-
-tests/run_all.sh
-
-Tests validate:
-
-- indexing
-- dependency extraction
-- graph generation
-- semantics
-- entrypoints
-- purpose inference
-- structural modeling
-- system flow explanation
-- repository DNA synthesis
-- repository explain synthesis
-- CLI behavior
-
----
-
-# Roadmap
-
-Current milestone:
-
-Phase 4.8 — Repository DNA
-
-Next milestone:
-
-Phase 4.9 — Repository Diff Intelligence
-
-See:
-
-doc/ROADMAP.md
+bin/snapshot diff snapshots/2026-03-09/v0.8.0/01_before snapshots/2026-03-09/v0.9.0/01_after

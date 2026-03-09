@@ -20,6 +20,7 @@ source "$ROOT_DIR/core/structure.sh"
 source "$ROOT_DIR/core/explanation.sh"
 source "$ROOT_DIR/core/repository_explain.sh"
 source "$ROOT_DIR/core/dna.sh"
+source "$ROOT_DIR/core/diff.sh"
 
 usage() {
     cat <<'USAGE'
@@ -27,6 +28,7 @@ codebase-snapshot
 
 Usage:
   bin/snapshot --target <path> --label <label>
+  bin/snapshot diff <snapshotA> <snapshotB>
   bin/snapshot --help
   bin/snapshot --version
 USAGE
@@ -48,87 +50,98 @@ append_section_file() {
     } >> "$outfile"
 }
 
-TARGET=""
-LABEL=""
+run_snapshot_generation() {
+    local target=""
+    local label=""
 
-while [[ $# -gt 0 ]]; do
-    case "$1" in
-        --help) usage; exit 0 ;;
-        --version) read_version; exit 0 ;;
-        --target)
-            shift
-            [[ $# -gt 0 ]] || { echo "[ERROR] Missing value for --target"; exit 2; }
-            TARGET="$1"
-            ;;
-        --label)
-            shift
-            [[ $# -gt 0 ]] || { echo "[ERROR] Missing value for --label"; exit 2; }
-            LABEL="$1"
-            ;;
-        *)
-            echo "[ERROR] Unknown argument: $1"
-            exit 2
-            ;;
-    esac
-    shift
-done
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            --target)
+                shift
+                [[ $# -gt 0 ]] || { echo "[ERROR] Missing value for --target"; exit 2; }
+                target="$1"
+                ;;
+            --label)
+                shift
+                [[ $# -gt 0 ]] || { echo "[ERROR] Missing value for --label"; exit 2; }
+                label="$1"
+                ;;
+            *)
+                echo "[ERROR] Unknown argument: $1"
+                exit 2
+                ;;
+        esac
+        shift
+    done
 
-[[ -n "$TARGET" ]] || { echo "[ERROR] --target required"; exit 2; }
-[[ -n "$LABEL" ]] || { echo "[ERROR] --label required"; exit 2; }
+    [[ -n "$target" ]] || { echo "[ERROR] --target required"; exit 2; }
+    [[ -n "$label" ]] || { echo "[ERROR] --label required"; exit 2; }
 
-require_dir "$TARGET"
+    require_dir "$target"
 
-VERSION="$(read_version)"
-DATE="$(current_date)"
-NORMALIZED_LABEL="$(normalize_label "$LABEL")"
-SEQ="01"
+    local version
+    local date
+    local normalized_label
+    local seq
+    local snapshot_dir
+    local codebase_dir
+    local file_count
+    local cli_export
+    local core_export
+    local tests_export
+    local docs_export
 
-SNAPSHOT_DIR="$ROOT_DIR/snapshots/$DATE/$VERSION/${SEQ}_${NORMALIZED_LABEL}"
-CODEBASE_DIR="$SNAPSHOT_DIR/CODEBASE"
+    version="$(read_version)"
+    date="$(current_date)"
+    normalized_label="$(normalize_label "$label")"
+    seq="01"
 
-mkdir -p "$SNAPSHOT_DIR"
-mkdir -p "$CODEBASE_DIR"
+    snapshot_dir="$ROOT_DIR/snapshots/$date/$version/${seq}_${normalized_label}"
+    codebase_dir="$snapshot_dir/CODEBASE"
 
-scan_files "$TARGET" > "$SNAPSHOT_DIR/PROJECT_TREE.txt"
-generate_index "$TARGET" > "$SNAPSHOT_DIR/INDEX.tsv"
-generate_dependencies "$TARGET" > "$SNAPSHOT_DIR/DEPENDENCIES.tsv"
-generate_graph "$TARGET" > "$SNAPSHOT_DIR/GRAPH.tsv"
-generate_semantics "$TARGET" > "$SNAPSHOT_DIR/SEMANTICS.tsv"
-generate_entrypoints "$TARGET" > "$SNAPSHOT_DIR/ENTRYPOINTS.tsv"
-generate_modules "$TARGET" > "$SNAPSHOT_DIR/MODULES.tsv"
-generate_subsystems "$TARGET" > "$SNAPSHOT_DIR/SUBSYSTEMS.tsv"
+    mkdir -p "$snapshot_dir"
+    mkdir -p "$codebase_dir"
 
-render_architecture "$TARGET" > "$SNAPSHOT_DIR/ARCHITECTURE.md"
-render_documentation_index "$TARGET" > "$SNAPSHOT_DIR/DOCUMENTATION.md"
-render_languages "$TARGET" > "$SNAPSHOT_DIR/LANGUAGES.md"
-render_components_summary "$TARGET" > "$SNAPSHOT_DIR/COMPONENTS.md"
-detect_repository_purpose "$TARGET" > "$SNAPSHOT_DIR/PURPOSE.md"
-render_system_flow "$TARGET" > "$SNAPSHOT_DIR/SYSTEM_FLOW.md"
-render_repository_explain "$TARGET" > "$SNAPSHOT_DIR/REPOSITORY_EXPLAIN.md"
-render_repository_dna "$TARGET" > "$SNAPSHOT_DIR/REPOSITORY_DNA.md"
+    scan_files "$target" > "$snapshot_dir/PROJECT_TREE.txt"
+    generate_index "$target" > "$snapshot_dir/INDEX.tsv"
+    generate_dependencies "$target" > "$snapshot_dir/DEPENDENCIES.tsv"
+    generate_graph "$target" > "$snapshot_dir/GRAPH.tsv"
+    generate_semantics "$target" > "$snapshot_dir/SEMANTICS.tsv"
+    generate_entrypoints "$target" > "$snapshot_dir/ENTRYPOINTS.tsv"
+    generate_modules "$target" > "$snapshot_dir/MODULES.tsv"
+    generate_subsystems "$target" > "$snapshot_dir/SUBSYSTEMS.tsv"
 
-FILE_COUNT="$(scan_files "$TARGET" | wc -l | tr -d ' ')"
+    render_architecture "$target" > "$snapshot_dir/ARCHITECTURE.md"
+    render_documentation_index "$target" > "$snapshot_dir/DOCUMENTATION.md"
+    render_languages "$target" > "$snapshot_dir/LANGUAGES.md"
+    render_components_summary "$target" > "$snapshot_dir/COMPONENTS.md"
+    detect_repository_purpose "$target" > "$snapshot_dir/PURPOSE.md"
+    render_system_flow "$target" > "$snapshot_dir/SYSTEM_FLOW.md"
+    render_repository_explain "$target" > "$snapshot_dir/REPOSITORY_EXPLAIN.md"
+    render_repository_dna "$target" > "$snapshot_dir/REPOSITORY_DNA.md"
 
-cat > "$SNAPSHOT_DIR/MANIFEST.md" <<MANIFEST
+    file_count="$(scan_files "$target" | wc -l | tr -d ' ')"
+
+    cat > "$snapshot_dir/MANIFEST.md" <<MANIFEST
 # Snapshot Manifest
 
-Tool version: $VERSION
-Generated at: $DATE
+Tool version: $version
+Generated at: $date
 
 Target repository:
-$TARGET
+$target
 
 Snapshot label:
-$LABEL
+$label
 
 Normalized label:
-$NORMALIZED_LABEL
+$normalized_label
 
 Included files:
-$FILE_COUNT
+$file_count
 MANIFEST
 
-cat > "$SNAPSHOT_DIR/AI_INGESTION_GUIDE.md" <<GUIDE
+    cat > "$snapshot_dir/AI_INGESTION_GUIDE.md" <<GUIDE
 # AI Ingestion Guide
 
 This snapshot was generated by **codebase-snapshot**.
@@ -176,38 +189,38 @@ Important notes:
 - CODEBASE/ groups source files for ingestion.
 GUIDE
 
-CLI_EXPORT="$CODEBASE_DIR/01_cli.md"
-CORE_EXPORT="$CODEBASE_DIR/02_core.md"
-TESTS_EXPORT="$CODEBASE_DIR/03_tests.md"
-DOCS_EXPORT="$CODEBASE_DIR/04_docs.md"
+    cli_export="$codebase_dir/01_cli.md"
+    core_export="$codebase_dir/02_core.md"
+    tests_export="$codebase_dir/03_tests.md"
+    docs_export="$codebase_dir/04_docs.md"
 
-printf "# CLI EXPORT\n\n" > "$CLI_EXPORT"
-printf "# CORE EXPORT\n\n" > "$CORE_EXPORT"
-printf "# TESTS EXPORT\n\n" > "$TESTS_EXPORT"
-printf "# DOCS EXPORT\n\n" > "$DOCS_EXPORT"
+    printf "# CLI EXPORT\n\n" > "$cli_export"
+    printf "# CORE EXPORT\n\n" > "$core_export"
+    printf "# TESTS EXPORT\n\n" > "$tests_export"
+    printf "# DOCS EXPORT\n\n" > "$docs_export"
 
-scan_files "$TARGET" | while read -r file; do
-    case "$file" in
-        */bin/*|bin/*)
-            append_section_file "$CLI_EXPORT" "$file"
-            ;;
-        */core/*|core/*)
-            append_section_file "$CORE_EXPORT" "$file"
-            ;;
-        */tests/*|tests/*)
-            append_section_file "$TESTS_EXPORT" "$file"
-            ;;
-        */doc/*|doc/*|*.md)
-            append_section_file "$DOCS_EXPORT" "$file"
-            ;;
-    esac
-done
+    scan_files "$target" | while read -r file; do
+        case "$file" in
+            */bin/*|bin/*)
+                append_section_file "$cli_export" "$file"
+                ;;
+            */core/*|core/*)
+                append_section_file "$core_export" "$file"
+                ;;
+            */tests/*|tests/*)
+                append_section_file "$tests_export" "$file"
+                ;;
+            */doc/*|doc/*|*.md)
+                append_section_file "$docs_export" "$file"
+                ;;
+        esac
+    done
 
-cat > "$SNAPSHOT_DIR/LOG.txt" <<LOG
-[INFO] codebase-snapshot v$VERSION
-[INFO] Target: $TARGET
-[INFO] Label: $LABEL
-[INFO] Snapshot directory: $SNAPSHOT_DIR
+    cat > "$snapshot_dir/LOG.txt" <<LOG
+[INFO] codebase-snapshot v$version
+[INFO] Target: $target
+[INFO] Label: $label
+[INFO] Snapshot directory: $snapshot_dir
 [INFO] CODEBASE export enabled
 [INFO] Exclusion rules enabled
 [INFO] Architecture summary generated
@@ -226,17 +239,74 @@ cat > "$SNAPSHOT_DIR/LOG.txt" <<LOG
 [INFO] Repository DNA summary generated
 LOG
 
-cat > "$SNAPSHOT_DIR/SNAPSHOT_META.json" <<META
+    cat > "$snapshot_dir/SNAPSHOT_META.json" <<META
 {
   "snapshot_version": "1",
-  "tool_version": "$VERSION",
-  "generated_at": "$DATE",
-  "target_root": "$TARGET",
-  "label": "$LABEL",
-  "normalized_label": "$NORMALIZED_LABEL",
-  "sequence": "$SEQ",
-  "file_count": $FILE_COUNT
+  "tool_version": "$version",
+  "generated_at": "$date",
+  "target_root": "$target",
+  "label": "$label",
+  "normalized_label": "$normalized_label",
+  "sequence": "$seq",
+  "file_count": $file_count
 }
 META
 
-echo "[INFO] Snapshot generated: $SNAPSHOT_DIR"
+    echo "[INFO] Snapshot generated: $snapshot_dir"
+}
+
+run_snapshot_diff() {
+    local snapshot_a="${1:-}"
+    local snapshot_b="${2:-}"
+    local diff_dir
+
+    [[ -n "$snapshot_a" ]] || {
+        echo "[ERROR] Usage: bin/snapshot diff <snapshotA> <snapshotB>" >&2
+        exit 2
+    }
+
+    [[ -n "$snapshot_b" ]] || {
+        echo "[ERROR] Usage: bin/snapshot diff <snapshotA> <snapshotB>" >&2
+        exit 2
+    }
+
+    require_snapshot_for_diff "$snapshot_a"
+    require_snapshot_for_diff "$snapshot_b"
+
+    diff_dir="$(snapshot_diff_output_dir "$snapshot_a" "$snapshot_b")"
+
+    rm -rf "$diff_dir"
+    mkdir -p "$diff_dir"
+
+    generate_snapshot_diff "$snapshot_a" "$snapshot_b" > "$diff_dir/DIFF.tsv"
+    render_snapshot_diff "$snapshot_a" "$snapshot_b" "$diff_dir/DIFF.tsv" > "$diff_dir/SNAPSHOT_DIFF.md"
+
+    echo "[INFO] Snapshot diff generated: $diff_dir"
+}
+
+main() {
+    [[ $# -gt 0 ]] || {
+        usage
+        exit 2
+    }
+
+    case "${1:-}" in
+        --help)
+            usage
+            exit 0
+            ;;
+        --version)
+            read_version
+            exit 0
+            ;;
+        diff)
+            shift
+            run_snapshot_diff "$@"
+            ;;
+        *)
+            run_snapshot_generation "$@"
+            ;;
+    esac
+}
+
+main "$@"
