@@ -4,6 +4,53 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## v0.8.0
+
+### Phase 4.8 — Repository DNA
+
+Enhancements:
+
+- introduced deterministic repository identity artifact `REPOSITORY_DNA.md`
+- added a compact repository DNA layer summarizing project type, architecture style, languages, dependency model, documentation presence, test coverage, repository size, core components, and entrypoints
+- implemented deterministic hybrid project type detection using structural directory signals first and entrypoint signals as support
+- kept the existing AI ingestion order unchanged while adding repository DNA as a complementary interpretation layer
+
+Core engine:
+
+- added `core/dna.sh`
+- implemented deterministic `render_repository_dna`
+- integrated repository DNA rendering at the end of the snapshot pipeline
+
+Tests:
+
+- added `tests/test_dna.sh`
+- validated deterministic generation of `REPOSITORY_DNA.md`
+- validated presence of stable DNA sections and entrypoint references
+- integrated repository DNA validation into the global test suite
+
+CLI integration:
+
+- integrated `REPOSITORY_DNA.md` generation into `bin/snapshot`
+- added repository DNA generation logging
+- preserved existing AI ingestion ordering pending future evaluation of DNA reading priority
+
+Documentation:
+
+- updated README to expose the repository DNA interpretation layer
+- updated roadmap to mark repository DNA as complete
+- updated snapshot format documentation for `REPOSITORY_DNA.md`
+
+This release introduces a **deterministic repository identity layer** that gives
+humans and AI systems a compact repository signature answering:
+
+- what kind of repository this is
+- which architectural style it follows
+- which languages are present
+- which execution surfaces exist
+- which core structural signals define the repository
+
+---
+
 ## v0.7.0
 
 ### Phase 4.7 — Repository Explain Engine

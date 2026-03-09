@@ -259,9 +259,8 @@ Capabilities:
 - deterministic repository-wide explanation rendering
 - repository identity synthesis
 - purpose synthesis
-- execution entrypoint synthesis
-- internal operation synthesis
-- architecture overview synthesis
+- execution synthesis
+- architecture synthesis
 - semantic component synthesis
 - generated artifact synthesis
 
@@ -269,33 +268,58 @@ Artifact:
 
 REPOSITORY_EXPLAIN.md
 
-Input artifacts:
-
-PURPOSE.md
-SYSTEM_FLOW.md
-ARCHITECTURE.md
-COMPONENTS.md
-ENTRYPOINTS.tsv
-MODULES.tsv
-SUBSYSTEMS.tsv
-
 Purpose:
 
-Provide one final explanation artifact allowing humans and AI systems
-to answer what the repository is, what it does, how it works,
-and how it is organized.
+Provide one stable high-level explanation layer for humans and AI systems.
 
 Status: COMPLETE
 
 ---
 
-## Phase 4.8 — Repository Intelligence Expansion
+## Phase 4.8 — Repository DNA
 
-Goal: deepen deterministic repository understanding beyond static explanation synthesis.
+Goal: provide a compact deterministic identity signature of the repository.
 
-Potential capabilities:
+Capabilities:
 
-- richer repository interaction modeling
-- module-to-module flow refinement
-- higher-order repository summarization
-- expanded architecture-aware interpretation layers
+- deterministic repository DNA rendering
+- hybrid project type detection
+- architecture style summary
+- language summary
+- dependency model summary
+- documentation presence summary
+- test coverage summary
+- repository size summary
+- core component listing
+- entrypoint listing
+
+Artifact:
+
+REPOSITORY_DNA.md
+
+Purpose:
+
+Provide a compact repository identity layer that complements
+PURPOSE.md and REPOSITORY_EXPLAIN.md.
+
+Status: COMPLETE
+
+---
+
+## Phase 4.9 — Repository Diff Intelligence
+
+Goal: compare repository states across snapshots.
+
+Planned capabilities:
+
+- deterministic snapshot-to-snapshot diffing
+- added/removed/changed file summaries
+- structural interpretation of repository evolution
+- high-level change synthesis for humans and AI systems
+
+Planned artifacts:
+
+SNAPSHOT_DIFF.md
+DIFF.tsv
+
+Status: NEXT

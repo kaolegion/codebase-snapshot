@@ -19,6 +19,7 @@ source "$ROOT_DIR/core/purpose.sh"
 source "$ROOT_DIR/core/structure.sh"
 source "$ROOT_DIR/core/explanation.sh"
 source "$ROOT_DIR/core/repository_explain.sh"
+source "$ROOT_DIR/core/dna.sh"
 
 usage() {
     cat <<'USAGE'
@@ -104,6 +105,7 @@ render_components_summary "$TARGET" > "$SNAPSHOT_DIR/COMPONENTS.md"
 detect_repository_purpose "$TARGET" > "$SNAPSHOT_DIR/PURPOSE.md"
 render_system_flow "$TARGET" > "$SNAPSHOT_DIR/SYSTEM_FLOW.md"
 render_repository_explain "$TARGET" > "$SNAPSHOT_DIR/REPOSITORY_EXPLAIN.md"
+render_repository_dna "$TARGET" > "$SNAPSHOT_DIR/REPOSITORY_DNA.md"
 
 FILE_COUNT="$(scan_files "$TARGET" | wc -l | tr -d ' ')"
 
@@ -221,6 +223,7 @@ cat > "$SNAPSHOT_DIR/LOG.txt" <<LOG
 [INFO] Purpose summary generated
 [INFO] System flow summary generated
 [INFO] Repository explain summary generated
+[INFO] Repository DNA summary generated
 LOG
 
 cat > "$SNAPSHOT_DIR/SNAPSHOT_META.json" <<META

@@ -12,13 +12,14 @@ The snapshot explains:
 - how it is structured
 - where execution begins
 - how its main modules and subsystems are organized
+- how the repository can be summarized as a compact deterministic DNA profile
 - how the full repository can be synthesized into one final explanation layer
 
 ---
 
 # Project Status
 
-Version: **v0.7.0**
+Version: **v0.8.0**
 
 Current capabilities:
 
@@ -32,6 +33,7 @@ Current capabilities:
 - deterministic repository subsystem modeling
 - deterministic repository architecture rendering
 - deterministic repository system flow explanation
+- deterministic repository DNA synthesis
 - deterministic repository explain synthesis
 - AI-ready snapshot export
 - deterministic test suite
@@ -57,6 +59,7 @@ Interpretation artifacts:
 
 PURPOSE.md
 SYSTEM_FLOW.md
+REPOSITORY_DNA.md
 REPOSITORY_EXPLAIN.md
 
 Human-readable artifacts:
@@ -196,6 +199,35 @@ This helps both humans and AI systems understand the operational behavior of the
 
 ---
 
+# Repository DNA
+
+The DNA layer provides a compact deterministic identity summary of the repository.
+
+Artifact:
+
+REPOSITORY_DNA.md
+
+This artifact summarizes:
+
+- project type
+- architecture style
+- languages
+- dependency model
+- documentation presence
+- test coverage
+- repository size
+- core components
+- entrypoints
+
+Project type detection is hybrid and deterministic:
+
+- structural directory signals first
+- entrypoint signals as support
+
+This layer acts as a compact identity card for both humans and AI systems.
+
+---
+
 # Repository Explain Synthesis
 
 The final explanation layer synthesizes the repository into one high-level document.
@@ -249,6 +281,7 @@ Tests validate:
 - purpose inference
 - structural modeling
 - system flow explanation
+- repository DNA synthesis
 - repository explain synthesis
 - CLI behavior
 
@@ -258,11 +291,11 @@ Tests validate:
 
 Current milestone:
 
-Phase 4.7 — Repository Explain Engine
+Phase 4.8 — Repository DNA
 
 Next milestone:
 
-Phase 4.8 — Repository Intelligence Expansion
+Phase 4.9 — Repository Diff Intelligence
 
 See:
 

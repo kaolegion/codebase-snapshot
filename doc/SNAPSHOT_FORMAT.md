@@ -96,7 +96,7 @@ Detected execution entrypoints.
 
 Format:
 
-ENTRYPOINT <file> <type>
+ENTRYPOINT <file> <type> <rule>
 
 Purpose:
 
@@ -163,6 +163,35 @@ The artifact describes:
 
 This layer helps humans and AI systems understand repository behavior
 without reading the full source code.
+
+---
+
+## REPOSITORY_DNA.md
+
+Deterministic compact repository identity summary.
+
+Purpose:
+
+Provides a compact deterministic identity layer for the repository.
+
+The artifact summarizes:
+
+- project type
+- architecture style
+- languages
+- dependency model
+- documentation presence
+- test coverage
+- repository size
+- core components
+- entrypoints
+
+Project type detection is hybrid and deterministic:
+
+- structural directory signals first
+- entrypoint signals as support
+
+This layer complements PURPOSE.md and REPOSITORY_EXPLAIN.md.
 
 ---
 
@@ -252,37 +281,11 @@ The current deterministic reading priority begins with:
 3. PURPOSE.md
 4. SYSTEM_FLOW.md
 
+`REPOSITORY_DNA.md` is currently generated as a complementary interpretation
+artifact and does not yet change the default AI ingestion order.
+
 ---
 
 # CODEBASE Export
 
 Structured export of repository source files.
-
-Directory:
-
-CODEBASE/
-
-Files:
-
-01_cli.md
-02_core.md
-03_tests.md
-04_docs.md
-
-Purpose:
-
-Allow AI systems to ingest source code grouped by repository role.
-
----
-
-# Metadata and Logs
-
-## LOG.txt
-
-Execution log describing snapshot generation.
-
----
-
-## SNAPSHOT_META.json
-
-Structured metadata describing snapshot context and generation parameters.
