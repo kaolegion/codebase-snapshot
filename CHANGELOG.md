@@ -10,48 +10,49 @@ The format loosely follows Keep a Changelog principles.
 
 ## Added
 
-### Graph Engine (Phase 3.2)
+### Repository Semantics (Phase 4.0)
 
-A new structural graph module has been introduced.
+A new semantic component detection layer has been introduced.
 
-New artifact:
+New artifacts:
 
-GRAPH.tsv
+SEMANTICS.tsv
+COMPONENTS.md
 
-This artifact describes structural relationships in the repository using a deterministic graph format.
+These artifacts move the project from a file graph model toward a component graph model.
 
-Format:
+SEMANTICS.tsv provides deterministic file-to-component mapping with explicit detection rules.
 
-GRAPH <source> <relation> <target>
+COMPONENTS.md provides a readable summary of detected repository components.
 
-Example relations:
+Detected component families currently include:
 
-- directory containment
-- file roles
-- dependency relations
-- generated snapshot artifacts
-
-Example entries:
-
-GRAPH bin contains bin/snapshot  
-GRAPH bin/snapshot role cli_entrypoint  
-GRAPH bin/snapshot depends_on core/naming.sh  
-GRAPH bin/snapshot generates GRAPH.tsv  
+- cli
+- core
+- tests
+- docs
+- examples
+- tools
+- config
+- root
+- unknown
 
 Purpose:
 
-Enable AI systems to better understand repository topology and component responsibilities.
+Enable AI systems to better understand repository composition,
+component boundaries, and repository-level structure.
 
 ---
 
 ## Internal
 
-- Added `core/graph.sh`
-- Integrated graph generation into snapshot pipeline
-- Added `tests/test_graph.sh`
-- Extended CLI tests to validate GRAPH.tsv generation
-- Updated snapshot ingestion guide
-- Updated documentation and roadmap
+- Added `core/semantics.sh`
+- Integrated semantic mapping into snapshot pipeline
+- Added `tests/test_semantics.sh`
+- Extended `tests/test_cli.sh`
+- Extended `tests/run_all.sh`
+- Updated AI ingestion guide generation
+- Updated README, architecture, roadmap, and TODO documentation
 
 ---
 
@@ -68,10 +69,10 @@ Features introduced:
 
 Artifacts added:
 
-ARCHITECTURE.md  
-DOCUMENTATION.md  
-LANGUAGES.md  
-DEPENDENCIES.tsv  
+ARCHITECTURE.md
+DOCUMENTATION.md
+LANGUAGES.md
+DEPENDENCIES.tsv
 
 ---
 

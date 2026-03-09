@@ -9,6 +9,7 @@ bash "$ROOT_DIR/tests/test_naming.sh"
 bash "$ROOT_DIR/tests/test_indexer.sh"
 bash "$ROOT_DIR/tests/test_dependencies.sh"
 bash "$ROOT_DIR/tests/test_graph.sh"
+bash "$ROOT_DIR/tests/test_semantics.sh"
 bash "$ROOT_DIR/tests/test_cli.sh"
 
 echo "[SUCCESS] All tests passed"

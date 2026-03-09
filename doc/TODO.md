@@ -2,14 +2,14 @@
 
 ## Next Milestones
 
-### Snapshot Intelligence
+### Repository Semantics
 
-- improve architecture generator
-- enrich documentation extraction
-- detect project entrypoints
-- detect major modules automatically
-- identify runtime/config files separately
-- dependency summary (build higher-level dependency graph)
+- refine component grouping rules
+- improve root artifact classification
+- add repository purpose inference
+- add project-type detection
+- enrich component summaries
+- prepare component graph evolution
 
 ### CLI Evolution
 
@@ -29,6 +29,7 @@
 - richer MANIFEST.md
 - generated DOCUMENTATION synthesis
 - repository metadata summary
+- semantic prioritization for AI ingestion
 
 ### Hardening
 
@@ -36,3 +37,4 @@
 - portability checks
 - large repo behavior
 - release checklist
+- semantic regression tests

@@ -91,39 +91,106 @@ Status: COMPLETE
 
 ---
 
-# Future Phases
+# Phase 4 — Repository Semantics
 
-## Phase 4 — Repository Semantics
-
-Potential capabilities:
-
-- module grouping
-- component boundaries
-- repository purpose inference
+Goal: move from file graph to component graph.
 
 ---
 
-## Phase 5 — AI Context Optimization
+## Phase 4.0 — Semantic Component Detection
+
+Delivered:
+
+- deterministic component detection
+- repository boundary grouping
+- explicit file-to-component mapping
+- readable component summary
+- CLI integration of semantic artifacts
+
+Detected components:
+
+- cli
+- core
+- tests
+- docs
+- examples
+- tools
+- config
+- root
+- unknown
+
+Artifacts added:
+
+- SEMANTICS.tsv
+- COMPONENTS.md
+
+Purpose:
+
+Help AI systems understand not only repository files,
+but also the major semantic building blocks of the repository.
+
+Status: COMPLETE
+
+---
+
+## Phase 4.1 — Component Grouping Refinement
+
+Potential capabilities:
+
+- stronger grouping conventions
+- better root artifact categorization
+- repository family heuristics
+- richer component summaries
+
+Status: PLANNED
+
+---
+
+## Phase 4.2 — Repository Purpose Inference
+
+Potential capabilities:
+
+- infer repository intent
+- infer project type
+- infer operational role of the codebase
+- AI-oriented repository purpose summary
+
+Status: PLANNED
+
+---
+
+# Phase 5 — AI Context Optimization
 
 Potential capabilities:
 
 - token-aware compression
 - intelligent code chunking
 - semantic prioritization
+- ingestion profiles
+
+Status: PLANNED
 
 ---
 
-## Phase 6 — Visualization Layer
+# Phase 6 — Visualization Layer
 
 Potential capabilities:
 
 - graph export
 - architecture visualization
 - repository exploration tools
+- component graph rendering
+
+Status: PLANNED
 
 ---
 
 # Long-Term Vision
 
 codebase-snapshot aims to become a **repository intelligence engine**
-that explains not only what is in a codebase, but how it works.
+that explains:
+
+- what is in a codebase
+- what it is for
+- how its components are organized
+- how AI systems should ingest it

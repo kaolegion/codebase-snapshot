@@ -38,13 +38,15 @@ PROJECT_TREE.txt \
 INDEX.tsv \
 DEPENDENCIES.tsv \
 GRAPH.tsv \
+SEMANTICS.tsv \
 LOG.txt \
 SNAPSHOT_META.json \
 MANIFEST.md \
 AI_INGESTION_GUIDE.md \
 ARCHITECTURE.md \
 DOCUMENTATION.md \
-LANGUAGES.md
+LANGUAGES.md \
+COMPONENTS.md
 do
     if [[ ! -f "$SNAPSHOT_DIR/$file" ]]; then
         echo "[FAIL] missing snapshot file: $file"
@@ -95,6 +97,48 @@ if ! grep -Fq $'GRAPH\tbin/snapshot\tgenerates\tGRAPH.tsv' "$SNAPSHOT_DIR/GRAPH.
 fi
 
 echo "[PASS] graph snapshot generated"
+
+if ! grep -Fq $'SEMANTIC\t'"$ROOT_DIR"$'/bin/snapshot\tcli\tpath:bin' "$SNAPSHOT_DIR/SEMANTICS.tsv"; then
+    echo "[FAIL] semantics snapshot content invalid for CLI"
+    exit 1
+fi
+
+echo "[PASS] semantics snapshot contains CLI entry"
+
+if ! grep -Fq $'SEMANTIC\t'"$ROOT_DIR"$'/core/semantics.sh\tcore\tpath:core' "$SNAPSHOT_DIR/SEMANTICS.tsv"; then
+    echo "[FAIL] semantics snapshot content invalid for core"
+    exit 1
+fi
+
+echo "[PASS] semantics snapshot contains core entry"
+
+if grep -q "snapshots/" "$SNAPSHOT_DIR/SEMANTICS.tsv"; then
+    echo "[FAIL] exclusion rules not applied (snapshots found in semantics)"
+    exit 1
+fi
+
+echo "[PASS] semantics respects exclusion rules"
+
+if ! grep -Fq '# Components Summary' "$SNAPSHOT_DIR/COMPONENTS.md"; then
+    echo "[FAIL] components summary header missing"
+    exit 1
+fi
+
+echo "[PASS] components summary header present"
+
+if ! grep -Fq '### cli' "$SNAPSHOT_DIR/COMPONENTS.md"; then
+    echo "[FAIL] components summary missing cli section"
+    exit 1
+fi
+
+echo "[PASS] components summary contains cli section"
+
+if ! grep -Fq -- "- $ROOT_DIR/bin/snapshot" "$SNAPSHOT_DIR/COMPONENTS.md"; then
+    echo "[FAIL] components summary missing CLI file reference"
+    exit 1
+fi
+
+echo "[PASS] components summary contains CLI file reference"
 
 rm -rf "$SNAPSHOT_DIR"
 

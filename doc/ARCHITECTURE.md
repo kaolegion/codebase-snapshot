@@ -58,18 +58,20 @@ The core layer contains reusable modules implementing the snapshot logic.
 
 Current modules include:
 
-naming.sh  
-utils.sh  
-scanner.sh  
-indexer.sh  
-architecture.sh  
-documentation.sh  
-languages.sh  
-dependencies.sh  
-logger.sh  
-config.sh  
-classifier.sh  
-renderer.sh  
+naming.sh
+utils.sh
+scanner.sh
+indexer.sh
+architecture.sh
+documentation.sh
+languages.sh
+dependencies.sh
+graph.sh
+semantics.sh
+logger.sh
+config.sh
+classifier.sh
+renderer.sh
 
 Each module must remain:
 
@@ -80,29 +82,76 @@ Each module must remain:
 
 Example responsibilities:
 
-scanner.sh  
-→ deterministic file discovery
+scanner.sh
+→ deterministic file discovery with exclusions
 
-indexer.sh  
+indexer.sh
 → generation of INDEX.tsv
 
-architecture.sh  
+architecture.sh
 → repository architecture summary
 
-documentation.sh  
+documentation.sh
 → extraction of documentation metadata
 
-languages.sh  
+languages.sh
 → language and file type detection
 
-dependencies.sh  
+dependencies.sh
 → dependency signal extraction
 
-naming.sh  
+graph.sh
+→ structural relationship mapping
+
+semantics.sh
+→ repository component detection and semantic grouping
+
+naming.sh
 → snapshot naming normalization
 
-utils.sh  
+utils.sh
 → shared helpers
+
+---
+
+## Semantic Layer
+
+Phase 4 adds a semantic interpretation layer on top of file discovery.
+
+This layer moves the system from:
+
+- file listing
+- structural graphing
+
+toward:
+
+- repository component detection
+- module boundary identification
+- component-oriented AI interpretation
+
+Detected component families currently include:
+
+- cli
+- core
+- tests
+- docs
+- examples
+- tools
+- config
+- root
+- unknown
+
+Semantic outputs:
+
+SEMANTICS.tsv
+→ file-to-component mapping with explicit detection rule
+
+COMPONENTS.md
+→ human-readable component summary
+
+This layer is deterministic and rule-based.
+
+No probabilistic inference is used.
 
 ---
 
@@ -116,11 +165,12 @@ The documentation defines the **behavioral contract** of the system.
 
 Important documents include:
 
-GET_STARTED.md  
-ARCHITECTURE.md  
-SNAPSHOT_FORMAT.md  
-CLI.md  
-ROADMAP.md  
+GET_STARTED.md
+ARCHITECTURE.md
+SNAPSHOT_FORMAT.md
+CLI.md
+ROADMAP.md
+TODO.md
 
 Implementation should converge toward these specifications.
 
@@ -139,6 +189,8 @@ They validate:
 - naming rules
 - indexing behavior
 - dependency extraction
+- graph generation
+- semantic component detection
 - CLI behavior
 - deterministic ordering
 
@@ -150,7 +202,7 @@ Tests act as a **contract protecting expected behavior**.
 
 Location:
 
-logs/  
+logs/
 snapshots/
 
 These directories contain generated runtime artifacts.
@@ -171,12 +223,15 @@ A typical snapshot execution follows these steps:
 6. generate PROJECT_TREE.txt
 7. generate INDEX.tsv
 8. extract dependency signals
-9. render architecture summary
-10. generate documentation index
-11. detect language summary
-12. assemble CODEBASE export
-13. generate metadata
-14. write logs
+9. generate structural graph
+10. generate semantic mapping
+11. render architecture summary
+12. generate documentation index
+13. detect language summary
+14. render components summary
+15. assemble CODEBASE export
+16. generate metadata
+17. write logs
 
 ---
 
@@ -185,10 +240,11 @@ A typical snapshot execution follows these steps:
 To ensure reproducibility, the following rules must be respected:
 
 - file discovery must use stable ordering
-- scanning must rely on `find` + `sort`
+- scanning must rely on deterministic sorted outputs
 - naming must be normalized
 - exclusions must be explicit
 - output structure must remain predictable
+- semantic classification must use explicit deterministic rules
 
 Running the snapshot twice on the same repository state must produce identical structural outputs.
 
@@ -201,5 +257,6 @@ The project should not become:
 - a heavy static analysis engine
 - a language-specific parser framework
 - a complex archiving tool
+- a probabilistic black-box repository explainer
 
-Its purpose is to remain a **lightweight deterministic snapshot generator**.
+Its purpose is to remain a **lightweight deterministic snapshot generator** and progressively evolve into a **repository intelligence engine**.
