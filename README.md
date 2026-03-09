@@ -8,6 +8,7 @@ The snapshot explains:
 
 - what is in the repository
 - what it is for
+- how it works internally
 - how it is structured
 - where execution begins
 - how its main modules and subsystems are organized
@@ -16,7 +17,7 @@ The snapshot explains:
 
 # Project Status
 
-Version: **v0.4.0**
+Version: **v0.6.0**
 
 Current capabilities:
 
@@ -28,6 +29,8 @@ Current capabilities:
 - repository purpose inference
 - deterministic repository module modeling
 - deterministic repository subsystem modeling
+- deterministic repository architecture rendering
+- deterministic repository system flow explanation
 - AI-ready snapshot export
 - deterministic test suite
 
@@ -47,7 +50,11 @@ SEMANTICS.tsv
 ENTRYPOINTS.tsv
 MODULES.tsv
 SUBSYSTEMS.tsv
+
+Interpretation artifacts:
+
 PURPOSE.md
+SYSTEM_FLOW.md
 
 Human-readable artifacts:
 
@@ -163,19 +170,26 @@ The inference engine detects:
 - execution profile
 - structural signals supporting the interpretation
 
-Example classifications:
-
-- cli_tool
-- application
-- service
-- library
-- automation_toolkit
-- documentation_repository
-- configuration_repository
-- multi_purpose
-- unknown
-
 The system is deterministic and rule-based.
+
+---
+
+# Repository System Flow Explanation
+
+The explanation layer describes **how the repository operates internally**.
+
+Artifact:
+
+SYSTEM_FLOW.md
+
+This artifact explains:
+
+- the main execution entrypoint
+- the internal repository analysis pipeline
+- interactions between core modules
+- how snapshot artifacts are produced
+
+This helps both humans and AI systems understand the operational behavior of the repository.
 
 ---
 
@@ -210,6 +224,7 @@ Tests validate:
 - entrypoints
 - purpose inference
 - structural modeling
+- system flow explanation
 - CLI behavior
 
 ---
@@ -218,15 +233,11 @@ Tests validate:
 
 Current milestone:
 
-Phase 4.4 — Repository Structural Modeling
-
-Current increment:
-
-Increment 2: SUBSYSTEMS layer
+Phase 4.6 — Repository Explanation Engine
 
 Next milestone:
 
-Phase 4.5 — Structural Rendering Convergence
+Phase 4.7 — Repository Intelligence Expansion
 
 See:
 

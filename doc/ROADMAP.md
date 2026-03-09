@@ -219,6 +219,52 @@ Status: COMPLETE
 
 ---
 
+## Phase 4.6 — Repository Explanation Engine
+
+Goal: explain how the repository operates internally.
+
+Capabilities:
+
+- deterministic repository system flow rendering
+- execution entrypoint explanation
+- internal analysis pipeline explanation
+- module interaction summary
+- artifact generation flow summary
+
+Artifact:
+
+SYSTEM_FLOW.md
+
+Input artifacts:
+
+ENTRYPOINTS.tsv
+MODULES.tsv
+SUBSYSTEMS.tsv
+GRAPH.tsv
+
+Purpose:
+
+Explain how the repository works internally using deterministic repository signals.
+
+Status: COMPLETE
+
+---
+
+## Phase 4.7 — Repository Intelligence Expansion
+
+Goal: deepen deterministic repository understanding beyond static flow explanation.
+
+Potential capabilities:
+
+- richer repository interaction modeling
+- module-to-module flow refinement
+- repository narrative synthesis
+- higher-level intelligence artifacts for humans and AI systems
+
+Status: PLANNED
+
+---
+
 # Phase 5 — AI Context Optimization
 
 Potential capabilities:
@@ -255,6 +301,7 @@ that explains:
 - how components interact
 - where execution begins
 - what the repository is designed to do
+- how the repository operates internally
 
 The goal is to allow both humans and AI systems
 to understand software systems quickly and deterministically.

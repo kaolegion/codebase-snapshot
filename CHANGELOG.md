@@ -4,6 +4,46 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## v0.6.0
+
+### Phase 4.6 — Repository Explanation Engine
+
+Enhancements:
+
+- introduced deterministic repository explanation artifact `SYSTEM_FLOW.md`
+- added a new system flow interpretation layer explaining how repositories operate internally
+- integrated repository execution flow description derived from CLI orchestration and module layout
+- extended AI ingestion ordering to include internal system flow interpretation
+
+Core engine:
+
+- added `core/explanation.sh`
+- implemented deterministic `render_system_flow` engine
+- integrated system flow rendering into the snapshot generation pipeline
+
+Tests:
+
+- added `tests/test_system_flow.sh`
+- validated deterministic generation of `SYSTEM_FLOW.md`
+- validated presence of execution entrypoint and pipeline description
+- integrated system flow validation into the global test suite
+
+CLI integration:
+
+- integrated `SYSTEM_FLOW.md` generation into `bin/snapshot`
+- added system flow generation logging
+- extended AI ingestion guide ordering to include repository flow explanation
+
+Documentation:
+
+- prepared documentation convergence for the repository explanation layer
+- updated snapshot artifact interpretation ordering for AI ingestion
+
+This release introduces the **repository explanation layer**, allowing
+humans and AI systems to understand **how a repository operates internally**.
+
+---
+
 ## v0.5.0
 
 ### Phase 4.5 — Structural Rendering Convergence

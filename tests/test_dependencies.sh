@@ -21,7 +21,7 @@ if ! grep -Fq $'DEPENDENCY\t'"$ROOT_DIR"$'/bin/snapshot\t7\tsource\t$ROOT_DIR/co
     exit 1
 fi
 
-if ! grep -Fq $'DEPENDENCY\t'"$ROOT_DIR"$'/core/architecture.sh\t5\tsource\t$ROOT_DIR/core/scanner.sh' "$output_file"; then
+if ! grep -Fq $'DEPENDENCY\t'"$ROOT_DIR"$'/core/architecture.sh\t5\tsource\t$ROOT_DIR/core/structure.sh' "$output_file"; then
     echo "[FAIL] expected architecture dependency not found"
     exit 1
 fi

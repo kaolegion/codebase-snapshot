@@ -17,6 +17,7 @@ source "$ROOT_DIR/core/semantics.sh"
 source "$ROOT_DIR/core/entrypoints.sh"
 source "$ROOT_DIR/core/purpose.sh"
 source "$ROOT_DIR/core/structure.sh"
+source "$ROOT_DIR/core/explanation.sh"
 
 usage() {
     cat <<'USAGE'
@@ -100,6 +101,7 @@ render_documentation_index "$TARGET" > "$SNAPSHOT_DIR/DOCUMENTATION.md"
 render_languages "$TARGET" > "$SNAPSHOT_DIR/LANGUAGES.md"
 render_components_summary "$TARGET" > "$SNAPSHOT_DIR/COMPONENTS.md"
 detect_repository_purpose "$TARGET" > "$SNAPSHOT_DIR/PURPOSE.md"
+render_system_flow "$TARGET" > "$SNAPSHOT_DIR/SYSTEM_FLOW.md"
 
 FILE_COUNT="$(scan_files "$TARGET" | wc -l | tr -d ' ')"
 
@@ -131,28 +133,30 @@ Recommended reading order:
 
 1. MANIFEST.md
 2. PURPOSE.md
-3. COMPONENTS.md
-4. ARCHITECTURE.md
-5. LANGUAGES.md
-6. DOCUMENTATION.md
-7. ENTRYPOINTS.tsv
-8. MODULES.tsv
-9. SUBSYSTEMS.tsv
-10. SEMANTICS.tsv
-11. GRAPH.tsv
-12. DEPENDENCIES.tsv
-13. PROJECT_TREE.txt
-14. INDEX.tsv
-15. CODEBASE/01_cli.md
-16. CODEBASE/02_core.md
-17. CODEBASE/03_tests.md
-18. CODEBASE/04_docs.md
+3. SYSTEM_FLOW.md
+4. COMPONENTS.md
+5. ARCHITECTURE.md
+6. LANGUAGES.md
+7. DOCUMENTATION.md
+8. ENTRYPOINTS.tsv
+9. MODULES.tsv
+10. SUBSYSTEMS.tsv
+11. SEMANTICS.tsv
+12. GRAPH.tsv
+13. DEPENDENCIES.tsv
+14. PROJECT_TREE.txt
+15. INDEX.tsv
+16. CODEBASE/01_cli.md
+17. CODEBASE/02_core.md
+18. CODEBASE/03_tests.md
+19. CODEBASE/04_docs.md
 
 Important notes:
 
 - The snapshot is deterministic.
 - Exclusion rules are applied during scanning.
 - PURPOSE.md summarizes the probable repository role using deterministic signals.
+- SYSTEM_FLOW.md explains how the repository operates internally.
 - COMPONENTS.md summarizes repository-level semantic components.
 - ENTRYPOINTS.tsv detects deterministic repository execution entrypoints.
 - MODULES.tsv maps the repository to main architectural modules.
@@ -211,6 +215,7 @@ cat > "$SNAPSHOT_DIR/LOG.txt" <<LOG
 [INFO] Subsystem mapping generated
 [INFO] Components summary generated
 [INFO] Purpose summary generated
+[INFO] System flow summary generated
 LOG
 
 cat > "$SNAPSHOT_DIR/SNAPSHOT_META.json" <<META

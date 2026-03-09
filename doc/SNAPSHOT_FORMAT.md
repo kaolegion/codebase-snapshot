@@ -146,6 +146,26 @@ Explains what the repository is for using deterministic structural signals.
 
 ---
 
+## SYSTEM_FLOW.md
+
+Deterministic repository system flow explanation.
+
+Purpose:
+
+Explains **how the repository operates internally**.
+
+The artifact describes:
+
+- the main repository execution entrypoint
+- the internal repository analysis pipeline
+- interactions between modeling and rendering modules
+- how snapshot artifacts are generated
+
+This layer helps humans and AI systems understand repository behavior
+without reading the full source code.
+
+---
+
 # Human-Readable Artifacts
 
 ## ARCHITECTURE.md
@@ -154,7 +174,7 @@ Human-readable architectural view of the repository.
 
 This artifact is **deterministically generated** from:
 
-MODULES.tsv  
+MODULES.tsv
 SUBSYSTEMS.tsv
 
 Rendering rules:
@@ -215,9 +235,9 @@ CODEBASE/
 
 Files:
 
-01_cli.md  
-02_core.md  
-03_tests.md  
+01_cli.md
+02_core.md
+03_tests.md
 04_docs.md
 
 Purpose:
@@ -237,4 +257,3 @@ Execution log describing snapshot generation.
 ## SNAPSHOT_META.json
 
 Structured metadata describing snapshot context and generation parameters.
-
