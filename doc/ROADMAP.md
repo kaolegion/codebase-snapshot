@@ -322,8 +322,85 @@ Artifacts:
 DIFF.tsv
 SNAPSHOT_DIFF.md
 
-Input artifact:
+Status: COMPLETE
 
-INDEX.tsv
+---
+
+# Phase 5 — Repository Evolution Intelligence
+
+Goal: move from isolated snapshot comparison toward persistent repository timeline intelligence.
+
+---
+
+## Phase 5.0 — Snapshot History Engine
+
+Goal: persist snapshots as historical artifacts and expose deterministic snapshot history.
+
+Capabilities:
+
+- deterministic snapshot archive creation
+- snapshot history storage initialization
+- deterministic snapshot ID generation
+- repository-level history index
+- CLI history listing
+- timeline foundation independent of Git
+
+Artifacts:
+
+SNAPSHOT_HISTORY.tsv
+.snapshots/
+
+CLI:
+
+bin/snapshot history
 
 Status: COMPLETE
+
+---
+
+## Phase 5.1 — Repository Timeline
+
+Planned capabilities:
+
+- timeline rendering from archived snapshots
+- chronological repository evolution summary
+- human-readable repository history report
+
+Planned artifact:
+
+REPOSITORY_TIMELINE.md
+
+Status: PLANNED
+
+---
+
+## Phase 5.2 — Evolution Signals
+
+Planned capabilities:
+
+- growth signals
+- dependency expansion signals
+- semantic drift signals
+- architectural change signals
+
+Planned artifact:
+
+EVOLUTION_SIGNALS.tsv
+
+Status: PLANNED
+
+---
+
+## Phase 5.3 — Repository Health Signals
+
+Planned capabilities:
+
+- repository quality indicators
+- documentation and test presence signals over time
+- execution and structure stability signals
+
+Planned artifact:
+
+REPOSITORY_HEALTH.md
+
+Status: PLANNED

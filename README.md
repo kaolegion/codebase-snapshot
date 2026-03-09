@@ -14,13 +14,14 @@ The snapshot explains:
 - how its main modules and subsystems are organized
 - how the repository can be summarized as a compact deterministic DNA profile
 - how a repository evolves between snapshots
+- how repository snapshots can be archived and explored historically
 - how the full repository can be synthesized into one final explanation layer
 
 ---
 
 # Project Status
 
-Version: **v0.9.0**
+Version: **v1.0.0**
 
 Current capabilities:
 
@@ -37,8 +38,30 @@ Current capabilities:
 - deterministic repository DNA synthesis
 - deterministic repository diff intelligence
 - deterministic repository explain synthesis
+- deterministic snapshot history engine
 - AI-ready snapshot export
 - deterministic test suite
+
+---
+
+# CLI
+
+Snapshot generation:
+
+bin/snapshot --target <path> --label <label>
+
+Snapshot comparison:
+
+bin/snapshot diff <snapshotA> <snapshotB>
+
+Snapshot history:
+
+bin/snapshot history
+
+Utility commands:
+
+bin/snapshot --help
+bin/snapshot --version
 
 ---
 
@@ -92,6 +115,31 @@ CODEBASE/
 
 ---
 
+# Snapshot History
+
+Snapshots are archived deterministically inside the repository.
+
+History storage:
+
+.snapshots/
+
+History index:
+
+SNAPSHOT_HISTORY.tsv
+
+The history index records:
+
+- archive timestamp
+- deterministic snapshot ID
+- archived snapshot path
+
+The `bin/snapshot history` command lists this index directly.
+
+This allows the tool to maintain a deterministic **repository timeline foundation**
+independent of Git.
+
+---
+
 # Repository Semantics
 
 The semantic layer classifies repository files using deterministic rules.
@@ -103,52 +151,12 @@ Each file receives four semantic signals:
 - role
 - rule
 
-Components represent high-level repository areas such as:
-
-- cli
-- core
-- tests
-- docs
-- examples
-- tools
-- config
-- root
-- unknown
-
-Groups represent functional subsystems inside components.
-
-Roles describe the operational role of a file such as entrypoint, engine, guide, test, or tool.
-
-Rules indicate the deterministic detection signal used.
-
 Artifacts:
 
 SEMANTICS.tsv
-- machine-readable semantic mapping
-
 COMPONENTS.md
-- human-readable hierarchical component summary
 
----
-
-# Entrypoint Detection
-
-Entrypoints identify where execution begins in a repository.
-
-Artifact:
-
-ENTRYPOINTS.tsv
-
-Detection signals include:
-
-- bin/*
-- cmd/*
-- main.*
-- app.*
-- server.*
-- Makefile
-- docker-compose.yml
-- root shell scripts
+This layer provides explicit file-to-component mapping and human-readable grouping.
 
 ---
 
@@ -159,131 +167,75 @@ The structural modeling layer describes repository topology above individual fil
 Artifacts:
 
 MODULES.tsv
-- deterministic mapping of the repository to main architectural modules
-
 SUBSYSTEMS.tsv
-- deterministic mapping of stable functional subsystems inside those modules
+ARCHITECTURE.md
 
-This layer helps AI systems understand not only repository files, but also the architectural organization of the engine itself.
+This layer helps humans and AI systems understand not only repository files,
+but also the higher-level organization of the engine itself.
 
 ---
 
-# Repository Purpose Inference
+# Repository Cognitive Layers
 
-Purpose inference explains **what the repository is for**.
+The interpretation and synthesis layers provide progressively stronger explanations.
 
-Artifact:
+Artifacts:
 
 PURPOSE.md
-
-The inference engine detects:
-
-- repository classification
-- operational role
-- execution profile
-- structural signals supporting the interpretation
-
-The system is deterministic and rule-based.
-
----
-
-# Repository System Flow Explanation
-
-The explanation layer describes **how the repository operates internally**.
-
-Artifact:
-
 SYSTEM_FLOW.md
-
-This artifact explains:
-
-- the main execution entrypoint
-- the internal repository analysis pipeline
-- interactions between core modules
-- how snapshot artifacts are produced
-
-This helps both humans and AI systems understand the operational behavior of the repository.
-
----
-
-# Repository DNA
-
-The DNA layer provides a compact deterministic identity summary of the repository.
-
-Artifact:
-
 REPOSITORY_DNA.md
+REPOSITORY_EXPLAIN.md
 
-This artifact summarizes:
+These layers explain:
 
-- project type
-- architecture style
-- languages
-- dependency model
-- documentation presence
-- test coverage
-- repository size
-- core components
-- entrypoints
-
-Project type detection is hybrid and deterministic:
-
-- structural directory signals first
-- entrypoint signals as support
-
-This layer acts as a compact identity card for both humans and AI systems.
+- what the repository is for
+- how it operates internally
+- what its compact identity looks like
+- how the whole repository can be summarized coherently
 
 ---
 
-# Repository Diff Intelligence
+# Repository Evolution Intelligence
 
-The diff layer explains **how a repository evolves between two snapshots**.
+The evolution layer explains repository change over time.
 
 Artifacts:
 
 DIFF.tsv
 SNAPSHOT_DIFF.md
+SNAPSHOT_HISTORY.tsv
 
-This layer summarizes:
+This layer currently supports:
 
-- files added
-- files removed
-- files modified
-- high-level repository evolution signals
+- deterministic snapshot-to-snapshot comparison
+- human-readable change summaries
+- persistent archived snapshot history
 
-The comparison is deterministic and based on snapshot artifacts only.
-
----
-
-# Repository Explain Synthesis
-
-The final explanation layer synthesizes the repository into one high-level document.
-
-Artifact:
-
-REPOSITORY_EXPLAIN.md
-
-This artifact explains:
-
-- what the repository is
-- what it is for
-- how it works internally
-- where execution begins
-- how modules and subsystems are organized
-- what snapshot artifacts are generated
-
-This artifact acts as the final repository explanation layer for both humans and AI systems.
+This is the foundation for future repository timeline and evolution signals.
 
 ---
 
-# CLI Usage
+# Deterministic Behavior
 
-Basic usage:
+The project keeps the following principles:
 
-bin/snapshot --target <repository> --label <label>
-bin/snapshot diff <snapshotA> <snapshotB>
+- deterministic behavior
+- shell-first architecture
+- CLI orchestration only
+- modular core engines
+- explicit snapshot artifacts
+- tests as contract
 
-Example:
+Running the tool on the same repository state should produce stable structural outputs.
 
-bin/snapshot --target /opt/project --label initial_analysis
-bin/snapshot diff snapshots/2026-03-09/v0.8.0/01_before snapshots/2026-03-09/v0.9.0/01_after
+---
+
+# Status Summary
+
+codebase-snapshot is now a deterministic repository intelligence engine with:
+
+- structural intelligence
+- semantic intelligence
+- architectural intelligence
+- cognitive intelligence
+- early temporal intelligence

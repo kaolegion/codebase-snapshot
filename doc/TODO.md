@@ -6,46 +6,43 @@ The TODO is aligned with the official roadmap.
 
 ---
 
-# Phase 4.5 — Structural Rendering Convergence
+# Phase 5.1 — Repository Timeline
 
-Extend structural modeling to human-readable architectural outputs.
-
-Tasks:
-
-- render repository modules into ARCHITECTURE.md
-- render subsystem hierarchy into ARCHITECTURE.md
-- align structural modeling with COMPONENTS.md summaries
-- introduce deterministic architecture sections
-- ensure MODULES.tsv and SUBSYSTEMS.tsv are reflected in human-readable documentation
-- prepare structural graph convergence
-
----
-
-# Phase 5 — AI Context Optimization
-
-Optimize snapshot output for AI consumption.
+Extend snapshot history into a human-readable repository timeline.
 
 Tasks:
 
-- token-aware snapshot compression
-- intelligent code chunking
-- semantic prioritization for AI ingestion
-- improved CODEBASE segmentation
-- optimized MANIFEST.md structure
+- render archived history into `REPOSITORY_TIMELINE.md`
+- provide chronological repository evolution summaries
+- expose deterministic timeline generation from `SNAPSHOT_HISTORY.tsv`
+- prepare timeline-aware repository onboarding
 
 ---
 
-# Phase 6 — Visualization Layer
+# Phase 5.2 — Evolution Signals
 
-Expose repository structure through visualization tools.
+Add deterministic evolution signal extraction.
 
-Potential work:
+Tasks:
 
-- graph export formats
-- architecture visualization
-- repository exploration interface
-- component graph rendering
-- timeline of repository evolution
+- detect repository growth signals
+- detect dependency expansion signals
+- detect semantic drift signals
+- detect architecture change signals
+- introduce `EVOLUTION_SIGNALS.tsv`
+
+---
+
+# Phase 5.3 — Repository Health Signals
+
+Strengthen repository quality interpretation over time.
+
+Tasks:
+
+- derive repository health signals from historical snapshots
+- evaluate documentation and test continuity
+- evaluate execution surface stability
+- introduce `REPOSITORY_HEALTH.md`
 
 ---
 
@@ -53,9 +50,9 @@ Potential work:
 
 Future CLI capabilities:
 
-- snapshot list
-- snapshot inspect
-- snapshot diff
+- snapshot timeline
+- snapshot inspect-history
+- snapshot health
 - snapshot doctor
 
 ---

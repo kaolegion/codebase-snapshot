@@ -4,13 +4,17 @@ This document describes the command line interface of **codebase-snapshot**.
 
 ---
 
-# Command
+# Commands
+
+## Snapshot generation
 
 bin/snapshot --target <path> --label <label>
 
----
+Purpose:
 
-# Options
+Generate a deterministic repository snapshot.
+
+Required options:
 
 --target <path>
 Repository root to analyze and snapshot.
@@ -18,25 +22,59 @@ Repository root to analyze and snapshot.
 --label <label>
 Human-readable label used to identify the snapshot.
 
---help
-Display command usage information.
+---
 
---version
-Print the current tool version.
+## Snapshot history
+
+bin/snapshot history
+
+Purpose:
+
+List archived historical snapshots recorded in `SNAPSHOT_HISTORY.tsv`.
+
+Output columns:
+
+TIMESTAMP
+SNAPSHOT_ID
+SNAPSHOT_PATH
+
+---
+
+## Snapshot diff
+
+bin/snapshot diff <snapshotA> <snapshotB>
+
+Purpose:
+
+Compare two snapshot directories and generate deterministic evolution artifacts.
+
+Generated output:
+
+DIFF.tsv
+SNAPSHOT_DIFF.md
+
+---
+
+## Utility commands
+
+bin/snapshot --help
+bin/snapshot --version
 
 ---
 
 # Snapshot Output Location
 
-Snapshots are written to the following structure:
+Main generated snapshots are written to:
 
 snapshots/YYYY-MM-DD/vX.Y.Z/<sequence>_<label>/
 
 Example:
 
-snapshots/2026-03-09/v0.2.2/01_phase_4_purpose/
+snapshots/2026-03-09/v1.0.0/01_initial/
 
-Each snapshot directory contains a deterministic bundle of artifacts describing the repository.
+Archived historical snapshots are written to:
+
+.snapshots/snapshot_YYYYMMDD_HHMMSS/
 
 ---
 
@@ -50,7 +88,13 @@ DEPENDENCIES.tsv
 GRAPH.tsv
 SEMANTICS.tsv
 ENTRYPOINTS.tsv
+MODULES.tsv
+SUBSYSTEMS.tsv
+
 PURPOSE.md
+SYSTEM_FLOW.md
+REPOSITORY_DNA.md
+REPOSITORY_EXPLAIN.md
 
 ARCHITECTURE.md
 DOCUMENTATION.md
@@ -65,30 +109,6 @@ SNAPSHOT_META.json
 
 CODEBASE/
 
-Semantic artifact notes:
-
-- SEMANTICS.tsv provides machine-readable semantic mapping with component, group, role, and rule.
-- COMPONENTS.md provides a human-readable hierarchical summary grouped by component and functional subgroup.
-
----
-
-# CODEBASE Export
-
-The CODEBASE directory contains a structured export of repository source files grouped by function.
-
-Structure:
-
-CODEBASE/
-
-01_cli.md
-02_core.md
-03_tests.md
-04_docs.md
-
-Purpose:
-
-Allows AI systems to ingest repository source code in a structured and predictable way.
-
 ---
 
 # Deterministic Behavior
@@ -99,8 +119,11 @@ Snapshot generation follows strict deterministic rules:
 - explicit exclusion rules
 - normalized naming
 - predictable artifact layout
+- snapshot history index creation
+- stable CLI surface
 
-Running the command twice on the same repository state must produce identical structural outputs.
+Running the command twice on the same repository state must produce identical structural outputs,
+while still generating distinct archived history entries because archive IDs are time-based.
 
 ---
 

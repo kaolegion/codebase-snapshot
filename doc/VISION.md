@@ -20,6 +20,7 @@ The tool answers fundamental questions about a codebase:
 - What is it for?
 - How does it work internally?
 - Where does execution begin?
+- How does it evolve over time?
 
 This benefits both:
 
@@ -38,12 +39,13 @@ a structured knowledge model.
 
 Conceptually:
 
-Repository  
-→ structural signals  
-→ semantic signals  
-→ architectural interpretation  
-→ execution model  
-→ repository explanation  
+Repository
+→ structural signals
+→ semantic signals
+→ architectural interpretation
+→ execution model
+→ repository explanation
+→ repository evolution memory
 
 The result is a **deterministic understanding layer** for software repositories.
 
@@ -62,10 +64,10 @@ Describes the raw structure of the repository.
 
 Artifacts:
 
-PROJECT_TREE.txt  
-INDEX.tsv  
-DEPENDENCIES.tsv  
-GRAPH.tsv  
+PROJECT_TREE.txt
+INDEX.tsv
+DEPENDENCIES.tsv
+GRAPH.tsv
 
 Purpose:
 
@@ -79,9 +81,9 @@ Describes the roles of repository files.
 
 Artifacts:
 
-SEMANTICS.tsv  
-COMPONENTS.md  
-ENTRYPOINTS.tsv  
+SEMANTICS.tsv
+COMPONENTS.md
+ENTRYPOINTS.tsv
 
 Purpose:
 
@@ -95,9 +97,9 @@ Describes the architecture of the repository.
 
 Artifacts:
 
-MODULES.tsv  
-SUBSYSTEMS.tsv  
-ARCHITECTURE.md  
+MODULES.tsv
+SUBSYSTEMS.tsv
+ARCHITECTURE.md
 
 Purpose:
 
@@ -111,9 +113,10 @@ Explains the meaning and operation of the repository.
 
 Artifacts:
 
-PURPOSE.md  
-SYSTEM_FLOW.md  
-REPOSITORY_EXPLAIN.md  
+PURPOSE.md
+SYSTEM_FLOW.md
+REPOSITORY_EXPLAIN.md
+REPOSITORY_DNA.md
 
 Purpose:
 
@@ -123,8 +126,32 @@ Provide deterministic explanations answering:
 - what it is designed to do
 - how it operates internally
 - how its architecture is organized
+- what compact identity signals define it
 
 This layer enables rapid understanding of unfamiliar repositories.
+
+---
+
+## 5. Temporal Intelligence
+
+Explains repository change and continuity across snapshots.
+
+Artifacts:
+
+DIFF.tsv
+SNAPSHOT_DIFF.md
+SNAPSHOT_HISTORY.tsv
+.snapshots/
+
+Purpose:
+
+Provide deterministic repository memory through:
+
+- snapshot-to-snapshot comparison
+- archived historical snapshots
+- persistent repository timeline foundations
+
+This layer is the first step toward timeline-aware repository intelligence.
 
 ---
 
@@ -143,9 +170,10 @@ Recommended onboarding reading order:
 2. REPOSITORY_EXPLAIN.md
 3. PURPOSE.md
 4. ARCHITECTURE.md
-5. MODULES.tsv
-6. SUBSYSTEMS.tsv
-7. COMPONENTS.md
+5. REPOSITORY_DNA.md
+6. MODULES.tsv
+7. SUBSYSTEMS.tsv
+8. COMPONENTS.md
 
 This allows a developer to understand a repository in minutes instead of hours.
 
@@ -163,14 +191,15 @@ Recommended AI ingestion order:
 2. REPOSITORY_EXPLAIN.md
 3. PURPOSE.md
 4. SYSTEM_FLOW.md
-5. SEMANTICS.tsv
-6. MODULES.tsv
-7. SUBSYSTEMS.tsv
-8. GRAPH.tsv
-9. CODEBASE/
+5. REPOSITORY_DNA.md
+6. SEMANTICS.tsv
+7. MODULES.tsv
+8. SUBSYSTEMS.tsv
+9. GRAPH.tsv
+10. CODEBASE/
 
 This approach allows AI systems to understand the structure,
-purpose, and behavior of a repository before analyzing its implementation.
+purpose, behavior, and compact identity of a repository before analyzing its implementation.
 
 The long-term goal is to enable **AI systems to reason about repositories
 using structured knowledge rather than raw code alone**.
@@ -184,8 +213,8 @@ may become an **explain-first workflow**.
 
 Concept:
 
-git clone <repo>  
-snapshot explain  
+git clone <repo>
+snapshot explain
 
 The tool produces a deterministic explanation package describing:
 
@@ -201,57 +230,78 @@ an unfamiliar repository **before reading its source code**.
 
 ---
 
+# Timeline-Aware Repositories
+
+As temporal intelligence matures, repository exploration can become timeline-aware.
+
+Concept:
+
+snapshot history
+snapshot diff <snapshotA> <snapshotB>
+snapshot timeline
+
+The tool progressively evolves from a snapshot generator into
+a deterministic repository memory engine.
+
+This enables:
+
+- repository change tracking without Git dependency
+- longitudinal architecture interpretation
+- AI repository memory across archived states
+
+---
+
 # Near-Term Roadmap
 
 Features expected in the next development phases.
 
 ---
 
-## Repository Summary
+## Repository Timeline
 
 Artifact:
 
-SUMMARY.md
+REPOSITORY_TIMELINE.md
 
 Purpose:
 
-Provide a short high-level repository overview summarizing:
-
-- repository type
-- architecture style
-- primary language
-- execution model
-- key modules
-
-This artifact will help AI systems and developers
-quickly understand the repository context.
+Provide a chronological human-readable report describing repository history
+from archived snapshots.
 
 ---
 
-## Module Interaction Graph
+## Evolution Signals
 
 Artifact:
 
-MODULE_GRAPH.tsv
+EVOLUTION_SIGNALS.tsv
 
 Purpose:
 
-Describe relationships between repository modules.
+Capture deterministic signals such as:
 
-Example:
-
-cli → modeling  
-modeling → rendering  
-rendering → artifacts  
-
-This graph represents the high-level operational flow
-of the repository.
+- growth
+- dependency expansion
+- semantic drift
+- architecture change
 
 ---
 
 # Mid-Term Evolution
 
 Capabilities that strengthen repository understanding.
+
+---
+
+## Repository Health
+
+Artifact:
+
+REPOSITORY_HEALTH.md
+
+Purpose:
+
+Evaluate repository stability and quality signals over time.
 
 ---
 
@@ -275,30 +325,6 @@ This acts as a **repository health report**.
 
 ---
 
-## Repository Diff
-
-Command:
-
-snapshot diff
-
-Purpose:
-
-Compare two snapshots and explain repository evolution:
-
-- new components
-- removed files
-- dependency changes
-- entrypoint changes
-- architecture evolution
-
-Useful for:
-
-- code reviews
-- architecture monitoring
-- AI-assisted development workflows
-
----
-
 # Long-Term Concepts
 
 Ideas that extend repository intelligence further.
@@ -306,72 +332,16 @@ Ideas that extend repository intelligence further.
 These remain experimental and will only be implemented
 when the deterministic repository model becomes sufficiently mature.
 
-## Repository DNA
-
-Artifact:
-
-REPOSITORY_DNA.md
+## Repository Memory
 
 Purpose:
 
-Describe the structural identity of a repository.
+Allow AI systems and humans to navigate a repository not only
+as a static structure, but as an evolving knowledge space.
 
-Possible signals:
+Possible directions:
 
-- repository type
-- architecture style
-- execution model
-- subsystem count
-- complexity profile
-
----
-
-## Repository Knowledge Graph
-
-In the long term, repository artifacts may form a **knowledge graph**
-representing software systems.
-
-This graph could power:
-
-- repository reasoning
-- architecture visualization
-- AI-assisted navigation
-- cognitive development environments.
-
----
-
-# Integration with KaoBox Brain
-
-codebase-snapshot is designed to integrate naturally with the KaoBox ecosystem.
-
-Within KaoBox Brain, snapshots can act as a **perception layer**
-that converts repositories into structured cognitive knowledge.
-
-Pipeline concept:
-
-repository  
-→ codebase-snapshot  
-→ repository intelligence artifacts  
-→ KaoBox Brain knowledge graph  
-→ cognitive tooling and agents
-
-This integration allows KaoBox to reason about software systems
-using structured repository knowledge rather than raw code alone.
-
----
-
-# Long-Term Direction
-
-The long-term ambition of codebase-snapshot is to become a
-**universal repository understanding engine**.
-
-The project aims to allow humans and AI systems to:
-
-- understand unfamiliar repositories quickly
-- reason about repository architecture
-- explore complex codebases deterministically
-- ingest software systems into cognitive environments
-
-The ultimate goal is to make repository understanding
-**fast, deterministic, and reproducible**.
-
+- archive browsing
+- timeline synthesis
+- history-aware AI ingestion
+- repository drift interpretation
