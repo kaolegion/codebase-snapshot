@@ -1,112 +1,129 @@
-# Roadmap
+# Codebase Snapshot — Roadmap
 
-This document describes the development roadmap of the **codebase-snapshot** project.
-
-The goal of the project is to transform software repositories into deterministic, AI-ready snapshots.
+This roadmap describes the progressive evolution of **codebase-snapshot**
+as a repository intelligence tool designed for AI interpretation.
 
 ---
 
-# Current Status
+# Phase 1 — Foundation
 
-Version: 0.2.0
+Goal: build a deterministic repository snapshot engine.
 
-The snapshot engine is operational and capable of producing structured repository snapshots.
+Delivered:
 
-Implemented capabilities:
+- repository scanner
+- exclusion rules
+- deterministic file listing
+- snapshot directory structure
+- CLI interface
+- INDEX.tsv generation
+- PROJECT_TREE.txt generation
+- CODEBASE export
 
-- deterministic repository scanning
-- exclusion engine
-- project tree generation
-- deterministic index generation
-- dependency discovery
-- architecture summary generation
-- documentation index generation
-- language summary generation
+Status: COMPLETE
+
+---
+
+# Phase 2 — Repository Interpretation
+
+Goal: provide semantic signals for understanding repositories.
+
+Delivered:
+
+- architecture analysis
+- documentation indexing
+- language detection
 - AI ingestion guide
-- structured CODEBASE export
-- automated tests
 
-Snapshot artifacts currently produced:
+Artifacts added:
 
-PROJECT_TREE.txt  
-INDEX.tsv  
-DEPENDENCIES.tsv  
-MANIFEST.md  
-AI_INGESTION_GUIDE.md  
-ARCHITECTURE.md  
-DOCUMENTATION.md  
-LANGUAGES.md  
-LOG.txt  
-SNAPSHOT_META.json  
-CODEBASE/
+- ARCHITECTURE.md
+- DOCUMENTATION.md
+- LANGUAGES.md
+- AI_INGESTION_GUIDE.md
 
-All current tests pass.
+Status: COMPLETE
 
 ---
 
-# Phase 3 — Snapshot Intelligence
+# Phase 3 — Repository Intelligence
 
-Goal: improve repository understanding.
-
-## Phase 3.1 — Dependency Mapping (DONE)
-
-Implemented:
-
-- dependency extraction engine
-- generation of DEPENDENCIES.tsv
-- detection of source / import / require / include signals
-- test coverage for dependency extraction
-
-## Next Steps (Phase 3.x)
-
-Planned improvements:
-
-- richer architecture analysis
-- entrypoint detection
-- important module detection
-- repository metadata summary
+Goal: expose structural relationships in repositories.
 
 ---
 
-# Phase 4 — Snapshot Tooling
+## Phase 3.1 — Dependency Mapping
 
-Improve the CLI capabilities.
+Capabilities:
 
-Planned features:
+- dependency extraction from source files
+- support for shell, Python, JS, PHP dependency signals
+- deterministic dependency output
 
-- snapshot list
-- snapshot inspect
-- snapshot diff
-- snapshot doctor
+Artifact:
 
-These commands will allow users to navigate and compare snapshots.
+DEPENDENCIES.tsv
+
+Status: COMPLETE
 
 ---
 
-# Phase 5 — Configuration System
+## Phase 3.2 — Structural Graph Engine
 
-Allow repository-specific configuration.
+Capabilities:
 
-Planned features:
+- repository relationship graph
+- file role detection
+- directory containment mapping
+- dependency graph integration
+- artifact generation relationships
 
-- project configuration file (.codebase-snapshot.env)
-- customizable exclusion rules
-- configurable output directory
+Artifact:
+
+GRAPH.tsv
+
+Purpose:
+
+Provide a structural relationship map allowing AI systems
+to understand repository topology and component roles.
+
+Status: COMPLETE
+
+---
+
+# Future Phases
+
+## Phase 4 — Repository Semantics
+
+Potential capabilities:
+
+- module grouping
+- component boundaries
+- repository purpose inference
+
+---
+
+## Phase 5 — AI Context Optimization
+
+Potential capabilities:
+
+- token-aware compression
+- intelligent code chunking
+- semantic prioritization
+
+---
+
+## Phase 6 — Visualization Layer
+
+Potential capabilities:
+
+- graph export
+- architecture visualization
+- repository exploration tools
 
 ---
 
 # Long-Term Vision
 
-The long-term objective is to build a deterministic repository understanding layer usable by:
-
-- AI assistants
-- automated documentation tools
-- code analysis systems
-- development workflows
-
-The tool must remain:
-
-- deterministic
-- portable
-- shell-first
-- dependency-light
+codebase-snapshot aims to become a **repository intelligence engine**
+that explains not only what is in a codebase, but how it works.

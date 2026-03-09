@@ -37,6 +37,7 @@ for file in \
 PROJECT_TREE.txt \
 INDEX.tsv \
 DEPENDENCIES.tsv \
+GRAPH.tsv \
 LOG.txt \
 SNAPSHOT_META.json \
 MANIFEST.md \
@@ -87,6 +88,13 @@ if ! grep -Fq $'DEPENDENCY\t'"$ROOT_DIR"$'/bin/snapshot' "$SNAPSHOT_DIR/DEPENDEN
 fi
 
 echo "[PASS] dependencies snapshot generated"
+
+if ! grep -Fq $'GRAPH\tbin/snapshot\tgenerates\tGRAPH.tsv' "$SNAPSHOT_DIR/GRAPH.tsv"; then
+    echo "[FAIL] graph snapshot content invalid"
+    exit 1
+fi
+
+echo "[PASS] graph snapshot generated"
 
 rm -rf "$SNAPSHOT_DIR"
 

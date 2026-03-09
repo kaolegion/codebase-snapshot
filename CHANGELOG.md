@@ -2,90 +2,87 @@
 
 All notable changes to this project will be documented in this file.
 
-The format loosely follows the Keep a Changelog style.
+The format loosely follows Keep a Changelog principles.
 
 ---
 
-## v0.2.0 — Snapshot Intelligence Foundation
+# v0.2.1 (unreleased)
 
-Release date: 2026-03-08
+## Added
 
-Major milestone: snapshot engine operational.
+### Graph Engine (Phase 3.2)
 
-### Added
+A new structural graph module has been introduced.
 
-- deterministic snapshot generation
-- exclusion engine
-- architecture summary generation
-- documentation index generation
-- language summary generation
-- dependency extraction engine
-- AI ingestion guide
-- structured CODEBASE export
+New artifact:
 
-### Snapshot Artifacts
+GRAPH.tsv
 
-Snapshots now include:
+This artifact describes structural relationships in the repository using a deterministic graph format.
 
-PROJECT_TREE.txt  
-INDEX.tsv  
-DEPENDENCIES.tsv  
-MANIFEST.md  
-AI_INGESTION_GUIDE.md  
+Format:
+
+GRAPH <source> <relation> <target>
+
+Example relations:
+
+- directory containment
+- file roles
+- dependency relations
+- generated snapshot artifacts
+
+Example entries:
+
+GRAPH bin contains bin/snapshot  
+GRAPH bin/snapshot role cli_entrypoint  
+GRAPH bin/snapshot depends_on core/naming.sh  
+GRAPH bin/snapshot generates GRAPH.tsv  
+
+Purpose:
+
+Enable AI systems to better understand repository topology and component responsibilities.
+
+---
+
+## Internal
+
+- Added `core/graph.sh`
+- Integrated graph generation into snapshot pipeline
+- Added `tests/test_graph.sh`
+- Extended CLI tests to validate GRAPH.tsv generation
+- Updated snapshot ingestion guide
+- Updated documentation and roadmap
+
+---
+
+# v0.2.0
+
+Snapshot intelligence foundation.
+
+Features introduced:
+
+- architecture analysis
+- documentation indexing
+- language detection
+- dependency extraction
+
+Artifacts added:
+
 ARCHITECTURE.md  
 DOCUMENTATION.md  
 LANGUAGES.md  
-LOG.txt  
-SNAPSHOT_META.json  
-
-CODEBASE/
-
-Structure:
-
-CODEBASE/
-  01_cli.md
-  02_core.md
-  03_tests.md
-  04_docs.md
-
-### Core Modules
-
-The following core modules were implemented:
-
-naming.sh  
-scanner.sh  
-indexer.sh  
-classifier.sh  
-renderer.sh  
-logger.sh  
-utils.sh  
-config.sh  
-architecture.sh  
-documentation.sh  
-languages.sh  
-dependencies.sh  
-
-### Testing
-
-Automated tests implemented:
-
-tests/run_all.sh  
-tests/test_naming.sh  
-tests/test_indexer.sh  
-tests/test_dependencies.sh  
-tests/test_cli.sh  
-
-All tests passing.
+DEPENDENCIES.tsv  
 
 ---
 
-## v0.1.0 — Initial Snapshot Engine
+# v0.1.0
 
-Initial project bootstrap.
+Initial working snapshot engine.
 
-Implemented:
+Core capabilities:
 
-- repository structure
-- CLI skeleton
-- core module layout
-- initial snapshot generation
+- repository scanning
+- exclusion rules
+- deterministic snapshot generation
+- file indexing
+- codebase export

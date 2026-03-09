@@ -12,6 +12,7 @@ source "$ROOT_DIR/core/architecture.sh"
 source "$ROOT_DIR/core/documentation.sh"
 source "$ROOT_DIR/core/languages.sh"
 source "$ROOT_DIR/core/dependencies.sh"
+source "$ROOT_DIR/core/graph.sh"
 
 usage() {
     cat <<'USAGE'
@@ -84,6 +85,7 @@ mkdir -p "$CODEBASE_DIR"
 scan_files "$TARGET" > "$SNAPSHOT_DIR/PROJECT_TREE.txt"
 generate_index "$TARGET" > "$SNAPSHOT_DIR/INDEX.tsv"
 generate_dependencies "$TARGET" > "$SNAPSHOT_DIR/DEPENDENCIES.tsv"
+generate_graph "$TARGET" > "$SNAPSHOT_DIR/GRAPH.tsv"
 
 render_architecture "$TARGET" > "$SNAPSHOT_DIR/ARCHITECTURE.md"
 render_documentation_index "$TARGET" > "$SNAPSHOT_DIR/DOCUMENTATION.md"
@@ -121,13 +123,14 @@ Recommended reading order:
 2. ARCHITECTURE.md
 3. LANGUAGES.md
 4. DOCUMENTATION.md
-5. DEPENDENCIES.tsv
-6. PROJECT_TREE.txt
-7. INDEX.tsv
-8. CODEBASE/01_cli.md
-9. CODEBASE/02_core.md
-10. CODEBASE/03_tests.md
-11. CODEBASE/04_docs.md
+5. GRAPH.tsv
+6. DEPENDENCIES.tsv
+7. PROJECT_TREE.txt
+8. INDEX.tsv
+9. CODEBASE/01_cli.md
+10. CODEBASE/02_core.md
+11. CODEBASE/03_tests.md
+12. CODEBASE/04_docs.md
 
 Important notes:
 
@@ -135,6 +138,7 @@ Important notes:
 - Exclusion rules are applied during scanning.
 - LANGUAGES.md summarizes detected file types.
 - DOCUMENTATION.md lists project markdown documentation.
+- GRAPH.tsv provides structural repository relationships.
 - DEPENDENCIES.tsv extracts dependency signals from source files.
 - ARCHITECTURE.md summarizes repository structure.
 - CODEBASE/ groups source files for ingestion.
@@ -178,6 +182,7 @@ cat > "$SNAPSHOT_DIR/LOG.txt" <<LOG
 [INFO] Documentation index generated
 [INFO] Language summary generated
 [INFO] Dependency mapping generated
+[INFO] Graph mapping generated
 LOG
 
 cat > "$SNAPSHOT_DIR/SNAPSHOT_META.json" <<META
