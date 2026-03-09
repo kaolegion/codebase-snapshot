@@ -58,22 +58,23 @@ The core layer contains reusable modules implementing the snapshot logic.
 
 Current modules include:
 
-architecture.sh
-classifier.sh
-config.sh
-dependencies.sh
-documentation.sh
-entrypoints.sh
-graph.sh
-indexer.sh
-languages.sh
-logger.sh
-naming.sh
-purpose.sh
-renderer.sh
-scanner.sh
-semantics.sh
-utils.sh
+architecture.sh  
+classifier.sh  
+config.sh  
+dependencies.sh  
+documentation.sh  
+entrypoints.sh  
+graph.sh  
+indexer.sh  
+languages.sh  
+logger.sh  
+naming.sh  
+purpose.sh  
+renderer.sh  
+scanner.sh  
+semantics.sh  
+structure.sh  
+utils.sh  
 
 Each module must remain:
 
@@ -84,52 +85,55 @@ Each module must remain:
 
 Example responsibilities:
 
-scanner.sh
+scanner.sh  
 → deterministic file discovery with exclusions
 
-indexer.sh
+indexer.sh  
 → generation of INDEX.tsv
 
-classifier.sh
+classifier.sh  
 → file categorization
 
-architecture.sh
+architecture.sh  
 → repository architecture summary
 
-documentation.sh
+documentation.sh  
 → extraction of documentation metadata
 
-languages.sh
+languages.sh  
 → language and file type detection
 
-dependencies.sh
+dependencies.sh  
 → dependency signal extraction
 
-graph.sh
+graph.sh  
 → structural relationship mapping
 
-semantics.sh
+semantics.sh  
 → repository component detection and semantic grouping
 
-entrypoints.sh
+entrypoints.sh  
 → deterministic repository entrypoint detection
 
-purpose.sh
+purpose.sh  
 → deterministic repository purpose inference
 
-renderer.sh
+structure.sh  
+→ repository structural modeling (modules and subsystems)
+
+renderer.sh  
 → snapshot artifact generation
 
-naming.sh
+naming.sh  
 → snapshot naming normalization
 
-config.sh
+config.sh  
 → environment and configuration handling
 
-utils.sh
+utils.sh  
 → shared helpers
 
-logger.sh
+logger.sh  
 → structured logging
 
 ---
@@ -163,15 +167,48 @@ Detected component families currently include:
 
 Semantic outputs:
 
-SEMANTICS.tsv
+SEMANTICS.tsv  
 → file-to-component mapping with explicit detection rules
 
-COMPONENTS.md
+COMPONENTS.md  
 → human-readable component summary
 
 This layer is deterministic and rule-based.
 
 No probabilistic inference is used.
+
+---
+
+## Structural Modeling Layer
+
+Phase 4.4 introduces deterministic **repository topology modeling**.
+
+This layer describes the architectural organization of the repository itself.
+
+Artifacts:
+
+MODULES.tsv  
+→ maps the repository to its main architectural modules
+
+SUBSYSTEMS.tsv  
+→ maps stable functional subsystems inside those modules
+
+Purpose:
+
+Allow AI systems to understand the repository architecture without reading the entire codebase.
+
+Example topology:
+
+repository  
+→ modules  
+→ subsystems  
+→ files
+
+This structural modeling layer builds on top of the semantic layer and provides a higher-level architectural interpretation of the repository.
+
+The modeling logic is implemented in:
+
+core/structure.sh
 
 ---
 
@@ -230,12 +267,12 @@ The documentation defines the **behavioral contract** of the system.
 
 Important documents include:
 
-GET_STARTED.md
-ARCHITECTURE.md
-SNAPSHOT_FORMAT.md
-CLI.md
-ROADMAP.md
-TODO.md
+GET_STARTED.md  
+ARCHITECTURE.md  
+SNAPSHOT_FORMAT.md  
+CLI.md  
+ROADMAP.md  
+TODO.md  
 
 Implementation should converge toward these specifications.
 
@@ -258,42 +295,4 @@ They validate:
 - semantic component detection
 - entrypoint detection
 - purpose inference
-- CLI behavior
-- deterministic ordering
-
-Tests act as a **contract protecting expected behavior**.
-
----
-
-## Runtime Outputs
-
-Location:
-
-logs/
-snapshots/
-
-These directories contain generated runtime artifacts.
-
-They must remain separate from implementation code.
-
----
-
-# Execution Flow
-
-A typical snapshot execution follows these steps:
-
-1. read tool version
-2. validate target repository
-3. normalize snapshot label
-4. compute snapshot output path
-5. scan repository deterministically
-6. generate PROJECT_TREE.txt
-7. generate INDEX.tsv
-8. generate DEPENDENCIES.tsv
-9. generate GRAPH.tsv
-10. generate SEMANTICS.tsv
-11. generate ENTRYPOINTS.tsv
-12. generate PURPOSE.md
-13. generate human-readable summaries
-14. generate metadata and ingestion guidance
-15. export grouped CODEBASE files
+- structural modeling

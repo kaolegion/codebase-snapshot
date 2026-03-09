@@ -37,10 +37,10 @@ Delivered:
 
 Artifacts added:
 
-ARCHITECTURE.md
-DOCUMENTATION.md
-LANGUAGES.md
-AI_INGESTION_GUIDE.md
+ARCHITECTURE.md  
+DOCUMENTATION.md  
+LANGUAGES.md  
+AI_INGESTION_GUIDE.md  
 
 Status: COMPLETE
 
@@ -108,20 +108,20 @@ Delivered:
 
 Artifacts added:
 
-SEMANTICS.tsv
-COMPONENTS.md
+SEMANTICS.tsv  
+COMPONENTS.md  
 
 Detected components:
 
-cli
-core
-tests
-docs
-examples
-tools
-config
-root
-unknown
+cli  
+core  
+tests  
+docs  
+examples  
+tools  
+config  
+root  
+unknown  
 
 Status: COMPLETE
 
@@ -172,15 +172,57 @@ Status: COMPLETE
 
 ## Phase 4.3 — Component Grouping Refinement
 
-Potential capabilities:
+Delivered:
 
-- stronger grouping conventions
-- better root artifact categorization
-- repository family heuristics
-- richer component summaries
-- tighter semantic boundary refinement
+- deterministic semantic grouping
+- component → group hierarchy
+- role classification
+- rule-based semantic detection improvements
 
-Status: PLANNED
+Artifacts:
+
+SEMANTICS.tsv  
+COMPONENTS.md  
+
+Status: COMPLETE
+
+---
+
+## Phase 4.4 — Repository Structural Modeling
+
+Goal: model the architectural topology of the repository.
+
+---
+
+### Increment 1 — MODULES Layer
+
+Capabilities:
+
+- deterministic repository module modeling
+- stable architectural zones detection
+- repository-level architecture interpretation
+
+Artifact:
+
+MODULES.tsv
+
+Status: COMPLETE
+
+---
+
+### Increment 2 — SUBSYSTEMS Layer
+
+Capabilities:
+
+- deterministic subsystem modeling inside modules
+- stable functional subsystem mapping
+- deeper architectural interpretation for AI systems
+
+Artifact:
+
+SUBSYSTEMS.tsv
+
+Status: COMPLETE
 
 ---
 

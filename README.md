@@ -10,12 +10,13 @@ The snapshot explains:
 - what it is for
 - how it is structured
 - where execution begins
+- how its main modules and subsystems are organized
 
 ---
 
 # Project Status
 
-Version: **0.2.2**
+Version: **v0.4.0**
 
 Current capabilities:
 
@@ -25,6 +26,8 @@ Current capabilities:
 - semantic component detection
 - repository entrypoint detection
 - repository purpose inference
+- deterministic repository module modeling
+- deterministic repository subsystem modeling
 - AI-ready snapshot export
 - deterministic test suite
 
@@ -36,30 +39,32 @@ Each snapshot produces a structured bundle describing the repository.
 
 Core artifacts:
 
-PROJECT_TREE.txt  
-INDEX.tsv  
-DEPENDENCIES.tsv  
-GRAPH.tsv  
-SEMANTICS.tsv  
-ENTRYPOINTS.tsv  
-PURPOSE.md  
+PROJECT_TREE.txt
+INDEX.tsv
+DEPENDENCIES.tsv
+GRAPH.tsv
+SEMANTICS.tsv
+ENTRYPOINTS.tsv
+MODULES.tsv
+SUBSYSTEMS.tsv
+PURPOSE.md
 
 Human-readable artifacts:
 
-ARCHITECTURE.md  
-DOCUMENTATION.md  
-LANGUAGES.md  
-COMPONENTS.md  
+ARCHITECTURE.md
+DOCUMENTATION.md
+LANGUAGES.md
+COMPONENTS.md
 
 Context artifacts:
 
-MANIFEST.md  
-AI_INGESTION_GUIDE.md  
+MANIFEST.md
+AI_INGESTION_GUIDE.md
 
 Runtime artifacts:
 
-LOG.txt  
-SNAPSHOT_META.json  
+LOG.txt
+SNAPSHOT_META.json
 
 Structured code export:
 
@@ -127,6 +132,22 @@ Detection signals include:
 
 ---
 
+# Repository Structural Modeling
+
+The structural modeling layer describes repository topology above individual file semantics.
+
+Artifacts:
+
+MODULES.tsv
+- deterministic mapping of the repository to main architectural modules
+
+SUBSYSTEMS.tsv
+- deterministic mapping of stable functional subsystems inside those modules
+
+This layer helps AI systems understand not only repository files, but also the architectural organization of the engine itself.
+
+---
+
 # Repository Purpose Inference
 
 Purpose inference explains **what the repository is for**.
@@ -188,6 +209,7 @@ Tests validate:
 - semantics
 - entrypoints
 - purpose inference
+- structural modeling
 - CLI behavior
 
 ---
@@ -196,11 +218,15 @@ Tests validate:
 
 Current milestone:
 
-Phase 4.2 — Repository Purpose Inference
+Phase 4.4 — Repository Structural Modeling
+
+Current increment:
+
+Increment 2: SUBSYSTEMS layer
 
 Next milestone:
 
-Phase 4.3 — Component Grouping Refinement
+Phase 4.5 — Structural Rendering Convergence
 
 See:
 

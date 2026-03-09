@@ -137,6 +137,28 @@ This artifact is the first structural topology layer above file semantics and he
 
 ---
 
+## SUBSYSTEMS.tsv
+
+Deterministic repository subsystem mapping.
+
+Format:
+
+SUBSYSTEM <module> <subsystem> <path> <scope> <role> <description> <rule>
+
+Examples:
+
+SUBSYSTEM cli snapshot-command bin/snapshot file command orchestration orchestrates snapshot generation path:bin/snapshot
+SUBSYSTEM modeling dependency-analysis core/dependencies.sh file dependency extraction extracts deterministic dependency signals path:core/dependencies.sh
+SUBSYSTEM rendering artifact-rendering core/renderer.sh file snapshot artifact rendering produces human-readable and export artifacts path:core/renderer.sh
+
+Purpose:
+
+Maps stable functional subsystems inside repository modules using deterministic rules.
+
+This artifact is the second structural topology layer above file semantics and helps AI systems understand the internal functional organization of the repository engine.
+
+---
+
 ## PURPOSE.md
 
 Deterministic repository purpose summary.

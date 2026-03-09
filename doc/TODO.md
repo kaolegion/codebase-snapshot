@@ -6,18 +6,18 @@ The TODO is aligned with the official roadmap.
 
 ---
 
-# Phase 4.3 — Component Grouping Refinement
+# Phase 4.5 — Structural Rendering Convergence
 
-Improve the semantic component layer after repository purpose inference.
+Extend structural modeling to human-readable architectural outputs.
 
 Tasks:
 
-- refine component grouping rules
-- improve root artifact classification
-- enrich component summaries
-- strengthen repository boundary detection
-- prepare component graph evolution
-- tighten repository family heuristics
+- render repository modules into ARCHITECTURE.md
+- render subsystem hierarchy into ARCHITECTURE.md
+- align structural modeling with COMPONENTS.md summaries
+- introduce deterministic architecture sections
+- ensure MODULES.tsv and SUBSYSTEMS.tsv are reflected in human-readable documentation
+- prepare structural graph convergence
 
 ---
 

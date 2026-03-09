@@ -8,6 +8,8 @@ All notable changes to this project will be documented in this file.
 
 ### Phase 4.4 — Repository Structural Modeling
 
+#### Increment 1 — MODULES layer
+
 Enhancements:
 
 - introduced the first repository topology layer with MODULES.tsv
@@ -31,8 +33,38 @@ Documentation:
 
 - updated SNAPSHOT_FORMAT specification for MODULES.tsv
 
+#### Increment 2 — SUBSYSTEMS layer
+
+Enhancements:
+
+- introduced SUBSYSTEMS.tsv as the second repository topology layer
+- added deterministic subsystem mapping inside repository modules
+- modeled stable functional subsystems for cli, modeling, rendering, and infrastructure
+- extended AI ingestion ordering to include structural subsystem interpretation
+
+Core engine:
+
+- extended core/structure.sh with subsystem generation logic
+- added deterministic list_repository_subsystems
+- added deterministic generate_subsystems
+- integrated SUBSYSTEMS.tsv generation into the main snapshot pipeline
+
+Tests:
+
+- extended tests/test_structure.sh with subsystem validation
+- validated deterministic subsystem line count
+- validated SUBSYSTEMS.tsv generation through CLI snapshots
+
+Documentation:
+
+- updated README project status and artifact list
+- prepared structural documentation convergence for subsystem modeling
+
 This release moves codebase-snapshot from file semantics toward repository topology modeling
-and establishes the first structural architecture layer for AI-oriented repository interpretation.
+and establishes a two-layer structural architecture for AI-oriented repository interpretation:
+
+- MODULES.tsv
+- SUBSYSTEMS.tsv
 
 ---
 

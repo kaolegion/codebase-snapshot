@@ -93,6 +93,7 @@ generate_graph "$TARGET" > "$SNAPSHOT_DIR/GRAPH.tsv"
 generate_semantics "$TARGET" > "$SNAPSHOT_DIR/SEMANTICS.tsv"
 generate_entrypoints "$TARGET" > "$SNAPSHOT_DIR/ENTRYPOINTS.tsv"
 generate_modules "$TARGET" > "$SNAPSHOT_DIR/MODULES.tsv"
+generate_subsystems "$TARGET" > "$SNAPSHOT_DIR/SUBSYSTEMS.tsv"
 
 render_architecture "$TARGET" > "$SNAPSHOT_DIR/ARCHITECTURE.md"
 render_documentation_index "$TARGET" > "$SNAPSHOT_DIR/DOCUMENTATION.md"
@@ -135,15 +136,17 @@ Recommended reading order:
 5. LANGUAGES.md
 6. DOCUMENTATION.md
 7. ENTRYPOINTS.tsv
-8. SEMANTICS.tsv
-9. GRAPH.tsv
-10. DEPENDENCIES.tsv
-11. PROJECT_TREE.txt
-12. INDEX.tsv
-13. CODEBASE/01_cli.md
-14. CODEBASE/02_core.md
-15. CODEBASE/03_tests.md
-16. CODEBASE/04_docs.md
+8. MODULES.tsv
+9. SUBSYSTEMS.tsv
+10. SEMANTICS.tsv
+11. GRAPH.tsv
+12. DEPENDENCIES.tsv
+13. PROJECT_TREE.txt
+14. INDEX.tsv
+15. CODEBASE/01_cli.md
+16. CODEBASE/02_core.md
+17. CODEBASE/03_tests.md
+18. CODEBASE/04_docs.md
 
 Important notes:
 
@@ -152,6 +155,8 @@ Important notes:
 - PURPOSE.md summarizes the probable repository role using deterministic signals.
 - COMPONENTS.md summarizes repository-level semantic components.
 - ENTRYPOINTS.tsv detects deterministic repository execution entrypoints.
+- MODULES.tsv maps the repository to main architectural modules.
+- SUBSYSTEMS.tsv maps stable functional subsystems inside repository modules.
 - SEMANTICS.tsv maps files to repository components and detection rules.
 - LANGUAGES.md summarizes detected file types.
 - DOCUMENTATION.md lists project markdown documentation.
@@ -202,6 +207,8 @@ cat > "$SNAPSHOT_DIR/LOG.txt" <<LOG
 [INFO] Graph mapping generated
 [INFO] Semantic mapping generated
 [INFO] Entrypoint mapping generated
+[INFO] Module mapping generated
+[INFO] Subsystem mapping generated
 [INFO] Components summary generated
 [INFO] Purpose summary generated
 LOG
