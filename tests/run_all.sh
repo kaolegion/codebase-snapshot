@@ -14,6 +14,7 @@ bash "$ROOT_DIR/tests/test_entrypoints.sh"
 bash "$ROOT_DIR/tests/test_purpose.sh"
 bash "$ROOT_DIR/tests/test_structure.sh"
 bash "$ROOT_DIR/tests/test_system_flow.sh"
+bash "$ROOT_DIR/tests/test_repository_explain.sh"
 bash "$ROOT_DIR/tests/test_cli.sh"
 
 echo "[SUCCESS] All tests passed"

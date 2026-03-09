@@ -50,7 +50,9 @@ ARCHITECTURE.md \
 DOCUMENTATION.md \
 LANGUAGES.md \
 COMPONENTS.md \
-PURPOSE.md
+PURPOSE.md \
+SYSTEM_FLOW.md \
+REPOSITORY_EXPLAIN.md
 do
     if [[ ! -f "$SNAPSHOT_DIR/$file" ]]; then
         echo "[FAIL] missing snapshot file: $file"
@@ -256,12 +258,33 @@ fi
 
 echo "[PASS] purpose classification present"
 
-if ! grep -Fq '2. PURPOSE.md' "$SNAPSHOT_DIR/AI_INGESTION_GUIDE.md"; then
+if ! grep -Fq '2. REPOSITORY_EXPLAIN.md' "$SNAPSHOT_DIR/AI_INGESTION_GUIDE.md"; then
+    echo "[FAIL] AI ingestion guide missing repository explain reading order"
+    exit 1
+fi
+
+echo "[PASS] AI ingestion guide references repository explain"
+
+if ! grep -Fq '3. PURPOSE.md' "$SNAPSHOT_DIR/AI_INGESTION_GUIDE.md"; then
     echo "[FAIL] AI ingestion guide missing purpose reading order"
     exit 1
 fi
 
 echo "[PASS] AI ingestion guide references purpose"
+
+if ! grep -Fq '4. SYSTEM_FLOW.md' "$SNAPSHOT_DIR/AI_INGESTION_GUIDE.md"; then
+    echo "[FAIL] AI ingestion guide missing system flow reading order"
+    exit 1
+fi
+
+echo "[PASS] AI ingestion guide references system flow"
+
+if ! grep -Fq 'REPOSITORY_EXPLAIN.md provides the final high-level repository synthesis.' "$SNAPSHOT_DIR/AI_INGESTION_GUIDE.md"; then
+    echo "[FAIL] AI ingestion guide missing repository explain note"
+    exit 1
+fi
+
+echo "[PASS] AI ingestion guide includes repository explain note"
 
 if ! grep -Fq 'Purpose summary generated' "$SNAPSHOT_DIR/LOG.txt"; then
     echo "[FAIL] log missing purpose generation marker"
@@ -269,6 +292,20 @@ if ! grep -Fq 'Purpose summary generated' "$SNAPSHOT_DIR/LOG.txt"; then
 fi
 
 echo "[PASS] log contains purpose generation marker"
+
+if ! grep -Fq 'System flow summary generated' "$SNAPSHOT_DIR/LOG.txt"; then
+    echo "[FAIL] log missing system flow generation marker"
+    exit 1
+fi
+
+echo "[PASS] log contains system flow generation marker"
+
+if ! grep -Fq 'Repository explain summary generated' "$SNAPSHOT_DIR/LOG.txt"; then
+    echo "[FAIL] log missing repository explain generation marker"
+    exit 1
+fi
+
+echo "[PASS] log contains repository explain generation marker"
 
 rm -rf "$SNAPSHOT_DIR"
 

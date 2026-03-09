@@ -12,12 +12,13 @@ The snapshot explains:
 - how it is structured
 - where execution begins
 - how its main modules and subsystems are organized
+- how the full repository can be synthesized into one final explanation layer
 
 ---
 
 # Project Status
 
-Version: **v0.6.0**
+Version: **v0.7.0**
 
 Current capabilities:
 
@@ -31,6 +32,7 @@ Current capabilities:
 - deterministic repository subsystem modeling
 - deterministic repository architecture rendering
 - deterministic repository system flow explanation
+- deterministic repository explain synthesis
 - AI-ready snapshot export
 - deterministic test suite
 
@@ -55,6 +57,7 @@ Interpretation artifacts:
 
 PURPOSE.md
 SYSTEM_FLOW.md
+REPOSITORY_EXPLAIN.md
 
 Human-readable artifacts:
 
@@ -193,6 +196,27 @@ This helps both humans and AI systems understand the operational behavior of the
 
 ---
 
+# Repository Explain Synthesis
+
+The final explanation layer synthesizes the repository into one high-level document.
+
+Artifact:
+
+REPOSITORY_EXPLAIN.md
+
+This artifact explains:
+
+- what the repository is
+- what it is for
+- how it works internally
+- where execution begins
+- how modules and subsystems are organized
+- what snapshot artifacts are generated
+
+This artifact acts as the final repository explanation layer for both humans and AI systems.
+
+---
+
 # CLI Usage
 
 Basic usage:
@@ -225,6 +249,7 @@ Tests validate:
 - purpose inference
 - structural modeling
 - system flow explanation
+- repository explain synthesis
 - CLI behavior
 
 ---
@@ -233,11 +258,11 @@ Tests validate:
 
 Current milestone:
 
-Phase 4.6 — Repository Explanation Engine
+Phase 4.7 — Repository Explain Engine
 
 Next milestone:
 
-Phase 4.7 — Repository Intelligence Expansion
+Phase 4.8 — Repository Intelligence Expansion
 
 See:
 

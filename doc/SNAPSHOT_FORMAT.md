@@ -166,6 +166,28 @@ without reading the full source code.
 
 ---
 
+## REPOSITORY_EXPLAIN.md
+
+Deterministic high-level repository explanation.
+
+Purpose:
+
+Synthesizes the main repository interpretation layers into one stable
+high-level document for both humans and AI systems.
+
+The artifact explains:
+
+- what the repository is
+- what it is for
+- how it works internally
+- where execution begins
+- how modules and subsystems are organized
+- what snapshot artifacts are generated
+
+This layer acts as the final repository explanation artifact.
+
+---
+
 # Human-Readable Artifacts
 
 ## ARCHITECTURE.md
@@ -222,6 +244,13 @@ Snapshot metadata and context description.
 ## AI_INGESTION_GUIDE.md
 
 Recommended reading order for AI systems.
+
+The current deterministic reading priority begins with:
+
+1. MANIFEST.md
+2. REPOSITORY_EXPLAIN.md
+3. PURPOSE.md
+4. SYSTEM_FLOW.md
 
 ---
 

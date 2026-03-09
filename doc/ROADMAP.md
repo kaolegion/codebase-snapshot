@@ -250,58 +250,52 @@ Status: COMPLETE
 
 ---
 
-## Phase 4.7 — Repository Intelligence Expansion
+## Phase 4.7 — Repository Explain Engine
 
-Goal: deepen deterministic repository understanding beyond static flow explanation.
+Goal: synthesize the full repository into one deterministic high-level explanation layer.
+
+Capabilities:
+
+- deterministic repository-wide explanation rendering
+- repository identity synthesis
+- purpose synthesis
+- execution entrypoint synthesis
+- internal operation synthesis
+- architecture overview synthesis
+- semantic component synthesis
+- generated artifact synthesis
+
+Artifact:
+
+REPOSITORY_EXPLAIN.md
+
+Input artifacts:
+
+PURPOSE.md
+SYSTEM_FLOW.md
+ARCHITECTURE.md
+COMPONENTS.md
+ENTRYPOINTS.tsv
+MODULES.tsv
+SUBSYSTEMS.tsv
+
+Purpose:
+
+Provide one final explanation artifact allowing humans and AI systems
+to answer what the repository is, what it does, how it works,
+and how it is organized.
+
+Status: COMPLETE
+
+---
+
+## Phase 4.8 — Repository Intelligence Expansion
+
+Goal: deepen deterministic repository understanding beyond static explanation synthesis.
 
 Potential capabilities:
 
 - richer repository interaction modeling
 - module-to-module flow refinement
-- repository narrative synthesis
-- higher-level intelligence artifacts for humans and AI systems
-
-Status: PLANNED
-
----
-
-# Phase 5 — AI Context Optimization
-
-Potential capabilities:
-
-- token-aware compression
-- intelligent code chunking
-- semantic prioritization
-- ingestion profiles
-
-Status: PLANNED
-
----
-
-# Phase 6 — Visualization Layer
-
-Potential capabilities:
-
-- graph export
-- architecture visualization
-- repository exploration tools
-- component graph rendering
-
-Status: PLANNED
-
----
-
-# Long-Term Vision
-
-codebase-snapshot aims to become a **repository intelligence engine**
-that explains:
-
-- what is in a codebase
-- how the repository is structured
-- how components interact
-- where execution begins
-- what the repository is designed to do
-- how the repository operates internally
-
-The goal is to allow both humans and AI systems
-to understand software systems quickly and deterministically.
+- higher-order repository summarization
+- expanded architecture-aware interpretation layers

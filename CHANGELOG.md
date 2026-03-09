@@ -4,6 +4,53 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## v0.7.0
+
+### Phase 4.7 — Repository Explain Engine
+
+Enhancements:
+
+- introduced deterministic high-level repository explanation artifact `REPOSITORY_EXPLAIN.md`
+- added a final repository interpretation layer synthesizing identity, purpose, execution, architecture, semantics, and generated artifacts
+- extended AI ingestion ordering to place repository-wide synthesis before lower-level interpretation layers
+- strengthened CLI snapshot contract to validate final explanation output
+
+Core engine:
+
+- added `core/repository_explain.sh`
+- implemented deterministic `render_repository_explain` engine
+- integrated repository explain rendering into the snapshot generation pipeline
+
+Tests:
+
+- added `tests/test_repository_explain.sh`
+- validated deterministic generation of `REPOSITORY_EXPLAIN.md`
+- validated presence of stable explanation sections
+- updated CLI snapshot validation to include repository explain synthesis
+- integrated repository explain validation into the global test suite
+
+CLI integration:
+
+- integrated `REPOSITORY_EXPLAIN.md` generation into `bin/snapshot`
+- extended AI ingestion guide ordering to include repository explain synthesis
+- added repository explain generation logging
+
+Documentation:
+
+- updated README to expose the final repository explanation layer
+- updated roadmap to mark repository explain synthesis as complete
+- updated snapshot format documentation for `REPOSITORY_EXPLAIN.md`
+
+This release introduces the **final repository explanation layer**, allowing
+humans and AI systems to read one deterministic high-level document answering:
+
+- what the repository is
+- what it does
+- how it works
+- how it is organized
+
+---
+
 ## v0.6.0
 
 ### Phase 4.6 — Repository Explanation Engine
