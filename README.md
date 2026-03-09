@@ -69,9 +69,16 @@ CODEBASE/
 
 # Repository Semantics
 
-The semantic layer groups repository files into components.
+The semantic layer classifies repository files using deterministic rules.
 
-Detected components include:
+Each file receives four semantic signals:
+
+- component
+- group
+- role
+- rule
+
+Components represent high-level repository areas such as:
 
 - cli
 - core
@@ -83,10 +90,19 @@ Detected components include:
 - root
 - unknown
 
+Groups represent functional subsystems inside components.
+
+Roles describe the operational role of a file such as entrypoint, engine, guide, test, or tool.
+
+Rules indicate the deterministic detection signal used.
+
 Artifacts:
 
-SEMANTICS.tsv  
+SEMANTICS.tsv
+- machine-readable semantic mapping
+
 COMPONENTS.md
+- human-readable hierarchical component summary
 
 ---
 

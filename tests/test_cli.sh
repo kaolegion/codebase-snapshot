@@ -100,14 +100,14 @@ fi
 
 echo "[PASS] graph snapshot generated"
 
-if ! grep -Fq $'SEMANTIC\t'"$ROOT_DIR"$'/bin/snapshot\tcli\tpath:bin' "$SNAPSHOT_DIR/SEMANTICS.tsv"; then
+if ! grep -Fq $'SEMANTIC\t'"$ROOT_DIR"$'/bin/snapshot\tcli\tsnapshot_pipeline\tentrypoint\tpath:bin' "$SNAPSHOT_DIR/SEMANTICS.tsv"; then
     echo "[FAIL] semantics snapshot content invalid for CLI"
     exit 1
 fi
 
 echo "[PASS] semantics snapshot contains CLI entry"
 
-if ! grep -Fq $'SEMANTIC\t'"$ROOT_DIR"$'/core/semantics.sh\tcore\tpath:core' "$SNAPSHOT_DIR/SEMANTICS.tsv"; then
+if ! grep -Fq $'SEMANTIC\t'"$ROOT_DIR"$'/core/semantics.sh\tcore\trepository_semantics\tengine\tpath:core' "$SNAPSHOT_DIR/SEMANTICS.tsv"; then
     echo "[FAIL] semantics snapshot content invalid for core"
     exit 1
 fi

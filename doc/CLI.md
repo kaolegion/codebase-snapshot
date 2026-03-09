@@ -65,6 +65,11 @@ SNAPSHOT_META.json
 
 CODEBASE/
 
+Semantic artifact notes:
+
+- SEMANTICS.tsv provides machine-readable semantic mapping with component, group, role, and rule.
+- COMPONENTS.md provides a human-readable hierarchical summary grouped by component and functional subgroup.
+
 ---
 
 # CODEBASE Export
