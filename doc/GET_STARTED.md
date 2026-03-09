@@ -30,22 +30,36 @@ core/
 doc/
 examples/
 tests/
+tools/
 logs/
 snapshots/
 
 Directory roles:
 
-bin/        CLI entrypoints  
-core/       internal modules  
-doc/        documentation  
-examples/   configuration examples  
-tests/      automated tests  
-logs/       runtime logs  
-snapshots/  generated snapshot outputs  
+bin/        CLI entrypoints
+core/       internal modules
+doc/        documentation
+examples/   configuration examples
+tests/      automated tests
+tools/      development utilities
+logs/       runtime logs
+snapshots/  generated snapshot outputs
 
 ---
 
-# 3. Running the tool
+# 3. Fix permissions after clone
+
+Some environments may not preserve executable permissions as expected.
+
+To restore the expected executable bits, run:
+
+./tools/fix-permissions.sh
+
+This ensures the CLI and test scripts can be executed directly.
+
+---
+
+# 4. Running the tool
 
 The main command is:
 
@@ -57,7 +71,7 @@ snapshot
 
 ---
 
-# 4. Example usage
+# 5. Example usage
 
 Example command:
 
@@ -69,25 +83,27 @@ snapshots/YYYY-MM-DD/vX.Y.Z/01_initial/
 
 ---
 
-# 5. Snapshot contents
+# 6. Snapshot contents
 
 A snapshot should contain files such as:
 
 AI_INGESTION_GUIDE.md
 MANIFEST.md
 ARCHITECTURE.md
-INDEX.tsv
-DOCUMENTATION.md
-CODEBASE/
 PROJECT_TREE.txt
+INDEX.tsv
+DEPENDENCIES.tsv
+DOCUMENTATION.md
+LANGUAGES.md
 LOG.txt
 SNAPSHOT_META.json
+CODEBASE/
 
 These files provide a structured description of the project.
 
 ---
 
-# 6. Running tests
+# 7. Running tests
 
 Run the full test suite with:
 
@@ -98,11 +114,12 @@ Tests ensure:
 - deterministic behavior
 - stable naming rules
 - correct indexing
+- dependency extraction
 - proper CLI behavior
 
 ---
 
-# 7. Development workflow
+# 8. Development workflow
 
 Recommended development workflow:
 
@@ -111,3 +128,4 @@ Recommended development workflow:
 3. keep CLI minimal
 4. add tests for stable features
 5. preserve deterministic outputs
+6. ensure executable scripts keep the correct permissions
