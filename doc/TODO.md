@@ -6,9 +6,9 @@ The TODO is aligned with the official roadmap.
 
 ---
 
-# Phase 4.2 — Component Grouping Refinement
+# Phase 4.3 — Component Grouping Refinement
 
-Improve the semantic component layer.
+Improve the semantic component layer after repository purpose inference.
 
 Tasks:
 
@@ -17,20 +17,7 @@ Tasks:
 - enrich component summaries
 - strengthen repository boundary detection
 - prepare component graph evolution
-
----
-
-# Phase 4.3 — Repository Purpose Inference
-
-Introduce higher-level repository interpretation.
-
-Tasks:
-
-- infer repository intent
-- infer project type
-- infer operational role of the codebase
-- generate repository purpose summary
-- improve AI ingestion context
+- tighten repository family heuristics
 
 ---
 

@@ -12,16 +12,16 @@ bin/snapshot --target <path> --label <label>
 
 # Options
 
---target <path>  
+--target <path>
 Repository root to analyze and snapshot.
 
---label <label>  
+--label <label>
 Human-readable label used to identify the snapshot.
 
---help  
+--help
 Display command usage information.
 
---version  
+--version
 Print the current tool version.
 
 ---
@@ -34,7 +34,7 @@ snapshots/YYYY-MM-DD/vX.Y.Z/<sequence>_<label>/
 
 Example:
 
-snapshots/2026-03-09/v0.2.1/01_phase_4_semantics/
+snapshots/2026-03-09/v0.2.2/01_phase_4_purpose/
 
 Each snapshot directory contains a deterministic bundle of artifacts describing the repository.
 
@@ -44,23 +44,24 @@ Each snapshot directory contains a deterministic bundle of artifacts describing 
 
 A snapshot generates the following artifacts:
 
-PROJECT_TREE.txt  
-INDEX.tsv  
-DEPENDENCIES.tsv  
-GRAPH.tsv  
-SEMANTICS.tsv  
-ENTRYPOINTS.tsv  
+PROJECT_TREE.txt
+INDEX.tsv
+DEPENDENCIES.tsv
+GRAPH.tsv
+SEMANTICS.tsv
+ENTRYPOINTS.tsv
+PURPOSE.md
 
-ARCHITECTURE.md  
-DOCUMENTATION.md  
-LANGUAGES.md  
-COMPONENTS.md  
+ARCHITECTURE.md
+DOCUMENTATION.md
+LANGUAGES.md
+COMPONENTS.md
 
-MANIFEST.md  
-AI_INGESTION_GUIDE.md  
+MANIFEST.md
+AI_INGESTION_GUIDE.md
 
-LOG.txt  
-SNAPSHOT_META.json  
+LOG.txt
+SNAPSHOT_META.json
 
 CODEBASE/
 
@@ -74,10 +75,10 @@ Structure:
 
 CODEBASE/
 
-01_cli.md  
-02_core.md  
-03_tests.md  
-04_docs.md  
+01_cli.md
+02_core.md
+03_tests.md
+04_docs.md
 
 Purpose:
 
@@ -102,12 +103,12 @@ Running the command twice on the same repository state must produce identical st
 
 Certain paths are ignored during repository scanning:
 
-.git  
-node_modules  
-dist  
-build  
-__pycache__  
-logs  
-snapshots  
+.git
+node_modules
+dist
+build
+__pycache__
+logs
+snapshots
 
 These exclusions prevent runtime artifacts and dependencies from polluting snapshot analysis.

@@ -9,7 +9,7 @@ snapshots/YYYY-MM-DD/vX.Y.Z/<sequence>_<label>/
 
 Example:
 
-snapshots/2026-03-09/v0.2.1/01_phase_4_semantics/
+snapshots/2026-03-09/v0.2.2/01_phase_4_purpose/
 
 Each snapshot directory contains a set of structured artifacts describing the repository.
 
@@ -51,10 +51,10 @@ DEPENDENCY <file> <line> <type> <target>
 
 Examples:
 
-source  
-import  
-require  
-include  
+source
+import
+require
+include
 
 Purpose:
 
@@ -72,17 +72,17 @@ GRAPH <source> <relation> <target>
 
 Examples:
 
-GRAPH bin contains bin/snapshot  
-GRAPH bin/snapshot role cli_entrypoint  
-GRAPH bin/snapshot depends_on core/naming.sh  
-GRAPH bin/snapshot generates GRAPH.tsv  
+GRAPH bin contains bin/snapshot
+GRAPH bin/snapshot role cli_entrypoint
+GRAPH bin/snapshot depends_on core/naming.sh
+GRAPH bin/snapshot generates GRAPH.tsv
 
 Typical relations include:
 
-contains  
-depends_on  
-role  
-generates  
+contains
+depends_on
+role
+generates
 
 Purpose:
 
@@ -107,8 +107,8 @@ SEMANTIC <file> <component>
 
 Example:
 
-SEMANTIC bin/snapshot cli  
-SEMANTIC core/indexer.sh core  
+SEMANTIC bin/snapshot cli
+SEMANTIC core/indexer.sh core
 
 Purpose:
 
@@ -126,12 +126,33 @@ ENTRYPOINT <file> <type>
 
 Examples:
 
-ENTRYPOINT bin/snapshot cli  
-ENTRYPOINT main.py application  
+ENTRYPOINT bin/snapshot cli
+ENTRYPOINT main.py application
 
 Purpose:
 
 Identifies where execution begins within the repository.
+
+---
+
+## PURPOSE.md
+
+Deterministic repository purpose summary.
+
+Purpose:
+
+Explains what the repository is for using deterministic structural signals.
+
+Typical contents include:
+
+- repository classification
+- operational role
+- execution profile
+- structural signals supporting the interpretation
+
+This artifact is human-readable and AI-ingestible.
+
+No probabilistic inference is used.
 
 ---
 
@@ -183,10 +204,10 @@ CODEBASE/
 
 Files:
 
-01_cli.md  
-02_core.md  
-03_tests.md  
-04_docs.md  
+01_cli.md
+02_core.md
+03_tests.md
+04_docs.md
 
 Purpose:
 

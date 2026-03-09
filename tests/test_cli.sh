@@ -47,7 +47,8 @@ AI_INGESTION_GUIDE.md \
 ARCHITECTURE.md \
 DOCUMENTATION.md \
 LANGUAGES.md \
-COMPONENTS.md
+COMPONENTS.md \
+PURPOSE.md
 do
     if [[ ! -f "$SNAPSHOT_DIR/$file" ]]; then
         echo "[FAIL] missing snapshot file: $file"
@@ -162,19 +163,33 @@ fi
 
 echo "[PASS] components summary contains CLI file reference"
 
-if ! grep -Fq '6. ENTRYPOINTS.tsv' "$SNAPSHOT_DIR/AI_INGESTION_GUIDE.md"; then
-    echo "[FAIL] AI ingestion guide missing entrypoints reading order"
+if ! grep -Fq '# Repository Purpose Summary' "$SNAPSHOT_DIR/PURPOSE.md"; then
+    echo "[FAIL] purpose summary header missing"
     exit 1
 fi
 
-echo "[PASS] AI ingestion guide references entrypoints"
+echo "[PASS] purpose summary header present"
 
-if ! grep -Fq 'Entrypoint mapping generated' "$SNAPSHOT_DIR/LOG.txt"; then
-    echo "[FAIL] log missing entrypoint generation marker"
+if ! grep -Fq 'Primary classification:' "$SNAPSHOT_DIR/PURPOSE.md"; then
+    echo "[FAIL] purpose classification missing"
     exit 1
 fi
 
-echo "[PASS] log contains entrypoint generation marker"
+echo "[PASS] purpose classification present"
+
+if ! grep -Fq '2. PURPOSE.md' "$SNAPSHOT_DIR/AI_INGESTION_GUIDE.md"; then
+    echo "[FAIL] AI ingestion guide missing purpose reading order"
+    exit 1
+fi
+
+echo "[PASS] AI ingestion guide references purpose"
+
+if ! grep -Fq 'Purpose summary generated' "$SNAPSHOT_DIR/LOG.txt"; then
+    echo "[FAIL] log missing purpose generation marker"
+    exit 1
+fi
+
+echo "[PASS] log contains purpose generation marker"
 
 rm -rf "$SNAPSHOT_DIR"
 

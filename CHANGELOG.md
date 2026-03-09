@@ -6,6 +6,73 @@ The format loosely follows Keep a Changelog principles.
 
 ---
 
+# v0.2.2
+
+## Added
+
+### Repository Purpose Inference (Phase 4.2)
+
+A new deterministic repository interpretation layer has been introduced.
+
+New artifact:
+
+PURPOSE.md
+
+This artifact summarizes the **probable operational role of the repository** using deterministic structural signals.
+
+The purpose inference system analyzes repository structure to identify:
+
+- repository classification
+- operational role
+- execution profile
+- structural signals supporting the classification
+
+This allows the snapshot to explicitly answer:
+
+"What is this repository for?"
+
+The inference system is rule-based and deterministic.
+
+No probabilistic inference is used.
+
+---
+
+## Implementation
+
+New module:
+
+core/purpose.sh
+
+Capabilities:
+
+- repository classification
+- structural signal detection
+- repository role interpretation
+- execution profile summarization
+
+---
+
+## Tests
+
+Added:
+
+tests/test_purpose.sh
+
+Extended:
+
+tests/test_cli.sh
+tests/run_all.sh
+
+Tests now validate:
+
+- PURPOSE.md generation
+- repository classification section
+- purpose summary structure
+- AI ingestion guide ordering
+- purpose generation log markers
+
+---
+
 # v0.2.1
 
 ## Added
@@ -17,7 +84,7 @@ A new semantic component detection layer has been introduced.
 New artifacts:
 
 SEMANTICS.tsv  
-COMPONENTS.md  
+COMPONENTS.md
 
 These artifacts move the project from a file graph model toward a component graph model.
 
@@ -94,7 +161,7 @@ Artifacts added:
 ARCHITECTURE.md  
 DOCUMENTATION.md  
 LANGUAGES.md  
-DEPENDENCIES.tsv  
+DEPENDENCIES.tsv
 
 ---
 

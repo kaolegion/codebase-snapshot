@@ -58,21 +58,22 @@ The core layer contains reusable modules implementing the snapshot logic.
 
 Current modules include:
 
-architecture.sh  
-classifier.sh  
-config.sh  
-dependencies.sh  
-documentation.sh  
-entrypoints.sh  
-graph.sh  
-indexer.sh  
-languages.sh  
-logger.sh  
-naming.sh  
-renderer.sh  
-scanner.sh  
-semantics.sh  
-utils.sh  
+architecture.sh
+classifier.sh
+config.sh
+dependencies.sh
+documentation.sh
+entrypoints.sh
+graph.sh
+indexer.sh
+languages.sh
+logger.sh
+naming.sh
+purpose.sh
+renderer.sh
+scanner.sh
+semantics.sh
+utils.sh
 
 Each module must remain:
 
@@ -83,49 +84,52 @@ Each module must remain:
 
 Example responsibilities:
 
-scanner.sh  
+scanner.sh
 → deterministic file discovery with exclusions
 
-indexer.sh  
+indexer.sh
 → generation of INDEX.tsv
 
-classifier.sh  
+classifier.sh
 → file categorization
 
-architecture.sh  
+architecture.sh
 → repository architecture summary
 
-documentation.sh  
+documentation.sh
 → extraction of documentation metadata
 
-languages.sh  
+languages.sh
 → language and file type detection
 
-dependencies.sh  
+dependencies.sh
 → dependency signal extraction
 
-graph.sh  
+graph.sh
 → structural relationship mapping
 
-semantics.sh  
+semantics.sh
 → repository component detection and semantic grouping
 
-entrypoints.sh  
+entrypoints.sh
 → deterministic repository entrypoint detection
 
-renderer.sh  
+purpose.sh
+→ deterministic repository purpose inference
+
+renderer.sh
 → snapshot artifact generation
 
-naming.sh  
+naming.sh
 → snapshot naming normalization
 
-config.sh  
+config.sh
 → environment and configuration handling
 
-utils.sh  
+utils.sh
 → shared helpers
 
-logger.sh  
+logger.sh
 → structured logging
 
 ---
@@ -159,10 +163,10 @@ Detected component families currently include:
 
 Semantic outputs:
 
-SEMANTICS.tsv  
+SEMANTICS.tsv
 → file-to-component mapping with explicit detection rules
 
-COMPONENTS.md  
+COMPONENTS.md
 → human-readable component summary
 
 This layer is deterministic and rule-based.
@@ -191,6 +195,31 @@ ENTRYPOINTS.tsv
 
 ---
 
+## Purpose Inference Layer
+
+Phase 4.2 introduces deterministic repository purpose inference.
+
+This layer identifies **what a repository is for** using structural repository signals.
+
+The inference engine evaluates signals such as:
+
+- command surface presence
+- application or service entry files
+- documentation density
+- test density
+- configuration density
+- repository structure patterns
+
+Output artifact:
+
+PURPOSE.md
+
+This layer is deterministic and rule-based.
+
+No probabilistic inference is used.
+
+---
+
 ## Documentation Layer
 
 Location:
@@ -201,12 +230,12 @@ The documentation defines the **behavioral contract** of the system.
 
 Important documents include:
 
-GET_STARTED.md  
-ARCHITECTURE.md  
-SNAPSHOT_FORMAT.md  
-CLI.md  
-ROADMAP.md  
-TODO.md  
+GET_STARTED.md
+ARCHITECTURE.md
+SNAPSHOT_FORMAT.md
+CLI.md
+ROADMAP.md
+TODO.md
 
 Implementation should converge toward these specifications.
 
@@ -228,6 +257,7 @@ They validate:
 - graph generation
 - semantic component detection
 - entrypoint detection
+- purpose inference
 - CLI behavior
 - deterministic ordering
 
@@ -239,7 +269,7 @@ Tests act as a **contract protecting expected behavior**.
 
 Location:
 
-logs/  
+logs/
 snapshots/
 
 These directories contain generated runtime artifacts.
@@ -259,43 +289,11 @@ A typical snapshot execution follows these steps:
 5. scan repository deterministically
 6. generate PROJECT_TREE.txt
 7. generate INDEX.tsv
-8. extract dependency signals
-9. generate structural graph
-10. generate semantic mapping
-11. detect repository entrypoints
-12. render architecture summary
-13. generate documentation index
-14. detect language summary
-15. render component summary
-16. assemble CODEBASE export
-17. generate metadata
-18. write logs
-
----
-
-# Determinism Rules
-
-To ensure reproducibility, the following rules must be respected:
-
-- file discovery must use stable ordering
-- scanning must rely on deterministic sorted outputs
-- naming must be normalized
-- exclusions must be explicit
-- output structure must remain predictable
-- semantic classification must use explicit deterministic rules
-- entrypoint detection must use explicit deterministic rules
-
-Running the snapshot twice on the same repository state must produce identical structural outputs.
-
----
-
-# Non-Goals
-
-The project should not become:
-
-- a heavy static analysis engine
-- a language-specific parser framework
-- a complex archiving tool
-- a probabilistic black-box repository explainer
-
-Its purpose is to remain a **lightweight deterministic snapshot generator** and progressively evolve into a **repository intelligence engine**.
+8. generate DEPENDENCIES.tsv
+9. generate GRAPH.tsv
+10. generate SEMANTICS.tsv
+11. generate ENTRYPOINTS.tsv
+12. generate PURPOSE.md
+13. generate human-readable summaries
+14. generate metadata and ingestion guidance
+15. export grouped CODEBASE files

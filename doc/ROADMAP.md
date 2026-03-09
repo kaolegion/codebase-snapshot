@@ -37,10 +37,10 @@ Delivered:
 
 Artifacts added:
 
-ARCHITECTURE.md  
-DOCUMENTATION.md  
-LANGUAGES.md  
-AI_INGESTION_GUIDE.md  
+ARCHITECTURE.md
+DOCUMENTATION.md
+LANGUAGES.md
+AI_INGESTION_GUIDE.md
 
 Status: COMPLETE
 
@@ -93,7 +93,7 @@ Status: COMPLETE
 
 # Phase 4 — Repository Semantics
 
-Goal: move from file graph to component graph.
+Goal: move from file graph to component graph, then toward repository-level interpretation.
 
 ---
 
@@ -108,20 +108,20 @@ Delivered:
 
 Artifacts added:
 
-SEMANTICS.tsv  
-COMPONENTS.md  
+SEMANTICS.tsv
+COMPONENTS.md
 
 Detected components:
 
-cli  
-core  
-tests  
-docs  
-examples  
-tools  
-config  
-root  
-unknown  
+cli
+core
+tests
+docs
+examples
+tools
+config
+root
+unknown
 
 Status: COMPLETE
 
@@ -148,7 +148,29 @@ Status: COMPLETE
 
 ---
 
-## Phase 4.2 — Component Grouping Refinement
+## Phase 4.2 — Repository Purpose Inference
+
+Delivered:
+
+- deterministic repository purpose summary
+- repository type classification
+- operational role interpretation
+- execution profile summary
+- rule-based repository signal analysis
+
+Artifact:
+
+PURPOSE.md
+
+Purpose:
+
+Explain what a repository is for using deterministic structural signals.
+
+Status: COMPLETE
+
+---
+
+## Phase 4.3 — Component Grouping Refinement
 
 Potential capabilities:
 
@@ -156,19 +178,7 @@ Potential capabilities:
 - better root artifact categorization
 - repository family heuristics
 - richer component summaries
-
-Status: PLANNED
-
----
-
-## Phase 4.3 — Repository Purpose Inference
-
-Potential capabilities:
-
-- infer repository intent
-- infer project type
-- infer operational role of the codebase
-- AI-oriented repository purpose summary
+- tighter semantic boundary refinement
 
 Status: PLANNED
 
