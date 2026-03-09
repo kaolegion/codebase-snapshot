@@ -14,10 +14,12 @@ while keeping a clear long-term direction.
 
 codebase-snapshot converts repositories into **structured knowledge**.
 
-The tool answers two fundamental questions:
+The tool answers fundamental questions about a codebase:
 
 - What is in the repository?
 - What is it for?
+- How does it work internally?
+- Where does execution begin?
 
 This benefits both:
 
@@ -29,100 +31,121 @@ capable of explaining software systems in a deterministic and reproducible way.
 
 ---
 
-# Current Capabilities
+# Repository Intelligence
 
-The project currently provides deterministic repository intelligence.
+codebase-snapshot aims to transform a repository from raw source code into
+a structured knowledge model.
 
-Generated artifacts include:
+Conceptually:
+
+Repository  
+→ structural signals  
+→ semantic signals  
+→ architectural interpretation  
+→ execution model  
+→ repository explanation  
+
+The result is a **deterministic understanding layer** for software repositories.
+
+This approach allows both humans and AI systems to understand complex projects
+without reading the entire source tree.
+
+---
+
+# Intelligence Layers
+
+The repository intelligence model evolves across multiple layers.
+
+## 1. Structural Intelligence
+
+Describes the raw structure of the repository.
+
+Artifacts:
 
 PROJECT_TREE.txt  
 INDEX.tsv  
 DEPENDENCIES.tsv  
 GRAPH.tsv  
-SEMANTICS.tsv  
-ENTRYPOINTS.tsv  
 
-ARCHITECTURE.md  
-DOCUMENTATION.md  
-LANGUAGES.md  
-COMPONENTS.md  
+Purpose:
 
-MANIFEST.md  
-AI_INGESTION_GUIDE.md  
-
-LOG.txt  
-SNAPSHOT_META.json  
-
-CODEBASE/
-
-These artifacts provide structured signals describing:
-
-- repository structure
-- dependency signals
-- component grouping
-- documentation presence
-- architecture hints
-- repository entrypoints
-- semantic repository components
+Provide a deterministic structural map of the repository.
 
 ---
 
-# Repository Topology
+## 2. Semantic Intelligence
 
-Phase 4 introduced structural interpretation of repositories.
+Describes the roles of repository files.
 
-New artifacts describe the **architectural topology of the repository itself**.
+Artifacts:
+
+SEMANTICS.tsv  
+COMPONENTS.md  
+ENTRYPOINTS.tsv  
+
+Purpose:
+
+Identify repository components, roles, and execution entrypoints.
+
+---
+
+## 3. Architectural Intelligence
+
+Describes the architecture of the repository.
 
 Artifacts:
 
 MODULES.tsv  
 SUBSYSTEMS.tsv  
+ARCHITECTURE.md  
 
 Purpose:
 
-Move beyond file-level interpretation and describe the repository as a structured system.
+Interpret the repository as a structured software system.
 
-MODULES represent stable architectural zones such as:
+---
 
-- CLI layer
-- modeling engine
-- rendering layer
-- infrastructure
-- tests
-- documentation
+## 4. Cognitive Intelligence
 
-SUBSYSTEMS represent stable functional components inside those modules.
+Explains the meaning and operation of the repository.
 
-Example:
+Artifacts:
 
-modeling
- ├ repository-indexing
- ├ dependency-analysis
- ├ graph-modeling
- ├ semantic-mapping
- ├ entrypoint-detection
- └ purpose-inference
+PURPOSE.md  
+SYSTEM_FLOW.md  
+REPOSITORY_EXPLAIN.md  
 
-This provides a **topological interpretation of the repository**.
+Purpose:
 
-This topology layer prepares the project for higher-level reasoning about repository architecture.
+Provide deterministic explanations answering:
+
+- what the repository is
+- what it is designed to do
+- how it operates internally
+- how its architecture is organized
+
+This layer enables rapid understanding of unfamiliar repositories.
 
 ---
 
 # Human Onboarding
 
-One of the primary goals of codebase-snapshot is to reduce the friction of joining an unfamiliar repository.
+One of the primary goals of codebase-snapshot is to reduce the friction
+of joining an unfamiliar repository.
 
-Instead of manually exploring the project structure, a developer should be able to read a small set of artifacts to understand the system.
+Instead of manually exploring the project structure,
+a developer should be able to read a small set of artifacts
+to understand the system.
 
 Recommended onboarding reading order:
 
 1. MANIFEST.md
-2. PURPOSE.md
-3. ARCHITECTURE.md
-4. MODULES.tsv
-5. SUBSYSTEMS.tsv
-6. COMPONENTS.md
+2. REPOSITORY_EXPLAIN.md
+3. PURPOSE.md
+4. ARCHITECTURE.md
+5. MODULES.tsv
+6. SUBSYSTEMS.tsv
+7. COMPONENTS.md
 
 This allows a developer to understand a repository in minutes instead of hours.
 
@@ -137,19 +160,46 @@ codebase-snapshot provides deterministic artifacts designed to support AI ingest
 Recommended AI ingestion order:
 
 1. MANIFEST.md
-2. PURPOSE.md
-3. SEMANTICS.tsv
-4. MODULES.tsv
-5. SUBSYSTEMS.tsv
-6. GRAPH.tsv
-7. CODEBASE/
+2. REPOSITORY_EXPLAIN.md
+3. PURPOSE.md
+4. SYSTEM_FLOW.md
+5. SEMANTICS.tsv
+6. MODULES.tsv
+7. SUBSYSTEMS.tsv
+8. GRAPH.tsv
+9. CODEBASE/
 
-This approach allows AI systems to understand the structure and purpose of a repository before analyzing its implementation.
+This approach allows AI systems to understand the structure,
+purpose, and behavior of a repository before analyzing its implementation.
 
-The long-term goal is to enable **AI systems to reason about repositories using structured knowledge rather than raw code alone**.
+The long-term goal is to enable **AI systems to reason about repositories
+using structured knowledge rather than raw code alone**.
 
 ---
 
+# Explain-First Repositories
+
+In the long term, the primary interface for repository exploration
+may become an **explain-first workflow**.
+
+Concept:
+
+git clone <repo>  
+snapshot explain  
+
+The tool produces a deterministic explanation package describing:
+
+- repository identity
+- project purpose
+- execution entrypoints
+- architectural structure
+- semantic components
+- artifact generation pipeline
+
+This approach allows developers and AI systems to understand
+an unfamiliar repository **before reading its source code**.
+
+---
 
 # Near-Term Roadmap
 
@@ -157,49 +207,45 @@ Features expected in the next development phases.
 
 ---
 
-## Entrypoint Detection
+## Repository Summary
 
 Artifact:
 
-ENTRYPOINTS.tsv
+SUMMARY.md
 
 Purpose:
 
-Detect deterministic repository entrypoints such as:
+Provide a short high-level repository overview summarizing:
 
-- CLI entrypoints
-- application entrypoints
-- service entrypoints
-- runtime entrypoints
-- build entrypoints
-- root script entrypoints
+- repository type
+- architecture style
+- primary language
+- execution model
+- key modules
 
-This helps identify **where execution starts** in a repository.
-
-Status:
-
-Implemented in Phase 4.1.
+This artifact will help AI systems and developers
+quickly understand the repository context.
 
 ---
 
-## Repository Explanation
+## Module Interaction Graph
 
-Command:
+Artifact:
 
-snapshot explain
+MODULE_GRAPH.tsv
 
 Purpose:
 
-Provide a human-readable explanation of the repository including:
+Describe relationships between repository modules.
 
-- repository type
-- primary language
-- entrypoints
-- component overview
-- recommended reading order
-- project purpose summary
+Example:
 
-This becomes the primary entrypoint for repository exploration.
+cli → modeling  
+modeling → rendering  
+rendering → artifacts  
+
+This graph represents the high-level operational flow
+of the repository.
 
 ---
 
@@ -258,156 +304,74 @@ Useful for:
 Ideas that extend repository intelligence further.
 
 These remain experimental and will only be implemented
-if they remain aligned with the project's deterministic philosophy.
-
----
-
-## Repository Profile
-
-Artifact:
-
-REPOSITORY_PROFILE.json
-
-Purpose:
-
-Provide a concise machine-readable summary describing:
-
-- repository type
-- primary language
-- entrypoints
-- component families
-- structural patterns
-
-This helps AI systems rapidly understand the repository.
-
----
+when the deterministic repository model becomes sufficiently mature.
 
 ## Repository DNA
 
 Artifact:
 
-REPOSITORY_DNA.json
+REPOSITORY_DNA.md
 
 Purpose:
 
-Define the structural fingerprint of a repository.
+Describe the structural identity of a repository.
 
-Example properties:
+Possible signals:
 
-- architecture pattern
-- component topology
-- documentation ratio
-- testing presence
-- dependency signals
-
-This enables:
-
-- repository comparison
-- repository classification
-- architecture search
+- repository type
+- architecture style
+- execution model
+- subsystem count
+- complexity profile
 
 ---
 
-## Snapshot Explorer
+## Repository Knowledge Graph
 
-Potential future UI.
+In the long term, repository artifacts may form a **knowledge graph**
+representing software systems.
 
-A lightweight interface capable of browsing snapshot artifacts.
+This graph could power:
 
-Example sections:
-
-- repository overview
-- component explorer
-- entrypoints
-- dependency graph
-- architecture map
-
-The UI would only **visualize artifacts generated by the CLI**.
+- repository reasoning
+- architecture visualization
+- AI-assisted navigation
+- cognitive development environments.
 
 ---
 
-# Repository Understanding
+# Integration with KaoBox Brain
 
-The long-term ambition of codebase-snapshot is to make repositories **quickly understandable**.
+codebase-snapshot is designed to integrate naturally with the KaoBox ecosystem.
 
-Most developers joining a new project face the same challenge:
+Within KaoBox Brain, snapshots can act as a **perception layer**
+that converts repositories into structured cognitive knowledge.
 
-- understanding the purpose of the system
-- locating execution entrypoints
-- identifying the architecture
-- discovering the important components
-- deciding where to start reading
+Pipeline concept:
 
-codebase-snapshot aims to dramatically reduce this friction.
+repository  
+→ codebase-snapshot  
+→ repository intelligence artifacts  
+→ KaoBox Brain knowledge graph  
+→ cognitive tooling and agents
 
-Instead of manually exploring the repository, a developer or AI system should be able to read a small set of deterministic artifacts describing the system.
-
-The goal is to transform repositories into **structured explanations**.
-
----
-
-## Human Exploration
-
-For human developers, repository understanding should follow a simple reading path.
-
-Recommended exploration order:
-
-1. MANIFEST.md
-2. PURPOSE.md
-3. ARCHITECTURE.md
-4. MODULES.tsv
-5. SUBSYSTEMS.tsv
-6. COMPONENTS.md
-7. CODEBASE/
-
-This provides a fast overview of the system before diving into the implementation.
-
-The objective is to reduce onboarding time from hours to minutes.
+This integration allows KaoBox to reason about software systems
+using structured repository knowledge rather than raw code alone.
 
 ---
 
-## AI Exploration
+# Long-Term Direction
 
-AI systems require structured context before analyzing source code.
+The long-term ambition of codebase-snapshot is to become a
+**universal repository understanding engine**.
 
-The snapshot artifacts provide this structured context.
+The project aims to allow humans and AI systems to:
 
-Recommended AI ingestion order:
+- understand unfamiliar repositories quickly
+- reason about repository architecture
+- explore complex codebases deterministically
+- ingest software systems into cognitive environments
 
-1. MANIFEST.md
-2. PURPOSE.md
-3. SEMANTICS.tsv
-4. MODULES.tsv
-5. SUBSYSTEMS.tsv
-6. GRAPH.tsv
-7. CODEBASE/
-
-This allows AI systems to reason about the repository structure before analyzing implementation details.
-
----
-
-## Cognitive Exploration
-
-A future extension of the project may introduce **cognitive navigation artifacts**.
-
-Example artifact:
-
-COGNITIVE_MAP.md
-
-Purpose:
-
-Provide a recommended path for understanding the repository.
-
-Instead of exploring files randomly, developers and AI systems would follow a structured learning path through the system.
-
-Example:
-
-1. repository entrypoints
-2. execution pipeline
-3. semantic interpretation
-4. structural modeling
-5. rendering layer
-6. validation tests
-
-This concept transforms codebase-snapshot into a **repository interpreter** capable of guiding exploration of complex systems.
+The ultimate goal is to make repository understanding
+**fast, deterministic, and reproducible**.
 
