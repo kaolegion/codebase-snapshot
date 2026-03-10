@@ -260,6 +260,49 @@ The artifact summarizes:
 
 ---
 
+## REPOSITORY_HEALTH.md
+
+Deterministic human-readable repository health summary.
+
+Purpose:
+
+Explains repository health using archived snapshot history and evolution signals.
+
+The artifact summarizes:
+
+- repository growth signals
+- repository stability signals
+- change activity level
+- tool version progression
+- snapshot label evolution
+
+---
+
+## REPOSITORY_RISKS.md
+
+Deterministic human-readable repository risk summary.
+
+Purpose:
+
+Explains repository risk areas using deterministic evidence.
+
+The artifact summarizes:
+
+- high risk areas
+- medium risk areas
+- low risk areas
+- deterministic risk heuristics
+- evidence sources used for risk scoring
+
+Risk evidence currently includes:
+
+- archived snapshot volatility
+- dependency fan-in gravity
+- entrypoint criticality
+- core subsystem sensitivity
+
+---
+
 ## SNAPSHOT_HISTORY.tsv
 
 Deterministic archived snapshot history index.
@@ -314,34 +357,8 @@ Signals currently supported:
 Purpose:
 
 - stable inter-snapshot change interpretation
-- machine-readable repository evolution signals
-- deterministic input for repository health interpretation
-
----
-
-## REPOSITORY_HEALTH.md
-
-Deterministic human-readable repository health summary.
-
-Purpose:
-
-Provides a stable repository health interpretation from archived history
-and evolution signals.
-
-The artifact contains:
-
-- repository health signals
-- signal evidence
-- deterministic interpretation
-
-Health signals currently supported:
-
-- REPOSITORY_GROWING
-- REPOSITORY_STABLE
-- CHANGE_ACTIVITY_LOW
-- CHANGE_ACTIVITY_MODERATE
-- TOOL_VERSION_PROGRESSING
-- SNAPSHOT_LABELS_EVOLVING
+- machine-readable repository evolution evidence
+- base input for repository health interpretation
 
 ---
 
@@ -353,45 +370,44 @@ Deterministic snapshot manifest.
 
 Purpose:
 
-Provides top-level snapshot generation metadata.
+Provides snapshot context including target path, label, normalized label, and file count.
 
 ---
 
 ## AI_INGESTION_GUIDE.md
 
-Deterministic AI reading guide for the snapshot bundle.
+Deterministic AI reading guide.
 
 Purpose:
 
-Defines a stable reading order for AI systems and humans.
+Provides a recommended reading order for humans and AI systems consuming a snapshot.
 
 ---
 
 ## LOG.txt
 
-Deterministic runtime generation log.
+Deterministic generation log.
 
 Purpose:
 
-Records the main generation steps executed by the tool.
+Records which snapshot capabilities were executed during generation.
 
 ---
 
 ## SNAPSHOT_META.json
 
-Deterministic snapshot metadata file.
+Deterministic snapshot metadata.
 
 Purpose:
 
-Stores stable machine-readable snapshot metadata.
+Stores stable machine-readable metadata about a generated snapshot.
 
-Typical fields include:
+---
 
-- snapshot_version
-- tool_version
-- generated_at
-- target_root
-- label
-- normalized_label
-- sequence
-- file_count
+## CODEBASE/
+
+Structured code export directory.
+
+Purpose:
+
+Groups repository content into deterministic exports for CLI, core, tests, and docs.

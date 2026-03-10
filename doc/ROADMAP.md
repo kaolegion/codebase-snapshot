@@ -206,7 +206,7 @@ Capabilities:
 - topology-driven architecture summaries
 - architecture generation from structural artifacts
 
-Artifacts:
+Artifact:
 
 ARCHITECTURE.md
 
@@ -304,43 +304,17 @@ Status: COMPLETE
 
 # Phase 5 — Repository Evolution Intelligence
 
-Goal: move from isolated snapshot comparison toward persistent repository timeline intelligence.
+Goal: explain repository evolution, health, and risk through deterministic signals.
 
 ---
 
 ## Phase 5.0 — Snapshot History Engine
 
-Goal: persist snapshots as historical artifacts and expose deterministic snapshot history.
-
-Capabilities:
-
-- snapshot archive storage
-- deterministic snapshot ID generation
-- history index maintenance
-- archived snapshot lookup
-
-Artifacts:
-
-SNAPSHOT_HISTORY.tsv
-.snapshots/
-
 Status: COMPLETE
 
 ---
 
-## Phase 5.1 — Repository Timeline
-
-Goal: render archived history into a deterministic chronological timeline.
-
-Capabilities:
-
-- chronological snapshot rendering
-- archived metadata reading
-- stable historical timeline summary
-
-Artifact:
-
-REPOSITORY_TIMELINE.md
+## Phase 5.1 — Repository Timeline Engine
 
 Status: COMPLETE
 
@@ -348,79 +322,38 @@ Status: COMPLETE
 
 ## Phase 5.2 — Evolution Signals Engine
 
-Goal: expose deterministic machine-readable repository evolution signals.
-
-Capabilities:
-
-- consecutive snapshot comparison
-- file count evolution signals
-- tool version change detection
-- snapshot label change detection
-- stable signal ordering
-
-Artifact:
-
-EVOLUTION_SIGNALS.tsv
-
 Status: COMPLETE
 
 ---
 
 ## Phase 5.3 — Repository Health Signals
 
-Goal: transform evolution signals into a deterministic human-readable repository health interpretation.
+Status: COMPLETE
+
+---
+
+## Phase 5.4 — Repository Risk Signals
+
+Goal: identify sensitive repository areas using deterministic evidence.
 
 Capabilities:
 
-- deterministic repository health signal synthesis
-- health interpretation from archived history and evolution signals
-- stable evidence rendering
-- deterministic health summary generation
+- deterministic repository risk rendering
+- volatility-based repository risk scoring
+- dependency fan-in risk scoring
+- entrypoint criticality weighting
+- core subsystem sensitivity weighting
 
 Artifact:
 
-REPOSITORY_HEALTH.md
-
-Signals:
-
-REPOSITORY_GROWING
-REPOSITORY_STABLE
-CHANGE_ACTIVITY_LOW
-CHANGE_ACTIVITY_MODERATE
-TOOL_VERSION_PROGRESSING
-SNAPSHOT_LABELS_EVOLVING
+REPOSITORY_RISKS.md
 
 Status: COMPLETE
 
 ---
 
-# Strategic Direction
+## Phase 5.5 — Repository Lint Signals
 
-The project now forms a deterministic repository intelligence pipeline:
+Goal: add deterministic repository quality diagnostics.
 
-- scan
-- index
-- dependencies
-- graph
-- semantics
-- entrypoints
-- modules
-- subsystems
-- architecture
-- purpose
-- system flow
-- repository DNA
-- repository explain
-- diff
-- history
-- timeline
-- evolution
-- health
-
-Long-term direction:
-
-- repository risk signals
-- repository quality signals
-- repository drift detection
-- repository intelligence scoring
-- AI-native repository ingestion workflows
+Status: PLANNED

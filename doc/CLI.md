@@ -109,6 +109,33 @@ Notes:
 - health rendering remains deterministic and history-driven
 
 ---
+## Repository risks
+
+bin/snapshot risk
+
+Purpose:
+
+Render a deterministic human-readable repository risk summary
+from archived snapshots, dependency signals, and entrypoint criticality.
+
+Generated output:
+
+REPOSITORY_RISKS.md
+
+Risk evidence currently supported:
+
+- snapshot volatility
+- dependency gravity
+- entrypoint criticality
+- core subsystem sensitivity
+
+Notes:
+
+- the command remains deterministic and evidence-driven
+- risk levels are derived from archived snapshot presence and repository signals
+
+---
+
 
 ## Snapshot diff
 
@@ -158,6 +185,10 @@ Repository health output is written to:
 
 REPOSITORY_HEALTH.md
 
+Repository risk output is written to:
+
+REPOSITORY_RISKS.md
+
 ---
 
 # Generated Snapshot Artifacts
@@ -202,6 +233,10 @@ EVOLUTION_SIGNALS.tsv
 The repository health command produces:
 
 REPOSITORY_HEALTH.md
+
+The repository risk command produces:
+
+REPOSITORY_RISKS.md
 
 ---
 

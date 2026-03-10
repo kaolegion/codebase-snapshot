@@ -83,6 +83,23 @@ done
 
 echo "[PASS] CODEBASE export present"
 
+rm -f "$ROOT_DIR/REPOSITORY_RISKS.md"
+"$CLI" risk >/dev/null
+
+if [[ ! -f "$ROOT_DIR/REPOSITORY_RISKS.md" ]]; then
+    echo "[FAIL] risk command did not generate REPOSITORY_RISKS.md"
+    exit 1
+fi
+
+if ! grep -Fq '# Repository Risk Signals' "$ROOT_DIR/REPOSITORY_RISKS.md"; then
+    echo "[FAIL] risk report header missing"
+    exit 1
+fi
+
+echo "[PASS] risk command generates repository risks report"
+
+rm -f "$ROOT_DIR/REPOSITORY_RISKS.md"
+
 if grep -q "snapshots/" "$SNAPSHOT_DIR/INDEX.tsv"; then
     echo "[FAIL] exclusion rules not applied (snapshots found in index)"
     exit 1

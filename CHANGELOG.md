@@ -4,6 +4,56 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## v1.4.0
+
+### Phase 5.4 — Repository Risk Signals
+
+Enhancements:
+
+- introduced deterministic repository risk signaling
+- added human-readable repository risk artifact `REPOSITORY_RISKS.md`
+- added repository risk synthesis from archived snapshots, dependency gravity, entrypoint criticality, and core subsystem sensitivity
+- established the first deterministic repository risk interpretation layer
+
+Core engine:
+
+- added `core/risk.sh`
+- implemented deterministic risk evidence aggregation
+- implemented volatility-based risk scoring from archived snapshot indexes
+- implemented dependency fan-in risk scoring
+- implemented entrypoint and core sensitivity weighting
+
+Risk heuristics introduced:
+
+- snapshot volatility
+- dependency gravity
+- entrypoint criticality
+- core subsystem sensitivity
+
+CLI integration:
+
+- added `bin/snapshot risk`
+- integrated repository risk rendering into the CLI surface
+
+Tests:
+
+- added `tests/test_risk.sh`
+- validated deterministic repository risk rendering
+- validated risk report generation from CLI
+- integrated risk engine into the full test suite
+
+Documentation:
+
+- updated README to expose repository risk signals
+- updated roadmap to mark Phase 5.4 as complete
+- updated CLI documentation
+- updated snapshot format documentation
+
+This release introduces the first deterministic **repository risk signaling layer**,
+allowing humans and AI systems to identify sensitive repository areas using stable evidence.
+
+---
+
 ## v1.3.0
 
 ### Phase 5.3 — Repository Health Signals

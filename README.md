@@ -17,13 +17,14 @@ The snapshot explains:
 - how repository snapshots can be archived and explored historically
 - how repository evolution signals can be interpreted
 - how repository health can be summarized deterministically
+- how repository risks can be signaled deterministically
 - how the full repository can be synthesized into one final explanation layer
 
 ---
 
 # Project Status
 
-Version: **v1.3.0**
+Version: **v1.4.0**
 
 Current capabilities:
 
@@ -44,6 +45,7 @@ Current capabilities:
 - deterministic repository timeline engine
 - deterministic repository evolution signal engine
 - deterministic repository health interpretation
+- deterministic repository risk signaling
 - AI-ready snapshot export
 - deterministic test suite
 
@@ -74,6 +76,10 @@ bin/snapshot evolution
 Repository health:
 
 bin/snapshot health
+
+Repository risks:
+
+bin/snapshot risk
 
 Utility commands:
 
@@ -108,6 +114,7 @@ SNAPSHOT_HISTORY.tsv
 REPOSITORY_TIMELINE.md
 EVOLUTION_SIGNALS.tsv
 REPOSITORY_HEALTH.md
+REPOSITORY_RISKS.md
 
 Interpretation artifacts:
 
@@ -163,6 +170,10 @@ Health artifact:
 
 REPOSITORY_HEALTH.md
 
+Risk artifact:
+
+REPOSITORY_RISKS.md
+
 The history index records:
 
 - archive timestamp
@@ -179,6 +190,10 @@ repository evolution signals from archived snapshot history.
 
 The `bin/snapshot health` command renders a deterministic human-readable
 repository health summary from archived history and evolution signals.
+
+The `bin/snapshot risk` command renders a deterministic human-readable
+repository risk summary from archived snapshots, dependency gravity,
+and entrypoint criticality.
 
 This allows the tool to maintain a deterministic **repository evolution intelligence layer**
 independent of Git.
@@ -252,6 +267,7 @@ SNAPSHOT_HISTORY.tsv
 REPOSITORY_TIMELINE.md
 EVOLUTION_SIGNALS.tsv
 REPOSITORY_HEALTH.md
+REPOSITORY_RISKS.md
 
 This layer currently supports:
 
@@ -261,8 +277,9 @@ This layer currently supports:
 - deterministic human-readable repository timeline rendering
 - deterministic machine-readable repository evolution signals
 - deterministic human-readable repository health interpretation
+- deterministic repository risk signaling
 
-This establishes a deterministic repository evolution and health layer
+This establishes a deterministic repository evolution, health, and risk layer
 for both humans and AI systems.
 
 ---
@@ -293,3 +310,4 @@ codebase-snapshot is now a deterministic repository intelligence engine with:
 - repository timeline intelligence
 - repository evolution signal intelligence
 - repository health interpretation intelligence
+- repository risk signaling intelligence
