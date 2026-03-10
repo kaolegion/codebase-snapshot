@@ -4,6 +4,51 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## v1.1.0
+
+### Phase 5.1 — Repository Timeline Engine
+
+Enhancements:
+
+- introduced deterministic repository timeline rendering
+- added human-readable chronological repository history artifact `REPOSITORY_TIMELINE.md`
+- added stable archived snapshot metadata extraction from `.snapshots/`
+- transformed snapshot history into a readable repository timeline
+- established the first deterministic repository timeline view for humans and AI systems
+
+Core engine:
+
+- added `core/timeline.sh`
+- added deterministic timeline rendering logic
+- added stable metadata extraction from archived `SNAPSHOT_META.json`
+- added repository timeline file writer
+
+CLI integration:
+
+- added `bin/snapshot timeline`
+- integrated repository timeline generation into the CLI surface
+- preserved existing snapshot generation, history, and diff behavior
+
+Tests:
+
+- added `tests/test_timeline.sh`
+- validated timeline artifact generation
+- validated deterministic snapshot ordering
+- validated archived metadata rendering
+- validated CLI timeline output generation
+
+Documentation:
+
+- updated README to expose repository timeline capability
+- updated roadmap to mark Phase 5.1 as complete
+- updated snapshot format and CLI documentation for `REPOSITORY_TIMELINE.md`
+- updated project status to reflect stronger temporal intelligence
+
+This release introduces the first deterministic **human-readable repository timeline**,
+allowing archived snapshots to be interpreted as a chronological repository evolution layer.
+
+---
+
 ## v1.0.0
 
 ### Phase 5.0 — Snapshot History Engine

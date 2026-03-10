@@ -16,7 +16,12 @@ if [[ ! -f "$output_file" ]]; then
     exit 1
 fi
 
-if ! grep -Fq $'DEPENDENCY\t'"$ROOT_DIR"$'/bin/snapshot\t7\tsource\t$ROOT_DIR/core/naming.sh' "$output_file"; then
+if ! grep -Fq $'DEPENDENCY\t'"$ROOT_DIR"$'/bin/snapshot\t7\tsource\t$ROOT_DIR/core/config.sh' "$output_file"; then
+    echo "[FAIL] expected config dependency not found"
+    exit 1
+fi
+
+if ! grep -Fq $'DEPENDENCY\t'"$ROOT_DIR"$'/bin/snapshot\t8\tsource\t$ROOT_DIR/core/naming.sh' "$output_file"; then
     echo "[FAIL] expected snapshot dependency not found"
     exit 1
 fi

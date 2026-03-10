@@ -322,6 +322,10 @@ Artifacts:
 DIFF.tsv
 SNAPSHOT_DIFF.md
 
+Purpose:
+
+Explain deterministic repository evolution between two snapshots.
+
 Status: COMPLETE
 
 ---
@@ -358,19 +362,37 @@ Status: COMPLETE
 
 ---
 
-## Phase 5.1 — Repository Timeline
+## Phase 5.1 — Repository Timeline Engine
 
-Planned capabilities:
+Goal: transform archived snapshot history into a deterministic human-readable repository timeline.
 
-- timeline rendering from archived snapshots
-- chronological repository evolution summary
-- human-readable repository history report
+Capabilities:
 
-Planned artifact:
+- deterministic repository timeline rendering
+- archived snapshot metadata extraction
+- chronological repository history view
+- stable timeline generation from `SNAPSHOT_HISTORY.tsv`
+- CLI timeline rendering command
+
+Artifact:
 
 REPOSITORY_TIMELINE.md
 
-Status: PLANNED
+Input artifacts:
+
+SNAPSHOT_HISTORY.tsv
+SNAPSHOT_META.json
+
+CLI:
+
+bin/snapshot timeline
+
+Purpose:
+
+Provide a stable human-readable chronological repository evolution view
+derived only from archived snapshot artifacts.
+
+Status: COMPLETE
 
 ---
 

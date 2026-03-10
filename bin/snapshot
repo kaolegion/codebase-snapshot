@@ -4,6 +4,7 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 VERSION_FILE="$ROOT_DIR/VERSION"
 
+source "$ROOT_DIR/core/config.sh"
 source "$ROOT_DIR/core/naming.sh"
 source "$ROOT_DIR/core/utils.sh"
 source "$ROOT_DIR/core/scanner.sh"
@@ -21,6 +22,8 @@ source "$ROOT_DIR/core/explanation.sh"
 source "$ROOT_DIR/core/repository_explain.sh"
 source "$ROOT_DIR/core/dna.sh"
 source "$ROOT_DIR/core/diff.sh"
+source "$ROOT_DIR/core/history.sh"
+source "$ROOT_DIR/core/timeline.sh"
 
 usage() {
     cat <<'USAGE'
@@ -28,6 +31,8 @@ codebase-snapshot
 
 Usage:
   bin/snapshot --target <path> --label <label>
+  bin/snapshot history
+  bin/snapshot timeline
   bin/snapshot diff <snapshotA> <snapshotB>
   bin/snapshot --help
   bin/snapshot --version
@@ -90,6 +95,9 @@ run_snapshot_generation() {
     local core_export
     local tests_export
     local docs_export
+    local snapshot_id
+    local archived_snapshot_dir
+    local history_timestamp
 
     version="$(read_version)"
     date="$(current_date)"
@@ -252,7 +260,24 @@ LOG
 }
 META
 
+    snapshot_id="$(generate_snapshot_history_id)"
+    history_timestamp="$(history_timestamp_utc)"
+    archived_snapshot_dir="$(archive_snapshot "$snapshot_dir" "$snapshot_id")"
+    update_history_index "$snapshot_id" "$archived_snapshot_dir" "$history_timestamp"
+
     echo "[INFO] Snapshot generated: $snapshot_dir"
+    echo "[INFO] Snapshot archived: $archived_snapshot_dir"
+}
+
+run_snapshot_history() {
+    list_snapshots
+}
+
+run_snapshot_timeline() {
+    local output_file
+
+    output_file="$(write_repository_timeline)"
+    echo "[INFO] Repository timeline generated: $output_file"
 }
 
 run_snapshot_diff() {
@@ -298,6 +323,14 @@ main() {
         --version)
             read_version
             exit 0
+            ;;
+        history)
+            shift
+            run_snapshot_history "$@"
+            ;;
+        timeline)
+            shift
+            run_snapshot_timeline "$@"
             ;;
         diff)
             shift

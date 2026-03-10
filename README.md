@@ -21,7 +21,7 @@ The snapshot explains:
 
 # Project Status
 
-Version: **v1.0.0**
+Version: **v1.1.0**
 
 Current capabilities:
 
@@ -39,6 +39,7 @@ Current capabilities:
 - deterministic repository diff intelligence
 - deterministic repository explain synthesis
 - deterministic snapshot history engine
+- deterministic repository timeline engine
 - AI-ready snapshot export
 - deterministic test suite
 
@@ -57,6 +58,10 @@ bin/snapshot diff <snapshotA> <snapshotB>
 Snapshot history:
 
 bin/snapshot history
+
+Repository timeline:
+
+bin/snapshot timeline
 
 Utility commands:
 
@@ -127,6 +132,10 @@ History index:
 
 SNAPSHOT_HISTORY.tsv
 
+Timeline artifact:
+
+REPOSITORY_TIMELINE.md
+
 The history index records:
 
 - archive timestamp
@@ -135,7 +144,10 @@ The history index records:
 
 The `bin/snapshot history` command lists this index directly.
 
-This allows the tool to maintain a deterministic **repository timeline foundation**
+The `bin/snapshot timeline` command renders a deterministic human-readable
+chronological repository timeline from archived snapshots.
+
+This allows the tool to maintain a deterministic **repository timeline layer**
 independent of Git.
 
 ---
@@ -204,14 +216,16 @@ Artifacts:
 DIFF.tsv
 SNAPSHOT_DIFF.md
 SNAPSHOT_HISTORY.tsv
+REPOSITORY_TIMELINE.md
 
 This layer currently supports:
 
 - deterministic snapshot-to-snapshot comparison
 - human-readable change summaries
 - persistent archived snapshot history
+- deterministic human-readable repository timeline rendering
 
-This is the foundation for future repository timeline and evolution signals.
+This establishes the first repository timeline layer and prepares future evolution signals.
 
 ---
 
@@ -238,4 +252,4 @@ codebase-snapshot is now a deterministic repository intelligence engine with:
 - semantic intelligence
 - architectural intelligence
 - cognitive intelligence
-- early temporal intelligence
+- repository timeline intelligence

@@ -88,6 +88,21 @@ if grep -q "snapshots/" "$SNAPSHOT_DIR/INDEX.tsv"; then
     exit 1
 fi
 
+if grep -q ".snapshots/" "$SNAPSHOT_DIR/INDEX.tsv"; then
+    echo "[FAIL] exclusion rules not applied (.snapshots found in index)"
+    exit 1
+fi
+
+if grep -q "SNAPSHOT_HISTORY.tsv" "$SNAPSHOT_DIR/INDEX.tsv"; then
+    echo "[FAIL] exclusion rules not applied (history index found in index)"
+    exit 1
+fi
+
+if grep -q "REPOSITORY_TIMELINE.md" "$SNAPSHOT_DIR/INDEX.tsv"; then
+    echo "[FAIL] exclusion rules not applied (timeline artifact found in index)"
+    exit 1
+fi
+
 echo "[PASS] exclusion rules applied"
 
 if ! grep -Fq $'DEPENDENCY\t'"$ROOT_DIR"$'/bin/snapshot' "$SNAPSHOT_DIR/DEPENDENCIES.tsv"; then
@@ -123,6 +138,11 @@ if grep -q "snapshots/" "$SNAPSHOT_DIR/SEMANTICS.tsv"; then
     exit 1
 fi
 
+if grep -q ".snapshots/" "$SNAPSHOT_DIR/SEMANTICS.tsv"; then
+    echo "[FAIL] exclusion rules not applied (.snapshots found in semantics)"
+    exit 1
+fi
+
 echo "[PASS] semantics respects exclusion rules"
 
 if ! grep -Fq $'ENTRYPOINT\t'"$ROOT_DIR"$'/bin/snapshot\tcli\tpath:bin' "$SNAPSHOT_DIR/ENTRYPOINTS.tsv"; then
@@ -141,6 +161,11 @@ echo "[PASS] non-root scripts are not misdetected as root entrypoints"
 
 if grep -q "snapshots/" "$SNAPSHOT_DIR/ENTRYPOINTS.tsv"; then
     echo "[FAIL] exclusion rules not applied (snapshots found in entrypoints)"
+    exit 1
+fi
+
+if grep -q ".snapshots/" "$SNAPSHOT_DIR/ENTRYPOINTS.tsv"; then
+    echo "[FAIL] exclusion rules not applied (.snapshots found in entrypoints)"
     exit 1
 fi
 

@@ -1,6 +1,22 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SNAPSHOT_ROOT_DIR_DEFAULT="snapshots"
+SNAPSHOT_HISTORY_ROOT_DIR_DEFAULT=".snapshots"
+SNAPSHOT_HISTORY_INDEX_FILE_DEFAULT="SNAPSHOT_HISTORY.tsv"
+
+snapshot_root_dir() {
+    printf "%s/%s\n" "$ROOT_DIR" "$SNAPSHOT_ROOT_DIR_DEFAULT"
+}
+
+snapshot_history_root_dir() {
+    printf "%s/%s\n" "$ROOT_DIR" "$SNAPSHOT_HISTORY_ROOT_DIR_DEFAULT"
+}
+
+snapshot_history_index_file() {
+    printf "%s/%s\n" "$ROOT_DIR" "$SNAPSHOT_HISTORY_INDEX_FILE_DEFAULT"
+}
+
 load_config() {
     local config_file="$1"
 

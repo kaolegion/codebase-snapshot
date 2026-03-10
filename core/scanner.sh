@@ -26,6 +26,15 @@ is_excluded_path() {
         */snapshots/*|snapshots/*)
             return 0
             ;;
+        */.snapshots/*|.snapshots/*)
+            return 0
+            ;;
+        */SNAPSHOT_HISTORY.tsv|SNAPSHOT_HISTORY.tsv)
+            return 0
+            ;;
+        */REPOSITORY_TIMELINE.md|REPOSITORY_TIMELINE.md)
+            return 0
+            ;;
         *)
             return 1
             ;;

@@ -272,9 +272,34 @@ Purpose:
 
 - persistent repository history index
 - deterministic archive listing
-- foundation for future timeline rendering
+- foundation for repository timeline rendering
 
 ---
+
+## REPOSITORY_TIMELINE.md
+
+Deterministic human-readable repository timeline.
+
+Purpose:
+
+Renders archived snapshot history as a stable chronological repository view.
+
+The artifact summarizes:
+
+- archived snapshot order
+- snapshot timestamps
+- snapshot IDs
+- generated dates
+- tool versions
+- labels
+- normalized labels
+- file counts
+- archive paths
+
+This artifact is derived from `SNAPSHOT_HISTORY.tsv` and archived `SNAPSHOT_META.json` files.
+
+---
+
 
 # Storage Layout
 
@@ -312,6 +337,7 @@ LANGUAGES.md
 COMPONENTS.md
 MANIFEST.md
 AI_INGESTION_GUIDE.md
+REPOSITORY_TIMELINE.md
 
 ---
 

@@ -40,6 +40,20 @@ SNAPSHOT_PATH
 
 ---
 
+## Repository timeline
+
+bin/snapshot timeline
+
+Purpose:
+
+Render a deterministic human-readable repository timeline from archived snapshots.
+
+Generated output:
+
+REPOSITORY_TIMELINE.md
+
+---
+
 ## Snapshot diff
 
 bin/snapshot diff <snapshotA> <snapshotB>
@@ -70,17 +84,21 @@ snapshots/YYYY-MM-DD/vX.Y.Z/<sequence>_<label>/
 
 Example:
 
-snapshots/2026-03-09/v1.0.0/01_initial/
+snapshots/2026-03-09/v1.1.0/01_initial/
 
 Archived historical snapshots are written to:
 
 .snapshots/snapshot_YYYYMMDD_HHMMSS/
 
+Repository timeline output is written to:
+
+REPOSITORY_TIMELINE.md
+
 ---
 
 # Generated Snapshot Artifacts
 
-A snapshot generates the following artifacts:
+The snapshot generation command produces the following artifacts:
 
 PROJECT_TREE.txt
 INDEX.tsv
@@ -108,6 +126,10 @@ LOG.txt
 SNAPSHOT_META.json
 
 CODEBASE/
+
+The repository timeline command produces:
+
+REPOSITORY_TIMELINE.md
 
 ---
 
