@@ -253,3 +253,38 @@ codebase-snapshot is now a deterministic repository intelligence engine with:
 - architectural intelligence
 - cognitive intelligence
 - repository timeline intelligence
+
+---
+
+# Repository Evolution Signals
+
+The evolution signal engine transforms repository history into
+deterministic machine-readable evolution signals.
+
+Command:
+
+bin/snapshot evolution
+
+Generated artifact:
+
+EVOLUTION_SIGNALS.tsv
+
+Signal format:
+
+SIGNAL <type> <snapshot_A> <snapshot_B> <value>
+
+Example:
+
+SIGNAL FILE_COUNT_INCREASED snapshot_A snapshot_B 4
+SIGNAL LABEL_CHANGED snapshot_A snapshot_B initial->refactor
+
+Signals currently supported:
+
+FILE_COUNT_INCREASED
+FILE_COUNT_DECREASED
+FILE_COUNT_STABLE
+TOOL_VERSION_CHANGED
+LABEL_CHANGED
+
+These signals allow AI systems to quickly detect repository change patterns
+without diffing entire snapshots.

@@ -248,87 +248,6 @@ Explain how the repository works internally using deterministic repository signa
 
 Status: COMPLETE
 
----
-
-## Phase 4.7 — Repository Explain Engine
-
-Goal: synthesize the full repository into one deterministic high-level explanation layer.
-
-Capabilities:
-
-- deterministic repository-wide explanation rendering
-- repository identity synthesis
-- purpose synthesis
-- execution synthesis
-- architecture synthesis
-- semantic component synthesis
-- generated artifact synthesis
-
-Artifact:
-
-REPOSITORY_EXPLAIN.md
-
-Purpose:
-
-Provide one stable high-level explanation layer for humans and AI systems.
-
-Status: COMPLETE
-
----
-
-## Phase 4.8 — Repository DNA
-
-Goal: provide a compact deterministic identity signature of the repository.
-
-Capabilities:
-
-- deterministic repository DNA rendering
-- hybrid project type detection
-- architecture style summary
-- language summary
-- dependency model summary
-- documentation presence summary
-- test coverage summary
-- repository size summary
-- core component listing
-- entrypoint listing
-
-Artifact:
-
-REPOSITORY_DNA.md
-
-Purpose:
-
-Provide a compact repository identity layer that complements
-PURPOSE.md and REPOSITORY_EXPLAIN.md.
-
-Status: COMPLETE
-
----
-
-## Phase 4.9 — Repository Diff Intelligence
-
-Goal: compare deterministic snapshots to explain repository evolution over time.
-
-Capabilities:
-
-- deterministic snapshot-to-snapshot comparison
-- machine-readable diff generation
-- human-readable repository evolution summary
-- snapshot-artifact-only diff logic without git
-
-Artifacts:
-
-DIFF.tsv
-SNAPSHOT_DIFF.md
-
-Purpose:
-
-Explain deterministic repository evolution between two snapshots.
-
-Status: COMPLETE
-
----
 
 # Phase 5 — Repository Evolution Intelligence
 
@@ -396,20 +315,29 @@ Status: COMPLETE
 
 ---
 
-## Phase 5.2 — Evolution Signals
+## Phase 5.2 — Evolution Signals Engine
 
-Planned capabilities:
+Goal:
 
-- growth signals
-- dependency expansion signals
-- semantic drift signals
-- architectural change signals
+Transform repository timeline history into deterministic machine-readable
+repository evolution signals.
 
-Planned artifact:
+Capabilities:
+
+- deterministic snapshot-to-snapshot signal generation
+- metadata comparison between archived snapshots
+- repository evolution signal extraction
+- machine-readable evolution signal artifact
+
+Artifact:
 
 EVOLUTION_SIGNALS.tsv
 
-Status: PLANNED
+CLI command:
+
+bin/snapshot evolution
+
+Status: COMPLETE
 
 ---
 
@@ -426,3 +354,4 @@ Planned artifact:
 REPOSITORY_HEALTH.md
 
 Status: PLANNED
+

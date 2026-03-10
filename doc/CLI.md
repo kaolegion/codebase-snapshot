@@ -162,3 +162,30 @@ logs
 snapshots
 
 These exclusions prevent runtime artifacts and dependencies from polluting snapshot analysis.
+
+---
+
+## Repository evolution signals
+
+bin/snapshot evolution
+
+Purpose:
+
+Generate deterministic machine-readable repository evolution signals
+from archived snapshot history.
+
+Generated output:
+
+EVOLUTION_SIGNALS.tsv
+
+Signal format:
+
+SIGNAL <type> <snapshot_A> <snapshot_B> <value>
+
+Signals currently supported:
+
+FILE_COUNT_INCREASED
+FILE_COUNT_DECREASED
+FILE_COUNT_STABLE
+TOOL_VERSION_CHANGED
+LABEL_CHANGED

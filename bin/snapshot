@@ -24,6 +24,7 @@ source "$ROOT_DIR/core/dna.sh"
 source "$ROOT_DIR/core/diff.sh"
 source "$ROOT_DIR/core/history.sh"
 source "$ROOT_DIR/core/timeline.sh"
+source "$ROOT_DIR/core/evolution.sh"
 
 usage() {
     cat <<'USAGE'
@@ -33,6 +34,7 @@ Usage:
   bin/snapshot --target <path> --label <label>
   bin/snapshot history
   bin/snapshot timeline
+  bin/snapshot evolution
   bin/snapshot diff <snapshotA> <snapshotB>
   bin/snapshot --help
   bin/snapshot --version
@@ -280,6 +282,20 @@ run_snapshot_timeline() {
     echo "[INFO] Repository timeline generated: $output_file"
 }
 
+run_snapshot_evolution() {
+    local output_file
+    local snapshot_count
+
+    output_file="$(write_evolution_signals)"
+    snapshot_count="$(evolution_snapshot_count)"
+
+    echo "[INFO] Evolution signals generated: $output_file"
+
+    if (( snapshot_count < 2 )); then
+        echo "[INFO] Not enough archived snapshots to compute evolution signals"
+    fi
+}
+
 run_snapshot_diff() {
     local snapshot_a="${1:-}"
     local snapshot_b="${2:-}"
@@ -331,6 +347,10 @@ main() {
         timeline)
             shift
             run_snapshot_timeline "$@"
+            ;;
+        evolution)
+            shift
+            run_snapshot_evolution "$@"
             ;;
         diff)
             shift
