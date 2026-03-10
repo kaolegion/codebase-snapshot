@@ -20,6 +20,7 @@ bash "$ROOT_DIR/tests/test_diff.sh"
 bash "$ROOT_DIR/tests/test_history.sh"
 bash "$ROOT_DIR/tests/test_timeline.sh"
 bash "$ROOT_DIR/tests/test_evolution.sh"
+bash "$ROOT_DIR/tests/test_health.sh"
 bash "$ROOT_DIR/tests/test_cli.sh"
 
 echo "[SUCCESS] Full test suite passed"

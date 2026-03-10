@@ -25,6 +25,7 @@ source "$ROOT_DIR/core/diff.sh"
 source "$ROOT_DIR/core/history.sh"
 source "$ROOT_DIR/core/timeline.sh"
 source "$ROOT_DIR/core/evolution.sh"
+source "$ROOT_DIR/core/health.sh"
 
 usage() {
     cat <<'USAGE'
@@ -35,6 +36,7 @@ Usage:
   bin/snapshot history
   bin/snapshot timeline
   bin/snapshot evolution
+  bin/snapshot health
   bin/snapshot diff <snapshotA> <snapshotB>
   bin/snapshot --help
   bin/snapshot --version
@@ -296,6 +298,23 @@ run_snapshot_evolution() {
     fi
 }
 
+run_snapshot_health() {
+    local output_file
+    local evolution_file
+    local snapshot_count
+
+    evolution_file="$(write_evolution_signals)"
+    snapshot_count="$(evolution_snapshot_count)"
+    output_file="$(write_repository_health)"
+
+    echo "[INFO] Evolution signals refreshed: $evolution_file"
+    echo "[INFO] Repository health generated: $output_file"
+
+    if (( snapshot_count < 2 )); then
+        echo "[INFO] Not enough archived snapshots to compute full evolution history"
+    fi
+}
+
 run_snapshot_diff() {
     local snapshot_a="${1:-}"
     local snapshot_b="${2:-}"
@@ -351,6 +370,10 @@ main() {
         evolution)
             shift
             run_snapshot_evolution "$@"
+            ;;
+        health)
+            shift
+            run_snapshot_health "$@"
             ;;
         diff)
             shift

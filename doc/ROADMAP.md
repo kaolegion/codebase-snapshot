@@ -248,6 +248,59 @@ Explain how the repository works internally using deterministic repository signa
 
 Status: COMPLETE
 
+---
+
+## Phase 4.7 — CLI Integration Convergence
+
+Goal: converge semantic and interpretation engines into the main CLI surface.
+
+Capabilities:
+
+- deterministic CLI orchestration alignment
+- integrated repository interpretation commands
+- stronger end-to-end execution contract
+
+Status: COMPLETE
+
+---
+
+## Phase 4.8 — Repository DNA
+
+Goal: derive a compact deterministic identity layer for the repository.
+
+Capabilities:
+
+- deterministic repository identity synthesis
+- project type inference
+- architecture style summarization
+- compact repository profile rendering
+
+Artifact:
+
+REPOSITORY_DNA.md
+
+Status: COMPLETE
+
+---
+
+## Phase 4.9 — Repository Diff Intelligence
+
+Goal: compare snapshots deterministically and expose repository evolution.
+
+Capabilities:
+
+- deterministic snapshot comparison
+- machine-readable change artifact
+- human-readable diff summary
+
+Artifacts:
+
+DIFF.tsv
+SNAPSHOT_DIFF.md
+
+Status: COMPLETE
+
+---
 
 # Phase 5 — Repository Evolution Intelligence
 
@@ -261,55 +314,33 @@ Goal: persist snapshots as historical artifacts and expose deterministic snapsho
 
 Capabilities:
 
-- deterministic snapshot archive creation
-- snapshot history storage initialization
+- snapshot archive storage
 - deterministic snapshot ID generation
-- repository-level history index
-- CLI history listing
-- timeline foundation independent of Git
+- history index maintenance
+- archived snapshot lookup
 
 Artifacts:
 
 SNAPSHOT_HISTORY.tsv
 .snapshots/
 
-CLI:
-
-bin/snapshot history
-
 Status: COMPLETE
 
 ---
 
-## Phase 5.1 — Repository Timeline Engine
+## Phase 5.1 — Repository Timeline
 
-Goal: transform archived snapshot history into a deterministic human-readable repository timeline.
+Goal: render archived history into a deterministic chronological timeline.
 
 Capabilities:
 
-- deterministic repository timeline rendering
-- archived snapshot metadata extraction
-- chronological repository history view
-- stable timeline generation from `SNAPSHOT_HISTORY.tsv`
-- CLI timeline rendering command
+- chronological snapshot rendering
+- archived metadata reading
+- stable historical timeline summary
 
 Artifact:
 
 REPOSITORY_TIMELINE.md
-
-Input artifacts:
-
-SNAPSHOT_HISTORY.tsv
-SNAPSHOT_META.json
-
-CLI:
-
-bin/snapshot timeline
-
-Purpose:
-
-Provide a stable human-readable chronological repository evolution view
-derived only from archived snapshot artifacts.
 
 Status: COMPLETE
 
@@ -317,25 +348,19 @@ Status: COMPLETE
 
 ## Phase 5.2 — Evolution Signals Engine
 
-Goal:
-
-Transform repository timeline history into deterministic machine-readable
-repository evolution signals.
+Goal: expose deterministic machine-readable repository evolution signals.
 
 Capabilities:
 
-- deterministic snapshot-to-snapshot signal generation
-- metadata comparison between archived snapshots
-- repository evolution signal extraction
-- machine-readable evolution signal artifact
+- consecutive snapshot comparison
+- file count evolution signals
+- tool version change detection
+- snapshot label change detection
+- stable signal ordering
 
 Artifact:
 
 EVOLUTION_SIGNALS.tsv
-
-CLI command:
-
-bin/snapshot evolution
 
 Status: COMPLETE
 
@@ -343,15 +368,59 @@ Status: COMPLETE
 
 ## Phase 5.3 — Repository Health Signals
 
-Planned capabilities:
+Goal: transform evolution signals into a deterministic human-readable repository health interpretation.
 
-- repository quality indicators
-- documentation and test presence signals over time
-- execution and structure stability signals
+Capabilities:
 
-Planned artifact:
+- deterministic repository health signal synthesis
+- health interpretation from archived history and evolution signals
+- stable evidence rendering
+- deterministic health summary generation
+
+Artifact:
 
 REPOSITORY_HEALTH.md
 
-Status: PLANNED
+Signals:
 
+REPOSITORY_GROWING
+REPOSITORY_STABLE
+CHANGE_ACTIVITY_LOW
+CHANGE_ACTIVITY_MODERATE
+TOOL_VERSION_PROGRESSING
+SNAPSHOT_LABELS_EVOLVING
+
+Status: COMPLETE
+
+---
+
+# Strategic Direction
+
+The project now forms a deterministic repository intelligence pipeline:
+
+- scan
+- index
+- dependencies
+- graph
+- semantics
+- entrypoints
+- modules
+- subsystems
+- architecture
+- purpose
+- system flow
+- repository DNA
+- repository explain
+- diff
+- history
+- timeline
+- evolution
+- health
+
+Long-term direction:
+
+- repository risk signals
+- repository quality signals
+- repository drift detection
+- repository intelligence scoring
+- AI-native repository ingestion workflows

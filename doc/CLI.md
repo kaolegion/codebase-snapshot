@@ -54,6 +54,62 @@ REPOSITORY_TIMELINE.md
 
 ---
 
+## Repository evolution signals
+
+bin/snapshot evolution
+
+Purpose:
+
+Generate deterministic machine-readable repository evolution signals
+from archived snapshot history.
+
+Generated output:
+
+EVOLUTION_SIGNALS.tsv
+
+Signal format:
+
+SIGNAL <type> <snapshot_A> <snapshot_B> <value>
+
+Signals currently supported:
+
+FILE_COUNT_INCREASED
+FILE_COUNT_DECREASED
+FILE_COUNT_STABLE
+TOOL_VERSION_CHANGED
+LABEL_CHANGED
+
+---
+
+## Repository health
+
+bin/snapshot health
+
+Purpose:
+
+Render a deterministic human-readable repository health summary
+from archived snapshot history and evolution signals.
+
+Generated output:
+
+REPOSITORY_HEALTH.md
+
+Health signals currently supported:
+
+REPOSITORY_GROWING
+REPOSITORY_STABLE
+CHANGE_ACTIVITY_LOW
+CHANGE_ACTIVITY_MODERATE
+TOOL_VERSION_PROGRESSING
+SNAPSHOT_LABELS_EVOLVING
+
+Notes:
+
+- the command refreshes `EVOLUTION_SIGNALS.tsv` before rendering health
+- health rendering remains deterministic and history-driven
+
+---
+
 ## Snapshot diff
 
 bin/snapshot diff <snapshotA> <snapshotB>
@@ -84,7 +140,7 @@ snapshots/YYYY-MM-DD/vX.Y.Z/<sequence>_<label>/
 
 Example:
 
-snapshots/2026-03-09/v1.1.0/01_initial/
+snapshots/2026-03-10/v1.3.0/01_initial/
 
 Archived historical snapshots are written to:
 
@@ -93,6 +149,14 @@ Archived historical snapshots are written to:
 Repository timeline output is written to:
 
 REPOSITORY_TIMELINE.md
+
+Repository evolution signal output is written to:
+
+EVOLUTION_SIGNALS.tsv
+
+Repository health output is written to:
+
+REPOSITORY_HEALTH.md
 
 ---
 
@@ -131,6 +195,14 @@ The repository timeline command produces:
 
 REPOSITORY_TIMELINE.md
 
+The repository evolution command produces:
+
+EVOLUTION_SIGNALS.tsv
+
+The repository health command produces:
+
+REPOSITORY_HEALTH.md
+
 ---
 
 # Deterministic Behavior
@@ -162,30 +234,3 @@ logs
 snapshots
 
 These exclusions prevent runtime artifacts and dependencies from polluting snapshot analysis.
-
----
-
-## Repository evolution signals
-
-bin/snapshot evolution
-
-Purpose:
-
-Generate deterministic machine-readable repository evolution signals
-from archived snapshot history.
-
-Generated output:
-
-EVOLUTION_SIGNALS.tsv
-
-Signal format:
-
-SIGNAL <type> <snapshot_A> <snapshot_B> <value>
-
-Signals currently supported:
-
-FILE_COUNT_INCREASED
-FILE_COUNT_DECREASED
-FILE_COUNT_STABLE
-TOOL_VERSION_CHANGED
-LABEL_CHANGED

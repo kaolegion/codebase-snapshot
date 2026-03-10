@@ -4,6 +4,58 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## v1.3.0
+
+### Phase 5.3 — Repository Health Signals
+
+Enhancements:
+
+- introduced deterministic repository health interpretation
+- added human-readable repository health artifact `REPOSITORY_HEALTH.md`
+- added repository health synthesis from archived snapshot history and evolution signals
+- established the first deterministic repository health interpretation layer
+
+Core engine:
+
+- added `core/health.sh`
+- implemented deterministic health signal rendering
+- implemented repository health evidence reporting
+- implemented deterministic repository health interpretation
+
+Health signals introduced:
+
+REPOSITORY_GROWING
+REPOSITORY_STABLE
+CHANGE_ACTIVITY_LOW
+CHANGE_ACTIVITY_MODERATE
+TOOL_VERSION_PROGRESSING
+SNAPSHOT_LABELS_EVOLVING
+
+CLI integration:
+
+- added `bin/snapshot health`
+- refreshed evolution signals before health rendering for output consistency
+
+Tests:
+
+- added `tests/test_health.sh`
+- validated deterministic repository health rendering
+- validated health signal presence
+- validated evidence and interpretation sections
+- integrated health engine into the test suite
+
+Documentation:
+
+- updated README to expose repository health signals
+- updated roadmap to mark Phase 5.3 as complete
+- updated CLI documentation
+- updated snapshot format documentation
+
+This release introduces the first deterministic **repository health interpretation layer**,
+allowing humans and AI systems to assess repository change behavior in a stable and readable form.
+
+---
+
 ## v1.2.0
 
 ### Phase 5.2 — Evolution Signals Engine
@@ -53,4 +105,3 @@ This release introduces the first deterministic **repository evolution signal la
 allowing AI systems and humans to interpret repository change patterns over time.
 
 ---
-

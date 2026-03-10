@@ -15,13 +15,15 @@ The snapshot explains:
 - how the repository can be summarized as a compact deterministic DNA profile
 - how a repository evolves between snapshots
 - how repository snapshots can be archived and explored historically
+- how repository evolution signals can be interpreted
+- how repository health can be summarized deterministically
 - how the full repository can be synthesized into one final explanation layer
 
 ---
 
 # Project Status
 
-Version: **v1.1.0**
+Version: **v1.3.0**
 
 Current capabilities:
 
@@ -36,10 +38,12 @@ Current capabilities:
 - deterministic repository architecture rendering
 - deterministic repository system flow explanation
 - deterministic repository DNA synthesis
-- deterministic repository diff intelligence
 - deterministic repository explain synthesis
+- deterministic repository diff intelligence
 - deterministic snapshot history engine
 - deterministic repository timeline engine
+- deterministic repository evolution signal engine
+- deterministic repository health interpretation
 - AI-ready snapshot export
 - deterministic test suite
 
@@ -62,6 +66,14 @@ bin/snapshot history
 Repository timeline:
 
 bin/snapshot timeline
+
+Repository evolution signals:
+
+bin/snapshot evolution
+
+Repository health:
+
+bin/snapshot health
 
 Utility commands:
 
@@ -89,6 +101,13 @@ Comparison artifacts:
 
 DIFF.tsv
 SNAPSHOT_DIFF.md
+
+Evolution artifacts:
+
+SNAPSHOT_HISTORY.tsv
+REPOSITORY_TIMELINE.md
+EVOLUTION_SIGNALS.tsv
+REPOSITORY_HEALTH.md
 
 Interpretation artifacts:
 
@@ -136,6 +155,14 @@ Timeline artifact:
 
 REPOSITORY_TIMELINE.md
 
+Evolution artifact:
+
+EVOLUTION_SIGNALS.tsv
+
+Health artifact:
+
+REPOSITORY_HEALTH.md
+
 The history index records:
 
 - archive timestamp
@@ -147,7 +174,13 @@ The `bin/snapshot history` command lists this index directly.
 The `bin/snapshot timeline` command renders a deterministic human-readable
 chronological repository timeline from archived snapshots.
 
-This allows the tool to maintain a deterministic **repository timeline layer**
+The `bin/snapshot evolution` command renders deterministic machine-readable
+repository evolution signals from archived snapshot history.
+
+The `bin/snapshot health` command renders a deterministic human-readable
+repository health summary from archived history and evolution signals.
+
+This allows the tool to maintain a deterministic **repository evolution intelligence layer**
 independent of Git.
 
 ---
@@ -217,6 +250,8 @@ DIFF.tsv
 SNAPSHOT_DIFF.md
 SNAPSHOT_HISTORY.tsv
 REPOSITORY_TIMELINE.md
+EVOLUTION_SIGNALS.tsv
+REPOSITORY_HEALTH.md
 
 This layer currently supports:
 
@@ -224,8 +259,11 @@ This layer currently supports:
 - human-readable change summaries
 - persistent archived snapshot history
 - deterministic human-readable repository timeline rendering
+- deterministic machine-readable repository evolution signals
+- deterministic human-readable repository health interpretation
 
-This establishes the first repository timeline layer and prepares future evolution signals.
+This establishes a deterministic repository evolution and health layer
+for both humans and AI systems.
 
 ---
 
@@ -253,38 +291,5 @@ codebase-snapshot is now a deterministic repository intelligence engine with:
 - architectural intelligence
 - cognitive intelligence
 - repository timeline intelligence
-
----
-
-# Repository Evolution Signals
-
-The evolution signal engine transforms repository history into
-deterministic machine-readable evolution signals.
-
-Command:
-
-bin/snapshot evolution
-
-Generated artifact:
-
-EVOLUTION_SIGNALS.tsv
-
-Signal format:
-
-SIGNAL <type> <snapshot_A> <snapshot_B> <value>
-
-Example:
-
-SIGNAL FILE_COUNT_INCREASED snapshot_A snapshot_B 4
-SIGNAL LABEL_CHANGED snapshot_A snapshot_B initial->refactor
-
-Signals currently supported:
-
-FILE_COUNT_INCREASED
-FILE_COUNT_DECREASED
-FILE_COUNT_STABLE
-TOOL_VERSION_CHANGED
-LABEL_CHANGED
-
-These signals allow AI systems to quickly detect repository change patterns
-without diffing entire snapshots.
+- repository evolution signal intelligence
+- repository health interpretation intelligence
