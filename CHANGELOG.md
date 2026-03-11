@@ -4,6 +4,60 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## v1.5.0
+
+### Phase 5.5 — Repository Lint Signals
+
+Enhancements:
+
+- introduced deterministic repository lint signaling
+- added human-readable repository lint artifact `REPOSITORY_LINT.md`
+- added repository lint synthesis from structural artifacts and deterministic repository signals
+- established the first deterministic repository lint interpretation layer
+
+Core engine:
+
+- added `core/lint.sh`
+- implemented deterministic lint signal rendering
+- implemented structural quality diagnostics from repository artifacts
+- implemented structural consistency checks across indexed repository outputs
+
+Lint signals introduced:
+
+DOC_MISSING
+TEST_MISSING
+ORPHAN_MODULE
+ENTRYPOINT_WITHOUT_COMPONENT
+MODULE_WITHOUT_SUBSYSTEM
+EMPTY_SUBSYSTEM
+DEPENDENCY_UNKNOWN
+STRUCTURE_INCONSISTENT
+
+CLI integration:
+
+- added `bin/snapshot lint`
+- integrated repository lint rendering into the CLI surface
+
+Tests:
+
+- added `tests/test_lint.sh`
+- validated deterministic repository lint rendering
+- validated lint report generation from CLI
+- integrated lint engine into the full test suite
+
+Documentation:
+
+- updated development protocol to Surgical Heredoc Workflow V2
+- updated README to expose repository lint signals
+- updated CLI documentation
+- updated snapshot format documentation
+
+This release introduces the first deterministic repository lint signaling layer,
+allowing humans and AI systems to identify structural repository quality issues
+using stable artifact-derived evidence.
+
+---
+
 ## v1.4.0
 
 ### Phase 5.4 — Repository Risk Signals
@@ -49,7 +103,7 @@ Documentation:
 - updated CLI documentation
 - updated snapshot format documentation
 
-This release introduces the first deterministic **repository risk signaling layer**,
+This release introduces the first deterministic repository risk signaling layer,
 allowing humans and AI systems to identify sensitive repository areas using stable evidence.
 
 ---
@@ -101,7 +155,7 @@ Documentation:
 - updated CLI documentation
 - updated snapshot format documentation
 
-This release introduces the first deterministic **repository health interpretation layer**,
+This release introduces the first deterministic repository health interpretation layer,
 allowing humans and AI systems to assess repository change behavior in a stable and readable form.
 
 ---
@@ -151,7 +205,7 @@ Documentation:
 - updated CLI documentation
 - updated snapshot format documentation
 
-This release introduces the first deterministic **repository evolution signal layer**,
+This release introduces the first deterministic repository evolution signal layer,
 allowing AI systems and humans to interpret repository change patterns over time.
 
 ---

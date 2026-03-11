@@ -109,6 +109,38 @@ Notes:
 - health rendering remains deterministic and history-driven
 
 ---
+
+## Repository lint
+
+bin/snapshot lint
+
+Purpose:
+
+Render a deterministic human-readable repository lint summary
+from repository structural artifacts and deterministic repository signals.
+
+Generated output:
+
+REPOSITORY_LINT.md
+
+Lint evidence currently supported:
+
+- missing documentation
+- missing tests
+- orphan modules
+- entrypoints without semantic mapping
+- modules without subsystem mapping
+- empty subsystems
+- dependency targets absent from indexed repository files
+- structural inconsistencies between generated artifacts
+
+Notes:
+
+- the command remains deterministic and artifact-driven
+- lint rendering is based on INDEX.tsv, DEPENDENCIES.tsv, SEMANTICS.tsv, ENTRYPOINTS.tsv, MODULES.tsv, SUBSYSTEMS.tsv, and DOCUMENTATION.md
+
+---
+
 ## Repository risks
 
 bin/snapshot risk
@@ -135,7 +167,6 @@ Notes:
 - risk levels are derived from archived snapshot presence and repository signals
 
 ---
-
 
 ## Snapshot diff
 
@@ -184,6 +215,10 @@ EVOLUTION_SIGNALS.tsv
 Repository health output is written to:
 
 REPOSITORY_HEALTH.md
+
+Repository lint output is written to:
+
+REPOSITORY_LINT.md
 
 Repository risk output is written to:
 
@@ -234,6 +269,10 @@ The repository health command produces:
 
 REPOSITORY_HEALTH.md
 
+The repository lint command produces:
+
+REPOSITORY_LINT.md
+
 The repository risk command produces:
 
 REPOSITORY_RISKS.md
@@ -258,14 +297,6 @@ while still generating distinct archived history entries because archive IDs are
 
 # Exclusion Rules
 
-Certain paths are ignored during repository scanning:
+Excluded paths and generated history artifacts must not re-enter repository scans.
 
-.git
-node_modules
-dist
-build
-__pycache__
-logs
-snapshots
-
-These exclusions prevent runtime artifacts and dependencies from polluting snapshot analysis.
+This prevents recursive self-analysis and preserves deterministic repository outputs.

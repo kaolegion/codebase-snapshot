@@ -116,7 +116,7 @@ Purpose:
 
 Defines the primary architectural zones of the repository.
 
-This artifact is the **first topology layer** above file semantics.
+This artifact is the first topology layer above file semantics.
 
 ---
 
@@ -132,7 +132,7 @@ Purpose:
 
 Defines stable functional subsystems inside repository modules.
 
-This artifact is the **second topology layer** above file semantics.
+This artifact is the second topology layer above file semantics.
 
 ---
 
@@ -260,52 +260,9 @@ The artifact summarizes:
 
 ---
 
-## REPOSITORY_HEALTH.md
-
-Deterministic human-readable repository health summary.
-
-Purpose:
-
-Explains repository health using archived snapshot history and evolution signals.
-
-The artifact summarizes:
-
-- repository growth signals
-- repository stability signals
-- change activity level
-- tool version progression
-- snapshot label evolution
-
----
-
-## REPOSITORY_RISKS.md
-
-Deterministic human-readable repository risk summary.
-
-Purpose:
-
-Explains repository risk areas using deterministic evidence.
-
-The artifact summarizes:
-
-- high risk areas
-- medium risk areas
-- low risk areas
-- deterministic risk heuristics
-- evidence sources used for risk scoring
-
-Risk evidence currently includes:
-
-- archived snapshot volatility
-- dependency fan-in gravity
-- entrypoint criticality
-- core subsystem sensitivity
-
----
-
 ## SNAPSHOT_HISTORY.tsv
 
-Deterministic archived snapshot history index.
+Deterministic historical snapshot index.
 
 Format:
 
@@ -313,9 +270,9 @@ TIMESTAMP <tab> SNAPSHOT_ID <tab> SNAPSHOT_PATH
 
 Purpose:
 
-- persistent chronological snapshot registry
-- stable archive lookup
-- deterministic input for timeline and health analysis
+- stable historical snapshot inventory
+- chronological repository memory
+- base input for timeline, evolution, health, and risk analysis
 
 ---
 
@@ -325,16 +282,14 @@ Deterministic human-readable repository timeline.
 
 Purpose:
 
-Provides a chronological view of archived repository snapshots.
+Explains the chronological sequence of archived repository snapshots.
 
 The artifact summarizes:
 
-- archived snapshots
-- snapshot timestamps
-- labels and normalized labels
-- tool versions
-- file counts
-- archive paths
+- archived snapshot dates
+- snapshot identifiers
+- labels and version continuity when available
+- repository evolution across time
 
 ---
 
@@ -346,7 +301,13 @@ Format:
 
 SIGNAL <type> <snapshot_A> <snapshot_B> <value>
 
-Signals currently supported:
+Purpose:
+
+- machine-readable repository evolution markers
+- deterministic change interpretation across archived snapshots
+- base input for repository health summaries
+
+Signals currently supported include:
 
 - FILE_COUNT_INCREASED
 - FILE_COUNT_DECREASED
@@ -354,60 +315,68 @@ Signals currently supported:
 - TOOL_VERSION_CHANGED
 - LABEL_CHANGED
 
+---
+
+# Operational Artifacts
+
+## REPOSITORY_HEALTH.md
+
+Deterministic human-readable repository health summary.
+
 Purpose:
 
-- stable inter-snapshot change interpretation
-- machine-readable repository evolution evidence
-- base input for repository health interpretation
+Explains repository health using archived snapshot history
+and evolution signals.
+
+The artifact summarizes:
+
+- growth versus stability signals
+- change activity level
+- tool version progression
+- snapshot label evolution
+
+This layer provides a deterministic operational health view of the repository.
 
 ---
 
-# Context and Runtime Artifacts
+## REPOSITORY_LINT.md
 
-## MANIFEST.md
-
-Deterministic snapshot manifest.
+Deterministic human-readable repository lint summary.
 
 Purpose:
 
-Provides snapshot context including target path, label, normalized label, and file count.
+Explains repository structural quality issues using deterministic
+artifact-derived signals.
+
+The artifact summarizes:
+
+- missing documentation
+- missing tests
+- orphan modules
+- entrypoints without semantic mapping
+- modules without subsystem mapping
+- empty subsystems
+- dependency targets absent from indexed files
+- structural inconsistencies between generated artifacts
+
+This layer provides a deterministic repository quality report.
 
 ---
 
-## AI_INGESTION_GUIDE.md
+## REPOSITORY_RISKS.md
 
-Deterministic AI reading guide.
-
-Purpose:
-
-Provides a recommended reading order for humans and AI systems consuming a snapshot.
-
----
-
-## LOG.txt
-
-Deterministic generation log.
+Deterministic human-readable repository risk summary.
 
 Purpose:
 
-Records which snapshot capabilities were executed during generation.
+Explains repository risk areas using archived snapshots,
+dependency gravity, entrypoint criticality, and core subsystem sensitivity.
 
----
+The artifact summarizes:
 
-## SNAPSHOT_META.json
+- high risk files
+- medium risk files
+- low risk files
+- deterministic reasons behind each risk level
 
-Deterministic snapshot metadata.
-
-Purpose:
-
-Stores stable machine-readable metadata about a generated snapshot.
-
----
-
-## CODEBASE/
-
-Structured code export directory.
-
-Purpose:
-
-Groups repository content into deterministic exports for CLI, core, tests, and docs.
+This layer provides a deterministic repository operational risk view.

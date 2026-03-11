@@ -1,6 +1,6 @@
 # codebase-snapshot
 
-Deterministic shell-first tool that converts any software repository into an **AI-ready structured snapshot**.
+Deterministic shell-first tool that converts any software repository into an AI-ready structured snapshot.
 
 The goal is to allow humans and AI systems to quickly understand a codebase without navigating the entire repository.
 
@@ -17,6 +17,7 @@ The snapshot explains:
 - how repository snapshots can be archived and explored historically
 - how repository evolution signals can be interpreted
 - how repository health can be summarized deterministically
+- how repository lint signals can be summarized deterministically
 - how repository risks can be signaled deterministically
 - how the full repository can be synthesized into one final explanation layer
 
@@ -45,6 +46,7 @@ Current capabilities:
 - deterministic repository timeline engine
 - deterministic repository evolution signal engine
 - deterministic repository health interpretation
+- deterministic repository lint signaling
 - deterministic repository risk signaling
 - AI-ready snapshot export
 - deterministic test suite
@@ -76,6 +78,10 @@ bin/snapshot evolution
 Repository health:
 
 bin/snapshot health
+
+Repository lint:
+
+bin/snapshot lint
 
 Repository risks:
 
@@ -114,6 +120,7 @@ SNAPSHOT_HISTORY.tsv
 REPOSITORY_TIMELINE.md
 EVOLUTION_SIGNALS.tsv
 REPOSITORY_HEALTH.md
+REPOSITORY_LINT.md
 REPOSITORY_RISKS.md
 
 Interpretation artifacts:
@@ -170,6 +177,10 @@ Health artifact:
 
 REPOSITORY_HEALTH.md
 
+Lint artifact:
+
+REPOSITORY_LINT.md
+
 Risk artifact:
 
 REPOSITORY_RISKS.md
@@ -191,11 +202,14 @@ repository evolution signals from archived snapshot history.
 The `bin/snapshot health` command renders a deterministic human-readable
 repository health summary from archived history and evolution signals.
 
+The `bin/snapshot lint` command renders a deterministic human-readable
+repository lint summary from repository structural artifacts and deterministic signals.
+
 The `bin/snapshot risk` command renders a deterministic human-readable
 repository risk summary from archived snapshots, dependency gravity,
 and entrypoint criticality.
 
-This allows the tool to maintain a deterministic **repository evolution intelligence layer**
+This allows the tool to maintain a deterministic repository evolution intelligence layer
 independent of Git.
 
 ---
@@ -261,53 +275,26 @@ The evolution layer explains repository change over time.
 
 Artifacts:
 
-DIFF.tsv
-SNAPSHOT_DIFF.md
 SNAPSHOT_HISTORY.tsv
 REPOSITORY_TIMELINE.md
 EVOLUTION_SIGNALS.tsv
+
+This layer provides deterministic historical repository analysis.
+
+---
+
+# Repository Operational Intelligence
+
+The operational layer explains repository quality, health, and risk.
+
+Artifacts:
+
 REPOSITORY_HEALTH.md
+REPOSITORY_LINT.md
 REPOSITORY_RISKS.md
 
-This layer currently supports:
+This layer provides deterministic operational interpretation of:
 
-- deterministic snapshot-to-snapshot comparison
-- human-readable change summaries
-- persistent archived snapshot history
-- deterministic human-readable repository timeline rendering
-- deterministic machine-readable repository evolution signals
-- deterministic human-readable repository health interpretation
-- deterministic repository risk signaling
-
-This establishes a deterministic repository evolution, health, and risk layer
-for both humans and AI systems.
-
----
-
-# Deterministic Behavior
-
-The project keeps the following principles:
-
-- deterministic behavior
-- shell-first architecture
-- CLI orchestration only
-- modular core engines
-- explicit snapshot artifacts
-- tests as contract
-
-Running the tool on the same repository state should produce stable structural outputs.
-
----
-
-# Status Summary
-
-codebase-snapshot is now a deterministic repository intelligence engine with:
-
-- structural intelligence
-- semantic intelligence
-- architectural intelligence
-- cognitive intelligence
-- repository timeline intelligence
-- repository evolution signal intelligence
-- repository health interpretation intelligence
-- repository risk signaling intelligence
+- repository growth and stability
+- repository quality issues
+- repository risk concentration

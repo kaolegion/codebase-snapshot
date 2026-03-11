@@ -98,6 +98,22 @@ fi
 
 echo "[PASS] risk command generates repository risks report"
 
+rm -f "$ROOT_DIR/REPOSITORY_LINT.md"
+"$CLI" lint >/dev/null
+
+if [[ ! -f "$ROOT_DIR/REPOSITORY_LINT.md" ]]; then
+    echo "[FAIL] lint command did not generate REPOSITORY_LINT.md"
+    exit 1
+fi
+
+if ! grep -Fq '# Repository Lint Signals' "$ROOT_DIR/REPOSITORY_LINT.md"; then
+    echo "[FAIL] lint report header missing"
+    exit 1
+fi
+
+echo "[PASS] lint command generates repository lint report"
+
+rm -f "$ROOT_DIR/REPOSITORY_LINT.md"
 rm -f "$ROOT_DIR/REPOSITORY_RISKS.md"
 
 if grep -q "snapshots/" "$SNAPSHOT_DIR/INDEX.tsv"; then
