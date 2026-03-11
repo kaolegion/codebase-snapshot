@@ -4,6 +4,61 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## v1.6.0
+
+### Phase 5.6 — Repository Policy Signals
+
+Enhancements:
+
+- introduced deterministic repository policy signaling
+- added human-readable repository policy artifact `REPOSITORY_POLICY.md`
+- added repository policy synthesis from repository-visible governance evidence
+- established the first deterministic repository governance interpretation layer
+
+Core engine:
+
+- added `core/policy.sh`
+- implemented deterministic repository-visible policy evidence collection
+- implemented release discipline interpretation from explicit repository evidence
+- implemented testing and documentation governance interpretation
+- implemented non-speculative governance reporting
+
+Policy evidence introduced:
+
+- license presence
+- changelog presence
+- contribution guidance presence
+- development protocol presence
+- roadmap presence
+- testing governance evidence
+- release discipline evidence
+- documentation governance evidence
+
+CLI integration:
+
+- added `bin/snapshot policy`
+- integrated repository policy rendering into the CLI surface
+
+Tests:
+
+- added `tests/test_policy.sh`
+- validated deterministic repository policy rendering
+- validated policy report generation from CLI
+- integrated policy engine into the full test suite
+
+Documentation:
+
+- updated README to expose repository policy signals
+- updated CLI documentation
+- updated roadmap to mark Phase 5.6 as complete
+- updated snapshot format documentation
+
+This release introduces the first deterministic repository policy signaling layer,
+allowing humans and AI systems to interpret repository-visible governance signals
+using stable evidence and non-speculative rules.
+
+---
+
 ## v1.5.0
 
 ### Phase 5.5 — Repository Lint Signals

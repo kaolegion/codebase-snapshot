@@ -219,6 +219,37 @@ This layer acts as the final repository explanation artifact.
 
 ---
 
+## REPOSITORY_POLICY.md
+
+Deterministic repository policy and governance summary.
+
+Purpose:
+
+Synthesizes repository-visible governance and policy evidence into one stable
+human-readable document.
+
+The artifact reports:
+
+- license presence
+- changelog presence
+- contribution guidance presence
+- development protocol presence
+- roadmap presence
+- testing governance evidence
+- release discipline evidence
+- documentation governance evidence
+
+Interpretation constraints:
+
+- repository-visible evidence only
+- deterministic presence-based interpretation
+- no speculative governance inference
+
+This layer complements operational artifacts such as
+REPOSITORY_HEALTH.md, REPOSITORY_LINT.md, and REPOSITORY_RISKS.md.
+
+---
+
 # Evolution Artifacts
 
 ## DIFF.tsv
@@ -270,9 +301,9 @@ TIMESTAMP <tab> SNAPSHOT_ID <tab> SNAPSHOT_PATH
 
 Purpose:
 
-- stable historical snapshot inventory
-- chronological repository memory
-- base input for timeline, evolution, health, and risk analysis
+- archived snapshot registry
+- deterministic history tracking
+- base input for timeline and evolution analysis
 
 ---
 
@@ -282,14 +313,15 @@ Deterministic human-readable repository timeline.
 
 Purpose:
 
-Explains the chronological sequence of archived repository snapshots.
+Explains chronological repository history from archived snapshots.
 
 The artifact summarizes:
 
-- archived snapshot dates
-- snapshot identifiers
-- labels and version continuity when available
-- repository evolution across time
+- ordered snapshots
+- labels
+- versions
+- file counts
+- archive locations
 
 ---
 
@@ -303,52 +335,43 @@ SIGNAL <type> <snapshot_A> <snapshot_B> <value>
 
 Purpose:
 
-- machine-readable repository evolution markers
-- deterministic change interpretation across archived snapshots
-- base input for repository health summaries
-
-Signals currently supported include:
-
-- FILE_COUNT_INCREASED
-- FILE_COUNT_DECREASED
-- FILE_COUNT_STABLE
-- TOOL_VERSION_CHANGED
-- LABEL_CHANGED
+- stable machine-readable repository change signals
+- metadata-driven repository evolution interpretation
+- base input for repository health rendering
 
 ---
 
-# Operational Artifacts
+# Operational Intelligence Artifacts
 
 ## REPOSITORY_HEALTH.md
 
-Deterministic human-readable repository health summary.
+Deterministic repository health summary.
 
 Purpose:
 
-Explains repository health using archived snapshot history
-and evolution signals.
+Synthesizes archived snapshot history and evolution signals into a
+stable human-readable repository health interpretation.
 
-The artifact summarizes:
+The artifact reports:
 
-- growth versus stability signals
+- repository growth
+- stability trends
 - change activity level
 - tool version progression
 - snapshot label evolution
-
-This layer provides a deterministic operational health view of the repository.
 
 ---
 
 ## REPOSITORY_LINT.md
 
-Deterministic human-readable repository lint summary.
+Deterministic repository lint summary.
 
 Purpose:
 
-Explains repository structural quality issues using deterministic
-artifact-derived signals.
+Synthesizes repository structural artifacts into a stable human-readable
+repository quality and consistency report.
 
-The artifact summarizes:
+The artifact reports:
 
 - missing documentation
 - missing tests
@@ -356,27 +379,120 @@ The artifact summarizes:
 - entrypoints without semantic mapping
 - modules without subsystem mapping
 - empty subsystems
-- dependency targets absent from indexed files
-- structural inconsistencies between generated artifacts
-
-This layer provides a deterministic repository quality report.
+- unknown dependency targets
+- structural inconsistencies
 
 ---
 
 ## REPOSITORY_RISKS.md
 
-Deterministic human-readable repository risk summary.
+Deterministic repository risk summary.
 
 Purpose:
 
-Explains repository risk areas using archived snapshots,
-dependency gravity, entrypoint criticality, and core subsystem sensitivity.
+Synthesizes archived snapshots, dependency gravity, and entrypoint
+criticality into a stable human-readable repository risk report.
 
-The artifact summarizes:
+The artifact reports:
 
-- high risk files
-- medium risk files
-- low risk files
-- deterministic reasons behind each risk level
+- snapshot volatility
+- dependency gravity
+- entrypoint criticality
+- core subsystem sensitivity
 
 This layer provides a deterministic repository operational risk view.
+
+---
+
+# Snapshot Context Artifacts
+
+## MANIFEST.md
+
+Deterministic snapshot manifest.
+
+Purpose:
+
+Records snapshot metadata intended for both humans and AI systems.
+
+Typical contents include:
+
+- tool version
+- generation date
+- target repository path
+- label
+- normalized label
+- included file count
+
+---
+
+## AI_INGESTION_GUIDE.md
+
+Deterministic AI reading guide.
+
+Purpose:
+
+Provides a recommended artifact reading order for AI systems.
+
+This layer improves repository ingestion efficiency by exposing the
+most important synthesis artifacts first.
+
+---
+
+## LOG.txt
+
+Deterministic snapshot generation log.
+
+Purpose:
+
+Records the generation stages completed by the tool.
+
+This file provides explicit traceability for generated artifacts.
+
+---
+
+## SNAPSHOT_META.json
+
+Deterministic machine-readable snapshot metadata.
+
+Purpose:
+
+Stores normalized generation metadata for downstream processing.
+
+Typical fields include:
+
+- snapshot version
+- tool version
+- generation date
+- target repository root
+- label
+- normalized label
+- sequence
+- file count
+
+---
+
+# Structured Code Export
+
+## CODEBASE/
+
+Structured file export for AI ingestion.
+
+Typical contents:
+
+- 01_cli.md
+- 02_core.md
+- 03_tests.md
+- 04_docs.md
+
+Purpose:
+
+Provides grouped source access for downstream AI analysis.
+
+---
+
+# Exclusion Notes
+
+The scanner excludes generated history and operational artifacts from fresh snapshots,
+including archived snapshot storage and repository-generated intelligence artifacts.
+
+This prevents recursive self-analysis and preserves deterministic repository outputs.

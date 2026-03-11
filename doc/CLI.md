@@ -168,6 +168,38 @@ Notes:
 
 ---
 
+## Repository policy
+
+bin/snapshot policy
+
+Purpose:
+
+Render a deterministic human-readable repository policy summary
+from repository-visible governance evidence.
+
+Generated output:
+
+REPOSITORY_POLICY.md
+
+Policy evidence currently supported:
+
+- license presence
+- changelog presence
+- contribution guidance presence
+- development protocol presence
+- roadmap presence
+- testing governance presence
+- release discipline evidence
+- documentation governance evidence
+
+Notes:
+
+- the command remains deterministic and repository-visible
+- policy interpretation avoids speculative governance inference
+- policy rendering is based on explicit repository evidence and Git tag visibility when available
+
+---
+
 ## Snapshot diff
 
 bin/snapshot diff <snapshotA> <snapshotB>
@@ -224,6 +256,10 @@ Repository risk output is written to:
 
 REPOSITORY_RISKS.md
 
+Repository policy output is written to:
+
+REPOSITORY_POLICY.md
+
 ---
 
 # Generated Snapshot Artifacts
@@ -277,26 +313,23 @@ The repository risk command produces:
 
 REPOSITORY_RISKS.md
 
----
+The repository policy command produces:
 
-# Deterministic Behavior
+REPOSITORY_POLICY.md
 
-Snapshot generation follows strict deterministic rules:
+The snapshot diff command produces:
 
-- stable file ordering
-- explicit exclusion rules
-- normalized naming
-- predictable artifact layout
-- snapshot history index creation
-- stable CLI surface
-
-Running the command twice on the same repository state must produce identical structural outputs,
-while still generating distinct archived history entries because archive IDs are time-based.
+DIFF.tsv
+SNAPSHOT_DIFF.md
 
 ---
 
-# Exclusion Rules
+# Determinism Notes
 
-Excluded paths and generated history artifacts must not re-enter repository scans.
+All commands are designed to remain deterministic.
 
-This prevents recursive self-analysis and preserves deterministic repository outputs.
+Repository-visible artifacts are preferred over speculative interpretation.
+
+Generated policy, risk, lint, health, and evolution layers are derived from explicit repository evidence and stable rules.
+
+This allows the CLI surface to remain reproducible and suitable for both human review and AI ingestion.

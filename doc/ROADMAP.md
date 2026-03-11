@@ -258,57 +258,38 @@ Capabilities:
 
 - deterministic CLI orchestration alignment
 - integrated repository interpretation commands
-- stronger end-to-end execution contract
+- deterministic repository explanation access through the CLI
+- deterministic artifact convergence for human and AI use
 
-Status: COMPLETE
+Artifacts exposed through the CLI:
 
----
-
-## Phase 4.8 — Repository DNA
-
-Goal: derive a compact deterministic identity layer for the repository.
-
-Capabilities:
-
-- deterministic repository identity synthesis
-- project type inference
-- architecture style summarization
-- compact repository profile rendering
-
-Artifact:
-
+PURPOSE.md
+SYSTEM_FLOW.md
 REPOSITORY_DNA.md
+REPOSITORY_EXPLAIN.md
 
 Status: COMPLETE
 
 ---
 
-## Phase 4.9 — Repository Diff Intelligence
+# Phase 5 — Repository Evolution and Operational Intelligence
 
-Goal: compare snapshots deterministically and expose repository evolution.
-
-Capabilities:
-
-- deterministic snapshot comparison
-- machine-readable change artifact
-- human-readable diff summary
-
-Artifacts:
-
-DIFF.tsv
-SNAPSHOT_DIFF.md
-
-Status: COMPLETE
-
----
-
-# Phase 5 — Repository Evolution Intelligence
-
-Goal: explain repository evolution, health, and risk through deterministic signals.
+Goal: extend repository understanding from structure and interpretation
+to change tracking, operational diagnostics, risk, and governance signals.
 
 ---
 
 ## Phase 5.0 — Snapshot History Engine
+
+Capabilities:
+
+- deterministic archived snapshot storage
+- historical snapshot indexing
+- snapshot archive retrieval foundation
+
+Artifacts:
+
+SNAPSHOT_HISTORY.tsv
 
 Status: COMPLETE
 
@@ -316,11 +297,31 @@ Status: COMPLETE
 
 ## Phase 5.1 — Repository Timeline Engine
 
+Capabilities:
+
+- deterministic repository timeline rendering
+- chronological snapshot interpretation
+- history-to-report projection
+
+Artifacts:
+
+REPOSITORY_TIMELINE.md
+
 Status: COMPLETE
 
 ---
 
 ## Phase 5.2 — Evolution Signals Engine
+
+Capabilities:
+
+- deterministic repository evolution signal generation
+- machine-readable change interpretation between snapshots
+- stable signal ordering across archived history
+
+Artifacts:
+
+EVOLUTION_SIGNALS.tsv
 
 Status: COMPLETE
 
@@ -328,23 +329,29 @@ Status: COMPLETE
 
 ## Phase 5.3 — Repository Health Signals
 
+Capabilities:
+
+- deterministic repository health interpretation
+- archived history evidence synthesis
+- repository growth and stability reporting
+
+Artifacts:
+
+REPOSITORY_HEALTH.md
+
 Status: COMPLETE
 
 ---
 
 ## Phase 5.4 — Repository Risk Signals
 
-Goal: identify sensitive repository areas using deterministic evidence.
-
 Capabilities:
 
-- deterministic repository risk rendering
-- volatility-based repository risk scoring
-- dependency fan-in risk scoring
-- entrypoint criticality weighting
-- core subsystem sensitivity weighting
+- deterministic repository risk signaling
+- archived snapshot sensitivity interpretation
+- dependency gravity and entrypoint criticality analysis
 
-Artifact:
+Artifacts:
 
 REPOSITORY_RISKS.md
 
@@ -354,6 +361,66 @@ Status: COMPLETE
 
 ## Phase 5.5 — Repository Lint Signals
 
-Goal: add deterministic repository quality diagnostics.
+Capabilities:
+
+- deterministic repository lint signaling
+- structural repository quality diagnostics
+- artifact consistency verification
+
+Artifacts:
+
+REPOSITORY_LINT.md
+
+Status: COMPLETE
+
+---
+
+## Phase 5.6 — Repository Policy Signals
+
+Goal: interpret repository-visible governance and policy evidence.
+
+Capabilities:
+
+- deterministic repository policy signaling
+- repository-visible governance evidence synthesis
+- release discipline interpretation from explicit repository evidence
+- testing and documentation governance interpretation
+- non-speculative policy reporting
+
+Artifacts:
+
+REPOSITORY_POLICY.md
+
+Evidence scope:
+
+- license presence
+- changelog presence
+- contribution guidance presence
+- development protocol presence
+- roadmap presence
+- testing governance evidence
+- release discipline evidence
+- documentation governance evidence
+
+CLI surface:
+
+bin/snapshot policy
+
+Status: COMPLETE
+
+---
+
+# Phase 6 — Future Repository Intelligence Expansion
+
+Goal: extend repository intelligence beyond current deterministic operational layers.
+
+Candidate directions:
+
+- repository scorecards
+- repository governance trend analysis
+- cross-snapshot policy drift detection
+- repository explain compression layers
+- richer machine-readable operational exports
+- repository intelligence dashboards
 
 Status: PLANNED

@@ -23,6 +23,7 @@ bash "$ROOT_DIR/tests/test_evolution.sh"
 bash "$ROOT_DIR/tests/test_health.sh"
 bash "$ROOT_DIR/tests/test_lint.sh"
 bash "$ROOT_DIR/tests/test_risk.sh"
+bash "$ROOT_DIR/tests/test_policy.sh"
 bash "$ROOT_DIR/tests/test_cli.sh"
 
 echo "[SUCCESS] Full test suite passed"

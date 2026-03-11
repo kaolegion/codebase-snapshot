@@ -113,8 +113,24 @@ fi
 
 echo "[PASS] lint command generates repository lint report"
 
+rm -f "$ROOT_DIR/REPOSITORY_POLICY.md"
+"$CLI" policy >/dev/null
+
+if [[ ! -f "$ROOT_DIR/REPOSITORY_POLICY.md" ]]; then
+    echo "[FAIL] policy command did not generate REPOSITORY_POLICY.md"
+    exit 1
+fi
+
+if ! grep -Fq '# Repository Policy' "$ROOT_DIR/REPOSITORY_POLICY.md"; then
+    echo "[FAIL] policy report header missing"
+    exit 1
+fi
+
+echo "[PASS] policy command generates repository policy report"
+
 rm -f "$ROOT_DIR/REPOSITORY_LINT.md"
 rm -f "$ROOT_DIR/REPOSITORY_RISKS.md"
+rm -f "$ROOT_DIR/REPOSITORY_POLICY.md"
 
 if grep -q "snapshots/" "$SNAPSHOT_DIR/INDEX.tsv"; then
     echo "[FAIL] exclusion rules not applied (snapshots found in index)"

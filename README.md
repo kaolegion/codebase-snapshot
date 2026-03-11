@@ -19,13 +19,14 @@ The snapshot explains:
 - how repository health can be summarized deterministically
 - how repository lint signals can be summarized deterministically
 - how repository risks can be signaled deterministically
+- how repository policy and governance signals can be summarized deterministically
 - how the full repository can be synthesized into one final explanation layer
 
 ---
 
 # Project Status
 
-Version: **v1.4.0**
+Version: **v1.6.0**
 
 Current capabilities:
 
@@ -48,6 +49,7 @@ Current capabilities:
 - deterministic repository health interpretation
 - deterministic repository lint signaling
 - deterministic repository risk signaling
+- deterministic repository policy signaling
 - AI-ready snapshot export
 - deterministic test suite
 
@@ -87,6 +89,10 @@ Repository risks:
 
 bin/snapshot risk
 
+Repository policy:
+
+bin/snapshot policy
+
 Utility commands:
 
 bin/snapshot --help
@@ -122,6 +128,7 @@ EVOLUTION_SIGNALS.tsv
 REPOSITORY_HEALTH.md
 REPOSITORY_LINT.md
 REPOSITORY_RISKS.md
+REPOSITORY_POLICY.md
 
 Interpretation artifacts:
 
@@ -185,6 +192,10 @@ Risk artifact:
 
 REPOSITORY_RISKS.md
 
+Policy artifact:
+
+REPOSITORY_POLICY.md
+
 The history index records:
 
 - archive timestamp
@@ -208,6 +219,9 @@ repository lint summary from repository structural artifacts and deterministic s
 The `bin/snapshot risk` command renders a deterministic human-readable
 repository risk summary from archived snapshots, dependency gravity,
 and entrypoint criticality.
+
+The `bin/snapshot policy` command renders a deterministic human-readable
+repository policy summary from repository-visible governance evidence.
 
 This allows the tool to maintain a deterministic repository evolution intelligence layer
 independent of Git.
@@ -260,41 +274,26 @@ SYSTEM_FLOW.md
 REPOSITORY_DNA.md
 REPOSITORY_EXPLAIN.md
 
-These layers explain:
-
-- what the repository is for
-- how it operates internally
-- what its compact identity looks like
-- how the whole repository can be summarized coherently
+These layers provide repository purpose, execution flow, identity,
+and high-level synthesis.
 
 ---
 
-# Repository Evolution Intelligence
+# Repository Governance Layer
 
-The evolution layer explains repository change over time.
+The governance layer summarizes repository-visible policy signals using deterministic evidence.
 
-Artifacts:
+Artifact:
 
-SNAPSHOT_HISTORY.tsv
-REPOSITORY_TIMELINE.md
-EVOLUTION_SIGNALS.tsv
+REPOSITORY_POLICY.md
 
-This layer provides deterministic historical repository analysis.
+This layer reports repository-visible governance evidence such as:
 
----
-
-# Repository Operational Intelligence
-
-The operational layer explains repository quality, health, and risk.
-
-Artifacts:
-
-REPOSITORY_HEALTH.md
-REPOSITORY_LINT.md
-REPOSITORY_RISKS.md
-
-This layer provides deterministic operational interpretation of:
-
-- repository growth and stability
-- repository quality issues
-- repository risk concentration
+- license presence
+- changelog presence
+- contribution guidance presence
+- development protocol presence
+- roadmap presence
+- testing governance presence
+- release discipline evidence
+- documentation governance evidence

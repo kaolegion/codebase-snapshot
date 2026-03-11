@@ -28,6 +28,7 @@ source "$ROOT_DIR/core/evolution.sh"
 source "$ROOT_DIR/core/health.sh"
 source "$ROOT_DIR/core/lint.sh"
 source "$ROOT_DIR/core/risk.sh"
+source "$ROOT_DIR/core/policy.sh"
 
 usage() {
     cat <<'USAGE'
@@ -41,6 +42,7 @@ Usage:
   bin/snapshot health
   bin/snapshot lint
   bin/snapshot risk
+  bin/snapshot policy
   bin/snapshot diff <snapshotA> <snapshotB>
   bin/snapshot --help
   bin/snapshot --version
@@ -352,6 +354,13 @@ run_snapshot_risk() {
     fi
 }
 
+run_snapshot_policy() {
+    local output_file
+
+    output_file="$(write_repository_policy)"
+    echo "[INFO] Repository policy generated: $output_file"
+}
+
 run_snapshot_diff() {
     local snapshot_a="${1:-}"
     local snapshot_b="${2:-}"
@@ -419,6 +428,10 @@ main() {
         risk)
             shift
             run_snapshot_risk "$@"
+            ;;
+        policy)
+            shift
+            run_snapshot_policy "$@"
             ;;
         diff)
             shift
